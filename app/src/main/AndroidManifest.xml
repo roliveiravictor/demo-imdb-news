@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShutterView">
+        <activity android:name="com.stonetree.shuttergallery.feature.shutter.view.ShutterView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

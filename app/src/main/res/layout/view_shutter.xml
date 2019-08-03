@@ -3,7 +3,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ShutterView">
+    tools:context=".feature.shutter.view.ShutterView">
 
     <data>
         <variable
@@ -12,11 +12,11 @@
 
         <variable
             name="vm"
-            type="String"/>
+            type="com.stonetree.shuttergallery.feature.shutter.viewmodel.ShutterViewModel"/>
 
         <variable
             name="view"
-            type="String"/>
+            type="com.stonetree.shuttergallery.feature.shutter.view.ShutterView"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shutter_list"
+            android:id="@+id/shutters"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layoutAnimation="@anim/list_animation"

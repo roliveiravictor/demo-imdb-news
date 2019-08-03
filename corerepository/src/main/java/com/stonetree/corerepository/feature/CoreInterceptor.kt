@@ -12,8 +12,8 @@ abstract class CoreInterceptor {
     companion object {
 
         private val credentials: String = Credentials.basic(
-            Properties().read(CoreRepositoryConstant.USERNAME),
-            Properties().read(CoreRepositoryConstant.PASSWORD)
+            Properties().read(RepositoryConstants.USERNAME),
+            Properties().read(RepositoryConstants.PASSWORD)
         )
 
         fun getAuthentication(chain: Chain): Response {

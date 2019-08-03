@@ -1,8 +1,8 @@
 package com.stonetree.corerepository.feature
 
 import com.stonetree.corerepository.extensions.read
-import com.stonetree.corerepository.feature.CoreRepositoryConstant.BASE_URL
-import com.stonetree.corerepository.feature.CoreRepositoryConstant.TIMEOUT
+import com.stonetree.corerepository.feature.RepositoryConstants.BASE_URL
+import com.stonetree.corerepository.feature.RepositoryConstants.TIMEOUT
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
