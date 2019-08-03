@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -44,6 +46,8 @@ dependencies {
     implementation "android.arch.paging:runtime:$paging_runtime_version"
 
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    implementation "com.facebook.fresco:fresco:$fresco_version"
 
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
