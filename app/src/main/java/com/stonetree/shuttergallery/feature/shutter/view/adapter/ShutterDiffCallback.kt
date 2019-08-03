@@ -1,21 +1,21 @@
 package com.stonetree.shuttergallery.feature.shutter.view.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
+import com.stonetree.shuttergallery.feature.shutter.model.Image
 
-class ShutterDiffCallback : DiffUtil.ItemCallback<ShutterModel>() {
+class ShutterDiffCallback : DiffUtil.ItemCallback<Image>() {
 
     override fun areItemsTheSame(
-        oldItem: ShutterModel,
-        newItem: ShutterModel
+        oldItem: Image,
+        newItem: Image
     ): Boolean {
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(
-        oldItem: ShutterModel,
-        newItem: ShutterModel
+        oldItem: Image,
+        newItem: Image
     ): Boolean {
-        return oldItem.url == newItem.url
+        return oldItem.assets.thumb.url == newItem.assets.thumb.url
     }
 }

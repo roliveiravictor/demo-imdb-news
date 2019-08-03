@@ -8,6 +8,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.stonetree.corerepository.feature.RepositoryConstants.FETCH_DISTANCE
 import com.stonetree.corerepository.feature.RepositoryConstants.PAGE_SIZE
+import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
 import com.stonetree.shuttergallery.feature.shutter.res.repository.ShutterRepository
@@ -28,7 +29,7 @@ class ShutterViewModel : ViewModel() {
         .setEnablePlaceholders(false)
         .build()
 
-    val shutters: LiveData<PagedList<ShutterModel>> = LivePagedListBuilder(factory, config).build()
+    val shutters: LiveData<PagedList<Image>> = LivePagedListBuilder(factory, config).build()
 
     var isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
