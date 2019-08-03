@@ -1,22 +1,14 @@
 package com.stonetree.corerepository.feature
 
-import com.stonetree.corerepository.extensions.read
-import okhttp3.Credentials
 import okhttp3.Interceptor.Chain
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
-import java.util.*
 
 abstract class CoreInterceptor {
 
     companion object {
 
-        private val credentials: String = Credentials.basic(
-            Properties().read(RepositoryConstants.USERNAME),
-            Properties().read(RepositoryConstants.PASSWORD)
-        )
-
-        fun getAuthentication(chain: Chain): Response {
+        fun getAuthentication(chain: Chain, credentials: String): Response {
             val request = chain.request()
 
             val authenticatedRequest = request.newBuilder()

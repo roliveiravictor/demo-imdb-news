@@ -1,8 +1,13 @@
 package com.stonetree.corerepository.extensions
 
+import android.content.Context
+import android.util.Log
+import com.stonetree.corerepository.BuildConfig
 import com.stonetree.corerepository.feature.CallBackKt
-import com.stonetree.corerepository.feature.RepositoryConstants
 import retrofit2.Call
+import java.io.File
+import java.io.FileInputStream
+import java.io.InputStream
 import java.util.*
 
 fun<T> Call<T>.enqueue(callback: CallBackKt<T>.() -> Unit) {
@@ -11,10 +16,11 @@ fun<T> Call<T>.enqueue(callback: CallBackKt<T>.() -> Unit) {
     this.enqueue(callBackKt)
 }
 
-fun Properties.read(name: String): String {
-    javaClass.getResourceAsStream(RepositoryConstants.FILE_NAME).use {
-            `is` -> load(`is`)?.let {
-        return getProperty(name)
-        }
+//TODO - Remove security breach.
+fun String.read(context: Context, name: String): String{
+    return context.assets.open(this).use {  input ->
+        val props = Properties()
+        props.load(input)
+        props.getProperty(name)
     }
 }

@@ -2,10 +2,10 @@ package com.stonetree.shuttergallery.feature.shutter.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import com.stonetree.corerepository.feature.CoreRepository
 import com.stonetree.shuttergallery.R
 import com.stonetree.shuttergallery.databinding.ViewShutterBinding
 import com.stonetree.shuttergallery.feature.shutter.view.adapter.ShutterAdapter
@@ -19,6 +19,8 @@ class ShutterView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        CoreRepository.start(this)
 
         val data: ViewShutterBinding = DataBindingUtil.setContentView(
             this, R.layout.view_shutter

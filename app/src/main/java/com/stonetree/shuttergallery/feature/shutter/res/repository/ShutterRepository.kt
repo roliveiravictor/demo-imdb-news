@@ -33,7 +33,7 @@ class ShutterRepository {
         withContext(Dispatchers.IO) {
             request.enqueue {
                 onResponse = { response ->
-                    Log.i(javaClass.name, response.body()?.url)
+                    Log.i(javaClass.name, response.toString())
                 }
 
                 onFailure = { error ->
