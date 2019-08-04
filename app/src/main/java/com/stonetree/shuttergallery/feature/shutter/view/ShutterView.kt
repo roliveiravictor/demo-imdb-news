@@ -2,6 +2,7 @@ package com.stonetree.shuttergallery.feature.shutter.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.VisibleForTesting
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
@@ -14,7 +15,8 @@ import com.stonetree.shuttergallery.feature.shutter.viewmodel.ShutterViewModel
 
 class ShutterView : AppCompatActivity() {
 
-    private val vm by lazy {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val vm by lazy {
         return@lazy ViewModelProviders.of(this).get(ShutterViewModel::class.java)
     }
 
