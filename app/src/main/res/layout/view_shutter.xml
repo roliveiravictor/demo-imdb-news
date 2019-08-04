@@ -7,8 +7,8 @@
 
     <data>
         <variable
-            name="isLoading"
-            type="boolean" />
+            name="network"
+            type="com.stonetree.corerepository.model.NetworkState" />
 
         <variable
             name="vm"
@@ -25,13 +25,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shutters"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layoutAnimation="@anim/list_animation"
             android:orientation="vertical"
-            app:isGone="@{!isLoading}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/loading"
+            android:padding="@dimen/five_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,13 +38,16 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loading"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            app:isGone="@{isLoading}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isGone="@{network}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading.json"
+            app:lottie_loop="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

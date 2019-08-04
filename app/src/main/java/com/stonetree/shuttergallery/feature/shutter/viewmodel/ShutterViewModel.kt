@@ -1,26 +1,21 @@
 package com.stonetree.shuttergallery.feature.shutter.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.stonetree.corerepository.feature.RepositoryConstants.FETCH_DISTANCE
 import com.stonetree.corerepository.feature.RepositoryConstants.PAGE_SIZE
 import com.stonetree.shuttergallery.feature.shutter.model.Image
-import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
-import com.stonetree.shuttergallery.feature.shutter.res.repository.ShutterRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import androidx.lifecycle.Transformations.switchMap
+import java.util.concurrent.Executors
+import com.stonetree.corerepository.model.NetworkState
 
 class ShutterViewModel : ViewModel() {
 
-    private val repository = ShutterRepository.getInstance()
-
-    private val factory: ShutterDataSourceFactory = ShutterDataSourceFactory(repository)
+    private val factory: ShutterDataSourceFactory = ShutterDataSourceFactory()
 
     private val config: PagedList.Config = PagedList.Config.Builder()
         .setInitialLoadSizeHint(PAGE_SIZE)
@@ -29,20 +24,18 @@ class ShutterViewModel : ViewModel() {
         .setEnablePlaceholders(false)
         .build()
 
-    val shutters: LiveData<PagedList<Image>> = LivePagedListBuilder(factory, config).build()
+    val shutters: LiveData<PagedList<Image>> =
+        LivePagedListBuilder(factory, config)
+        .setFetchExecutor(Executors.newFixedThreadPool(3))
+        .build()
 
-    var isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val network: LiveData<NetworkState> = switchMap(factory.data) {
+            data -> data.getNetwork()
+    }
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {
         super.onCleared()
         viewModelScope.cancel()
     }
-
-    init {
-        viewModelScope.launch {
-            repository.fetch()
-        }
-    }
-
 }

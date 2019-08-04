@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.stonetree.corerepository.feature.CoreRepository
 import com.stonetree.shuttergallery.R
 import com.stonetree.shuttergallery.databinding.ViewShutterBinding
@@ -20,11 +21,13 @@ class ShutterView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Fresco.initialize(this)
         CoreRepository.start(this)
 
         val data: ViewShutterBinding = DataBindingUtil.setContentView(
             this, R.layout.view_shutter
         )
+
         val adapter = ShutterAdapter()
 
         bindXml(data, adapter)
@@ -47,8 +50,8 @@ class ShutterView : AppCompatActivity() {
             adapter.submitList(shutters)
         }
 
-        vm.isLoading.observe(this) { isLoading ->
-            data.isLoading = isLoading
+        vm.network.observe(this) { network ->
+            data.network = network
         }
     }
 }
