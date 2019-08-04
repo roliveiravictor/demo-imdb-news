@@ -30,7 +30,7 @@ class ShutterViewModel : ViewModel() {
         .build()
 
     val network: LiveData<NetworkState> = switchMap(factory.data) {
-            data -> data.getNetwork()
+        data -> data.getNetwork()
     }
 
     @ExperimentalCoroutinesApi
