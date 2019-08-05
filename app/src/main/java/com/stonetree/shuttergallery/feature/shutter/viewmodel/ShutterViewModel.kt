@@ -3,8 +3,8 @@ package com.stonetree.shuttergallery.feature.shutter.viewmodel
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.stonetree.corerepository.feature.RepositoryConstants.FETCH_DISTANCE
-import com.stonetree.corerepository.feature.RepositoryConstants.PAGE_SIZE
+import com.stonetree.corerepository.constants.RepositoryConstants.FETCH_DISTANCE
+import com.stonetree.corerepository.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi

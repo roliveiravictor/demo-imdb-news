@@ -1,4 +1,4 @@
-package com.stonetree.shuttergallery.core
+package com.stonetree.shuttergallery.core.viewholder
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

@@ -1,16 +1,13 @@
 package com.stonetree.corerepository.extensions
 
 import android.content.Context
-import android.util.Log
-import com.stonetree.corerepository.BuildConfig
-import com.stonetree.corerepository.feature.CallBackKt
+import com.stonetree.corerepository.core.idling.EspressoIdlingResource
+import com.stonetree.corerepository.feature.res.callback.CallBackKt
 import retrofit2.Call
-import java.io.File
-import java.io.FileInputStream
-import java.io.InputStream
 import java.util.*
 
 fun<T> Call<T>.enqueue(callback: CallBackKt<T>.() -> Unit) {
+    EspressoIdlingResource.getIdlingResource().increment()
     val callBackKt = CallBackKt<T>()
     callback.invoke(callBackKt)
     this.enqueue(callBackKt)

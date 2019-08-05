@@ -1,4 +1,4 @@
-package com.stonetree.corerepository.feature
+package com.stonetree.corerepository.constants
 
 object RepositoryConstants {
 

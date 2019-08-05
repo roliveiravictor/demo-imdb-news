@@ -1,12 +1,13 @@
-package com.stonetree.corerepository.feature
+package com.stonetree.corerepository.feature.res.repository
 
 import android.content.Context
 import com.stonetree.corerepository.extensions.read
-import com.stonetree.corerepository.feature.RepositoryConstants.BASE_URL
-import com.stonetree.corerepository.feature.RepositoryConstants.PASSWORD
-import com.stonetree.corerepository.feature.RepositoryConstants.REPOSITORY_PROPS
-import com.stonetree.corerepository.feature.RepositoryConstants.TIMEOUT
-import com.stonetree.corerepository.feature.RepositoryConstants.USERNAME
+import com.stonetree.corerepository.constants.RepositoryConstants.BASE_URL
+import com.stonetree.corerepository.constants.RepositoryConstants.PASSWORD
+import com.stonetree.corerepository.constants.RepositoryConstants.REPOSITORY_PROPS
+import com.stonetree.corerepository.constants.RepositoryConstants.TIMEOUT
+import com.stonetree.corerepository.constants.RepositoryConstants.USERNAME
+import com.stonetree.corerepository.feature.res.interceptor.CoreInterceptor
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -30,7 +31,8 @@ class CoreRepository {
                 }
 
         fun start(context: Context) {
-            getInstance()?.apply {
+            getInstance()
+                ?.apply {
                 baseUrl = REPOSITORY_PROPS.read(context, BASE_URL)
                 credentials = Credentials.basic(
                     REPOSITORY_PROPS.read(context, USERNAME),

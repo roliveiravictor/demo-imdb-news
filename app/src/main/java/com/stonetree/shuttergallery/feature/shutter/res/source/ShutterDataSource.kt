@@ -27,7 +27,6 @@ class ShutterDataSource: PageKeyedDataSource<Long, Image>() {
         callback: LoadInitialCallback<Long, Image>
     ) {
         network.postValue(LOADING)
-
         val request: Call<ShutterModel> = repository.api.get(1, params.requestedLoadSize)
         request.enqueue {
             onResponse = { response ->
