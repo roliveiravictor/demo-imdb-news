@@ -33,7 +33,7 @@
 
 # Description
 
--   Das Auto APP
+-   Shutter Gallery APP
 
 # IDE
 
@@ -45,7 +45,7 @@
 
 # Objective
 
-  - Learn about `IdlingResources` & `PageKeyedDataSource` 
+  - Learn about `IdlingResource` & `PageKeyedDataSource` 
 
 # Overview
 
