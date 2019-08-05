@@ -10,12 +10,10 @@ buildscript {
         fresco_version = '1.13.0'
         lottie_version = '3.0.7'
         interceptor_version = '4.0.1'
-        core_testing_version = '2.0.1'
         espresso_core_version = '3.2.0'
         junit_version = '4.12'
         andx_junit_version = '1.1.1'
         appcompat_version = '1.0.2'
-        ktx_version = '1.0.2'
         constraint_version = '1.1.3'
     }
 

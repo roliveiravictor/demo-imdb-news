@@ -54,7 +54,6 @@
 # Composition
 
   - kotlin_version 1.3.41
-  - core_ktx_version 1.0.2
   - paging_runtime_version 2.1.0-rc01
   - lifecycle_version 2.2.0-alpha02
   - converter_gson_version 2.6.0
@@ -62,12 +61,10 @@
   - fresco_version 1.13.0
   - lottie_version 3.0.7
   - interceptor_version 4.0.1
-  - core_testing_version 2.0.1
   - espresso_core_version 3.2.0
   - junit_version 4.12
   - andx_junit_version 1.1.1
   - appcompat_version 1.0.2
-  - ktx_version 1.0.2
   - constraint_version 1.1.3
 
 # Run
