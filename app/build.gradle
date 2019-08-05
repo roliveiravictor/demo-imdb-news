@@ -59,9 +59,9 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
 
     androidTestImplementation "androidx.test.ext:junit:$andx_junit_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$esperocore_version"
-    androidTestImplementation "androidx.arch.core:core-testing:$coretesting_version"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$esperocore_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$esperocore_version"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:$esperocore_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$core_testing_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_core_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_core_version"
 }

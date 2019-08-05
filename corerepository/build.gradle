@@ -44,7 +44,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$converter_gson_version"
-    api "androidx.test.espresso:espresso-idling-resource:$esperocore_version"
+    api "androidx.test.espresso:espresso-idling-resource:$espresso_core_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
