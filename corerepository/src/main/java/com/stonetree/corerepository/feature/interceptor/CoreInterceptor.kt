@@ -1,4 +1,4 @@
-package com.stonetree.corerepository.feature.res.interceptor
+package com.stonetree.corerepository.feature.interceptor
 
 import okhttp3.Interceptor.Chain
 import okhttp3.Response

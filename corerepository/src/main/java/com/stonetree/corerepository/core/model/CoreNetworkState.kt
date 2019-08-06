@@ -1,4 +1,4 @@
-package com.stonetree.corerepository.model
+package com.stonetree.corerepository.core.model
 
 enum class Status {
     RUNNING,

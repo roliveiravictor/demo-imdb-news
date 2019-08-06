@@ -1,6 +1,6 @@
 package com.stonetree.shuttergallery.feature.shutter.res.repository
 
-import com.stonetree.corerepository.feature.res.repository.CoreRepository
+import com.stonetree.corerepository.feature.repository.CoreRepository
 
 class ShutterRepository {
 

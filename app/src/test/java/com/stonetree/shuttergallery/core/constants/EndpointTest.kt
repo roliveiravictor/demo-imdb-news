@@ -1,4 +1,4 @@
-package com.stonetree.shuttergallery.constants
+package com.stonetree.shuttergallery.core.constants
 
 import junit.framework.TestCase.assertEquals
 import org.junit.Test

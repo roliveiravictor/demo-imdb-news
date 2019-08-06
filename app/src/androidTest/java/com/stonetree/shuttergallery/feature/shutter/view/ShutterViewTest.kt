@@ -8,7 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.corerepository.core.idling.EspressoIdlingResource
+import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling
 import kotlinx.android.synthetic.main.view_shutter.*
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.After
@@ -22,9 +22,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withTagValue
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import com.stonetree.shuttergallery.R
-import com.stonetree.shuttergallery.constants.Constants.APP_TITLE
-import com.stonetree.shuttergallery.constants.Constants.IMAGE_URL
-import com.stonetree.shuttergallery.constants.Constants.PACKAGE
+import com.stonetree.shuttergallery.core.constants.Constants.APP_TITLE
+import com.stonetree.shuttergallery.core.constants.Constants.IMAGE_URL
+import com.stonetree.shuttergallery.core.constants.Constants.PACKAGE
 import org.hamcrest.CoreMatchers.`is`
 
 
@@ -37,12 +37,12 @@ class ShutterViewTest {
 
     @Before
     fun setup() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.getIdlingResource())
+        IdlingRegistry.getInstance().register(CoreRepositoryIdling.getResource())
     }
 
     @After
     fun unregisterIdlingResource() {
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.getIdlingResource())
+        IdlingRegistry.getInstance().unregister(CoreRepositoryIdling.getResource())
     }
 
     @Test

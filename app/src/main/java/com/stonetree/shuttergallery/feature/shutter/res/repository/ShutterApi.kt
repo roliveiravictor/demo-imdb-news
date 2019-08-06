@@ -1,9 +1,9 @@
 package com.stonetree.shuttergallery.feature.shutter.res.repository
 
-import com.stonetree.corerepository.constants.RepositoryConstants.PAGE
-import com.stonetree.corerepository.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.corerepository.constants.RepositoryConstants.PER_PAGE
-import com.stonetree.shuttergallery.constants.Endpoint
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PER_PAGE
+import com.stonetree.shuttergallery.core.constants.Endpoint
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
 import retrofit2.Call
 import retrofit2.http.GET

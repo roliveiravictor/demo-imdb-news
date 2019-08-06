@@ -1,9 +1,9 @@
-package com.stonetree.corerepository.feature.res.idling
+package com.stonetree.corerepository.feature.idling
 
 import androidx.test.espresso.IdlingResource
 import java.util.concurrent.atomic.AtomicInteger
 
-class GlobalIdlingResource(private val resourceName: String) : IdlingResource {
+class CoreRepositoryIdlingImp(private val resourceName: String) : IdlingResource {
 
     private val counter = AtomicInteger(0)
 

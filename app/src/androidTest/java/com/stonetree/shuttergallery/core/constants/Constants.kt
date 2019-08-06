@@ -1,4 +1,4 @@
-package com.stonetree.shuttergallery.constants
+package com.stonetree.shuttergallery.core.constants
 
 object Constants {
 

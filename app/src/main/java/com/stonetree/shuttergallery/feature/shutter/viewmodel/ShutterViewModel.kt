@@ -3,15 +3,15 @@ package com.stonetree.shuttergallery.feature.shutter.viewmodel
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.stonetree.corerepository.constants.RepositoryConstants.FETCH_DISTANCE
-import com.stonetree.corerepository.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.corerepository.core.constants.RepositoryConstants.FETCH_DISTANCE
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import androidx.lifecycle.Transformations.switchMap
 import java.util.concurrent.Executors
-import com.stonetree.corerepository.model.NetworkState
+import com.stonetree.corerepository.core.model.NetworkState
 
 class ShutterViewModel : ViewModel() {
 

@@ -1,12 +1,12 @@
-package com.stonetree.shuttergallery.binders
+package com.stonetree.shuttergallery.core.binders
 
 import android.view.View
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
-import com.stonetree.corerepository.model.NetworkState
-import com.stonetree.shuttergallery.constants.Constants.IMAGE_URL
+import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.shuttergallery.core.constants.Constants.IMAGE_URL
 import com.stonetree.shuttergallery.feature.shutter.view.ShutterView
 import junit.framework.TestCase.assertEquals
 import kotlinx.android.synthetic.main.view_shutter.*

@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import com.facebook.drawee.backends.pipeline.Fresco
-import com.stonetree.corerepository.feature.res.repository.CoreRepository
+import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.shuttergallery.R
 import com.stonetree.shuttergallery.databinding.ViewShutterBinding
 import com.stonetree.shuttergallery.feature.shutter.view.adapter.ShutterAdapter

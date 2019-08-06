@@ -2,10 +2,10 @@ package com.stonetree.shuttergallery.feature.shutter.res.source
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.stonetree.corerepository.extensions.enqueue
-import com.stonetree.corerepository.model.NetworkState
-import com.stonetree.corerepository.model.NetworkState.Companion.LOADED
-import com.stonetree.corerepository.model.NetworkState.Companion.LOADING
+import com.stonetree.corerepository.core.extensions.enqueue
+import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.corerepository.core.model.NetworkState.Companion.LOADED
+import com.stonetree.corerepository.core.model.NetworkState.Companion.LOADING
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
 import com.stonetree.shuttergallery.feature.shutter.res.repository.ShutterRepository
