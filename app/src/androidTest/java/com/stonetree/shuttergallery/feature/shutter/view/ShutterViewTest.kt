@@ -1,4 +1,4 @@
-package com.stonetree.shuttergallery
+package com.stonetree.shuttergallery.feature.shutter.view
 
 import android.content.pm.ActivityInfo
 import androidx.test.espresso.IdlingRegistry
@@ -9,7 +9,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.corerepository.core.idling.EspressoIdlingResource
-import com.stonetree.shuttergallery.feature.shutter.view.ShutterView
 import kotlinx.android.synthetic.main.view_shutter.*
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.After
@@ -22,6 +21,10 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withTagValue
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
+import com.stonetree.shuttergallery.R
+import com.stonetree.shuttergallery.constants.Constants.APP_TITLE
+import com.stonetree.shuttergallery.constants.Constants.IMAGE_URL
+import com.stonetree.shuttergallery.constants.Constants.PACKAGE
 import org.hamcrest.CoreMatchers.`is`
 
 
@@ -45,7 +48,7 @@ class ShutterViewTest {
     @Test
     fun test_useAppContext_shouldReturnPackageName() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.stonetree.shuttergallery", appContext.packageName)
+        assertEquals(PACKAGE, appContext.packageName)
     }
 
     @Test
@@ -79,7 +82,7 @@ class ShutterViewTest {
     @Test
     fun test_screenRotation_shouldKeepTitle() {
         rule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        assertEquals(rule.activity.title, "Shutter Gallery")
+        assertEquals(rule.activity.title, APP_TITLE)
     }
 
     @Test
@@ -107,8 +110,7 @@ class ShutterViewTest {
         onView(
             allOf(
             withId(R.id.image),
-            withTagValue(`is`("https://image.shutterstock.com/image-photo/" +
-                    "luxury-hotel-home-living-woman-260nw-1309297486.jpg")))
+            withTagValue(`is`(IMAGE_URL)))
         ).check(matches(isDisplayed()))
     }
 }

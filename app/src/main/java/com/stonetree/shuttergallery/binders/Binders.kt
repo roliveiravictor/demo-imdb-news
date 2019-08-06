@@ -31,5 +31,7 @@ fun bindLoadImage(view: SimpleDraweeView, imageUrl: String) {
         .setUri(imageUrl)
         .build()
 
+    view.tag = imageUrl
+
     view.controller = controller
 }
