@@ -66,6 +66,8 @@
   - andx_junit_version 1.1.1
   - appcompat_version 1.0.2
   - constraint_version 1.1.3
+  - mockito_core_version 2.28.2
+  - andx_core_testing_version
 
 # Run
 

@@ -1,5 +1,6 @@
 package com.stonetree.shuttergallery.feature.shutter.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -15,9 +16,11 @@ import com.stonetree.corerepository.core.model.NetworkState
 
 class ShutterViewModel : ViewModel() {
 
-    private val factory: ShutterDataSourceFactory = ShutterDataSourceFactory()
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val factory: ShutterDataSourceFactory = ShutterDataSourceFactory()
 
-    private val config: PagedList.Config = PagedList.Config.Builder()
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val config: PagedList.Config = PagedList.Config.Builder()
         .setInitialLoadSizeHint(PAGE_SIZE)
         .setPageSize(PAGE_SIZE)
         .setPrefetchDistance(FETCH_DISTANCE)
