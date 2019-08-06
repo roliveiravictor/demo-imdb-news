@@ -9,7 +9,7 @@ class ShutterModelTest {
     fun test_shutterModel_shouldReturnDefaultValues() {
         val model = ShutterModel()
         assertEquals(-1L, model.page)
-        assertEquals(-1, model.page)
+        assertEquals(-1, model.perPage)
         assertEquals(-1L, model.totalCount)
         assertEquals("", model.searchId)
     }
