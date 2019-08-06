@@ -23,7 +23,7 @@ class ShutterViewModelTest {
 
     private lateinit var lifecycle: LifecycleRegistry
 
-    private inline fun <reified T> lambdaMock(): T = mock(T::class.java)
+    private inline fun<reified T> lambdaMock(): T = mock(T::class.java)
 
     class LiveDataTest(vm: ShutterViewModel) {
 

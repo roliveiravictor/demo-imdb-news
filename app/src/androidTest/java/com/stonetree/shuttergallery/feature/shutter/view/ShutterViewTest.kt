@@ -47,8 +47,8 @@ class ShutterViewTest {
 
     @Test
     fun test_useAppContext_shouldReturnPackageName() {
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals(PACKAGE, appContext.packageName)
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals(PACKAGE, context.packageName)
     }
 
     @Test
