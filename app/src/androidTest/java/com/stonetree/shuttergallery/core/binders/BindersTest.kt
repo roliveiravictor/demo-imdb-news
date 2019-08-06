@@ -2,6 +2,8 @@ package com.stonetree.shuttergallery.core.binders
 
 import android.view.View
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry.*
 import androidx.test.rule.ActivityTestRule
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
@@ -43,11 +45,13 @@ class BindersTest {
 
     @Test
     fun test_bindLoadImage_shouldReturnUrlAsTag() {
-        rule.activity.applicationContext.apply {
-            Fresco.initialize(this)
-            val view = SimpleDraweeView(this)
-            bindLoadImage(view, IMAGE_URL)
-            assertEquals(view.tag, IMAGE_URL)
-        }
+        getInstrumentation()
+            .targetContext
+            .apply {
+                Fresco.initialize(this)
+                val view = SimpleDraweeView(this)
+                bindLoadImage(view, IMAGE_URL)
+                assertEquals(view.tag, IMAGE_URL)
+            }
     }
 }
