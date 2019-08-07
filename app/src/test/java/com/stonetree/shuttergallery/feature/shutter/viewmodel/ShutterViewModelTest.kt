@@ -51,17 +51,14 @@ class ShutterViewModelTest {
         verify(observer).invoke(NetworkState.LOADING)
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun test_pagedList_shouldReturnChangeLivedData() {
         val observer = lambdaMock<(PagedList<Image>) -> Unit>()
         val mutableData = vm.observeLiveData("shutters", observer)
 
-        val list = PagedList.Builder(
-            mock(ShutterDataSource::class.java),
-            1).build()
-
-        mutableData.postValue(list)
-        verify(observer).invoke(list)
+        val paged = mock(PagedList::class.java)
+        mutableData.postValue(paged as PagedList<Image>?)
+        verify(observer).invoke(paged as PagedList<Image>)
     }
 
     @Test
