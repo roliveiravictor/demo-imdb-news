@@ -11,9 +11,16 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.shuttergallery.core.livedata.lambdaMock
+import com.stonetree.shuttergallery.core.livedata.observeLiveData
+import com.stonetree.shuttergallery.feature.shutter.model.Image
+import com.stonetree.shuttergallery.feature.shutter.res.source.ShutterDataSource
+import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertFalse
 import org.junit.Rule
 
-//TODO - Enhance ShutterViewModel test (i.e. vm.shutters) and abstraction for LiveDataTest class
 class ShutterViewModelTest {
 
     @get:Rule
@@ -21,26 +28,9 @@ class ShutterViewModelTest {
 
     private lateinit var vm: ShutterViewModel
 
-    private lateinit var lifecycle: LifecycleRegistry
-
-    private inline fun<reified T> lambdaMock(): T = mock(T::class.java)
-
-    class LiveDataTest(vm: ShutterViewModel) {
-
-        val network = MutableLiveData(vm.network.value)
-
-        fun observeNetworkChanges(lifecycle: Lifecycle, observer: (NetworkState) -> Unit) {
-            network.observe({ lifecycle }) { data ->
-                data?.let(observer)
-            }
-        }
-    }
-
     @Before
     fun setup(){
         vm = ShutterViewModel()
-        lifecycle = LifecycleRegistry(mock(LifecycleOwner::class.java))
-        lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
     }
 
     @Test
@@ -55,9 +45,30 @@ class ShutterViewModelTest {
     @Test
     fun test_networkState_shouldReturnChangeLivedData() {
         val observer = lambdaMock<(NetworkState) -> Unit>()
-        val test = LiveDataTest(vm)
-        test.observeNetworkChanges(lifecycle, observer)
-        test.network.postValue(NetworkState.LOADING)
+        val mutableData = vm.observeLiveData("network", observer)
+
+        mutableData.postValue(NetworkState.LOADING)
         verify(observer).invoke(NetworkState.LOADING)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun test_pagedList_shouldReturnChangeLivedData() {
+        val observer = lambdaMock<(PagedList<Image>) -> Unit>()
+        val mutableData = vm.observeLiveData("shutters", observer)
+
+        val list = PagedList.Builder(
+            mock(ShutterDataSource::class.java),
+            1).build()
+
+        mutableData.postValue(list)
+        verify(observer).invoke(list)
+    }
+
+    @Test
+    fun test_pageConfig_shouldReturnDefaultConfig() {
+        assertEquals(PAGE_SIZE, vm.config.initialLoadSizeHint)
+        assertEquals(PAGE_SIZE, vm.config.pageSize)
+        assertEquals(PRE_FETCH_DISTANCE, vm.config.prefetchDistance)
+        assertFalse(vm.config.enablePlaceholders)
     }
 }

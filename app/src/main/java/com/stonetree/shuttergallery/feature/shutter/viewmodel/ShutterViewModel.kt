@@ -5,7 +5,7 @@ import androidx.annotation.VisibleForTesting.*
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.stonetree.corerepository.core.constants.RepositoryConstants.FETCH_DISTANCE
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
@@ -24,7 +24,7 @@ class ShutterViewModel : ViewModel() {
     val config: PagedList.Config = PagedList.Config.Builder()
         .setInitialLoadSizeHint(PAGE_SIZE)
         .setPageSize(PAGE_SIZE)
-        .setPrefetchDistance(FETCH_DISTANCE)
+        .setPrefetchDistance(PRE_FETCH_DISTANCE)
         .setEnablePlaceholders(false)
         .build()
 

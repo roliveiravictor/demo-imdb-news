@@ -10,8 +10,7 @@ import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertNull
+import junit.framework.TestCase.*
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.*
 import org.junit.Before
@@ -84,7 +83,7 @@ class ShutterDataSourceTest {
     fun test_loadInitialNetworkState_shouldReturnLoading() {
         val params = LoadInitialParams<Long>(PAGE_SIZE, false)
         source.loadInitial(params, InitialCallback())
-        assertEquals(source.getNetwork().value, NetworkState.LOADING)
+        assertEquals(NetworkState.LOADING, source.getNetwork().value)
     }
 
     @Test
