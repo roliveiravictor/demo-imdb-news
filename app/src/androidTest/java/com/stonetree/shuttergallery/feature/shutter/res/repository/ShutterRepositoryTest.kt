@@ -86,7 +86,8 @@ class ShutterRepositoryTest {
                     }
                 }
             }
+        } else {
+            assertNotEquals(200, response.code())
         }
-        assertNotEquals(200, response.code())
     }
 }
