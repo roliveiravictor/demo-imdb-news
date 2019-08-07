@@ -1,5 +1,7 @@
 package com.stonetree.shuttergallery.feature.shutter.res.source
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.*
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.stonetree.corerepository.core.extensions.enqueue
@@ -46,8 +48,8 @@ class ShutterDataSource: PageKeyedDataSource<Long, Image>() {
         val request: Call<ShutterModel> = repository.api.get(params.key, params.requestedLoadSize)
         request.enqueue {
             onResponse = { response ->
-                response.body()?.data?.let { images ->
-                    callback.onResult(images, getNextKey(response, params))
+                response.body()?.apply {
+                    callback.onResult(data, getNextKey(this, params))
                 }
             }
 
@@ -61,15 +63,14 @@ class ShutterDataSource: PageKeyedDataSource<Long, Image>() {
 
     }
 
-    private fun getNextKey(
-        response: Response<ShutterModel>,
+    @VisibleForTesting(otherwise = PRIVATE)
+    fun getNextKey(
+        model: ShutterModel,
         params: LoadParams<Long>
     ): Long? {
-        return response?.body()?.let { model ->
-            if(model.totalCount == params.key)
+        return if(model.totalCount == params.key)
                 null
             else
                 params.key + 1
-        }
     }
 }

@@ -1,6 +1,7 @@
 package com.stonetree.shuttergallery.feature.shutter.res.factory
 
 import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.*
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.stonetree.shuttergallery.feature.shutter.model.Image
@@ -11,7 +12,7 @@ class ShutterDataSourceFactory
 {
     val data = MutableLiveData<ShutterDataSource>()
 
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    @VisibleForTesting(otherwise = PRIVATE)
     var source: ShutterDataSource? = null
 
     override fun create(): DataSource<Long, Image> {
