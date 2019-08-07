@@ -35,10 +35,12 @@ class ShutterViewModelTest {
 
     @Test
     fun test_shutterViewModel_shouldReturnDefaultValues() {
-        assertThat(vm.factory,`is`(any(ShutterDataSourceFactory::class.java)))
-        assertThat(vm.config,`is`(any(PagedList.Config::class.java)))
-        assertThat(vm.shutters,`is`(any(LiveData::class.java)))
-        assertThat(vm.network,`is`(any(LiveData::class.java)))
+        vm.apply {
+            assertThat(factory,`is`(any(ShutterDataSourceFactory::class.java)))
+            assertThat(config,`is`(any(PagedList.Config::class.java)))
+            assertThat(shutters,`is`(any(LiveData::class.java)))
+            assertThat(network,`is`(any(LiveData::class.java)))
+        }
     }
 
 
@@ -63,9 +65,11 @@ class ShutterViewModelTest {
 
     @Test
     fun test_pageConfig_shouldReturnDefaultConfig() {
-        assertEquals(PAGE_SIZE, vm.config.initialLoadSizeHint)
-        assertEquals(PAGE_SIZE, vm.config.pageSize)
-        assertEquals(PRE_FETCH_DISTANCE, vm.config.prefetchDistance)
-        assertFalse(vm.config.enablePlaceholders)
+        vm.config.apply {
+            assertEquals(PAGE_SIZE, initialLoadSizeHint)
+            assertEquals(PAGE_SIZE, pageSize)
+            assertEquals(PRE_FETCH_DISTANCE, prefetchDistance)
+            assertFalse(enablePlaceholders)
+        }
     }
 }
