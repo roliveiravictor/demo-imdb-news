@@ -1,6 +1,8 @@
 package com.stonetree.shuttergallery.feature.shutter.view
 
 import android.content.pm.ActivityInfo
+import android.widget.GridLayout.VERTICAL
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.PerformException
 import androidx.test.espresso.assertion.ViewAssertions.*
@@ -26,7 +28,6 @@ import com.stonetree.shuttergallery.core.constants.Constants.APP_TITLE
 import com.stonetree.shuttergallery.core.constants.Constants.IMAGE_URL
 import com.stonetree.shuttergallery.core.constants.Constants.PACKAGE
 import org.hamcrest.CoreMatchers.`is`
-
 
 @RunWith(AndroidJUnit4::class)
 class ShutterViewTest {
@@ -112,5 +113,17 @@ class ShutterViewTest {
             withId(R.id.image),
             withTagValue(`is`(IMAGE_URL)))
         ).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun test_recyclerView_shouldReturnDefaultValues() {
+        rule.activity.shutters.apply {
+            assertTrue(layoutManager is GridLayoutManager)
+            val grid = (layoutManager as GridLayoutManager)
+            grid.apply {
+                assertTrue(spanCount == 2)
+                assertTrue(orientation == VERTICAL)
+            }
+        }
     }
 }
