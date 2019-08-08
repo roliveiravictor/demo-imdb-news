@@ -32,4 +32,8 @@ class CoreRepositoryIdlingImp(private val resourceName: String) : IdlingResource
         }
     }
 
+    fun clear() {
+        counter.set(0)
+    }
+
 }
