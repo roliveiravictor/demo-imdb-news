@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -47,6 +47,9 @@ dependencies {
     api "androidx.test.espresso:espresso-idling-resource:$espresso_core_version"
 
     testImplementation 'junit:junit:4.12'
+    testApi "org.mockito:mockito-core:$mockito_core_version"
+    testApi "org.mockito:mockito-inline:$mockito_core_version"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
