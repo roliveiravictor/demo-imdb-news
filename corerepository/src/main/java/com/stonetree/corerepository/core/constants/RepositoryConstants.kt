@@ -7,6 +7,7 @@ object RepositoryConstants {
     const val PASSWORD: String = "password"
 
     const val REPOSITORY_PROPS: String = "repository.properties"
+    const val TEST_PROPS: String = "test.properties"
 
     const val PAGE: String = "page"
     const val PER_PAGE: String = "per_page"
