@@ -1,13 +1,10 @@
 package com.stonetree.corerepository.core.extensions
 
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.*
 import com.stonetree.corerepository.core.constants.RepositoryConstants.BASE_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.TEST_PROPS
-import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling
 import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling.getResource
-import com.stonetree.corerepository.feature.repository.CoreRepository
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
 import okhttp3.Request
