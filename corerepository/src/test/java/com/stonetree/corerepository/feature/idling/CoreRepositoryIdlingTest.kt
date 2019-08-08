@@ -1,4 +1,4 @@
-package com.stonetree.corerepository.core.idling
+package com.stonetree.corerepository.feature.idling
 
 import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling.getResource
 import junit.framework.TestCase.*
