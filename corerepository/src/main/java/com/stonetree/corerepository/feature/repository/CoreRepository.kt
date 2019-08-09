@@ -1,6 +1,7 @@
 package com.stonetree.corerepository.feature.repository
 
 import android.content.Context
+import androidx.annotation.VisibleForTesting
 import com.stonetree.corerepository.core.extensions.read
 import com.stonetree.corerepository.core.constants.RepositoryConstants.BASE_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PASSWORD
@@ -12,6 +13,7 @@ import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Modifier.PRIVATE
 import java.util.concurrent.TimeUnit
 
 class CoreRepository {
@@ -31,8 +33,7 @@ class CoreRepository {
                 }
 
         fun start(context: Context) {
-            getInstance()
-                ?.apply {
+            getInstance().apply {
                 baseUrl = REPOSITORY_PROPS.read(context, BASE_URL)
                 credentials = Credentials.basic(
                     REPOSITORY_PROPS.read(context, USERNAME),

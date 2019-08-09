@@ -3,6 +3,7 @@ package com.stonetree.corerepository.feature.interceptor
 import okhttp3.Interceptor.Chain
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 
 abstract class CoreInterceptor {
 
@@ -20,7 +21,7 @@ abstract class CoreInterceptor {
 
         fun getLogging(): HttpLoggingInterceptor {
             val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.BODY
+            logging.level = BODY
             return logging
         }
     }
