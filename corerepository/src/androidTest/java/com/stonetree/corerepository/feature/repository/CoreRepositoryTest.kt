@@ -1,8 +1,7 @@
-package com.stonetree.corerepository.core.feature
+package com.stonetree.corerepository.feature.repository
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.*
-import com.stonetree.corerepository.feature.repository.CoreRepository
 import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Test
