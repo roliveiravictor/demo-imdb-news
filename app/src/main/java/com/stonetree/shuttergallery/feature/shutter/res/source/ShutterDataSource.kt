@@ -1,5 +1,6 @@
 package com.stonetree.shuttergallery.feature.shutter.res.source
 
+import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.*
 import androidx.lifecycle.MutableLiveData
@@ -60,7 +61,7 @@ class ShutterDataSource: PageKeyedDataSource<Long, Image>() {
     }
 
     override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Image>) {
-
+        Log.w(javaClass.name, params.key.toString())
     }
 
     @VisibleForTesting(otherwise = PRIVATE)
