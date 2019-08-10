@@ -1,7 +1,7 @@
 package com.stonetree.shuttergallery.feature.shutter.res.factory
 
 import androidx.annotation.VisibleForTesting
-import androidx.annotation.VisibleForTesting.*
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.stonetree.shuttergallery.feature.shutter.model.Image

@@ -2,7 +2,7 @@ package com.stonetree.shuttergallery.feature.shutter.res.source
 
 import android.util.Log
 import androidx.annotation.VisibleForTesting
-import androidx.annotation.VisibleForTesting.*
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.stonetree.corerepository.core.extensions.enqueue

@@ -1,8 +1,11 @@
 package com.stonetree.shuttergallery.feature.shutter.viewmodel
 
 import androidx.annotation.VisibleForTesting
-import androidx.annotation.VisibleForTesting.*
-import androidx.lifecycle.*
+import androidx.annotation.VisibleForTesting.PRIVATE
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.cancel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
@@ -10,7 +13,6 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.cancel
 import androidx.lifecycle.Transformations.switchMap
 import com.stonetree.corerepository.core.constants.RepositoryConstants.MAX_THREADS
 import java.util.concurrent.Executors

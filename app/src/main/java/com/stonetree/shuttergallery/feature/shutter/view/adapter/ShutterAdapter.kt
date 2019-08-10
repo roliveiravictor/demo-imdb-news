@@ -2,7 +2,7 @@ package com.stonetree.shuttergallery.feature.shutter.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil.*
+import androidx.databinding.DataBindingUtil.inflate
 import androidx.paging.PagedListAdapter
 import com.stonetree.shuttergallery.R
 import com.stonetree.shuttergallery.feature.shutter.model.Image
