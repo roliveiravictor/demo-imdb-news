@@ -67,11 +67,14 @@
   - appcompat_version 1.0.2
   - constraint_version 1.1.3
   - mockito_core_version 2.28.2
-  - andx_core_testing_version
+  - andx_core_testing_version 2.0.1
+  - monits_version 2.6.10
+  - detekt_version = '1.0.0'
 
 # Run
 
-  -   Clone this repository and open build.gradle with Android Studio
+  -  Clone this repository and open build.gradle with Android Studio
+  -  `./gradlew monits` to run static code analysers
 
 # Requirements
 
@@ -80,7 +83,7 @@
 
 # Usage
 
-  - N/A
+  - N/A 
 
 #   References
 
