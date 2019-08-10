@@ -67,8 +67,8 @@ allprojects {
     detekt {
         toolVersion = "$detekt_version"
 
-        input = input = files("src/main/java",
-                "src/test/java",
+        input = input = files("${project.rootDir}/app/src/main/java",
+                "${project.rootDir}/app/src/test/java",
                 "${project.rootDir}/corerepository/src/main/java",
                 "${project.rootDir}/corerepository/src/test/java"
         )
