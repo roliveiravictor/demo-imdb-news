@@ -12,6 +12,7 @@ import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourc
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import androidx.lifecycle.Transformations.switchMap
+import com.stonetree.corerepository.core.constants.RepositoryConstants.MAX_THREADS
 import java.util.concurrent.Executors
 import com.stonetree.corerepository.core.model.NetworkState
 
@@ -30,7 +31,7 @@ class ShutterViewModel : ViewModel() {
 
     val shutters: LiveData<PagedList<Image>> =
         LivePagedListBuilder(factory, config)
-        .setFetchExecutor(Executors.newFixedThreadPool(3))
+        .setFetchExecutor(Executors.newFixedThreadPool(MAX_THREADS))
         .build()
 
     val network: LiveData<NetworkState> = switchMap(factory.data) {
