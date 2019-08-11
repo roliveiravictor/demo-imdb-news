@@ -62,7 +62,6 @@ class ShutterDataSourceTest {
     @Test
     fun test_shutterDataSource_shouldReturnDefaultValues() {
         assertThat(source.getNetwork(),`is`(any(MutableLiveData::class.java)))
-        assertNull(source.getNetwork().value)
     }
 
     @Test
