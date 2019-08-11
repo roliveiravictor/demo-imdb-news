@@ -6,7 +6,7 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertNotNull
 import org.junit.Assert.assertNotEquals
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -4,9 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.feature.repository.CoreRepository
-import junit.framework.TestCase.*
-import org.hamcrest.CoreMatchers.*
-import org.hamcrest.MatcherAssert.*
+import junit.framework.TestCase.assertNull
+import junit.framework.TestCase.assertNotNull
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.any
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

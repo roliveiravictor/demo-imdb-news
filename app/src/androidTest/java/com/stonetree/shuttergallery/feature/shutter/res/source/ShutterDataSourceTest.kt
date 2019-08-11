@@ -10,9 +10,11 @@ import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
-import junit.framework.TestCase.*
-import org.hamcrest.CoreMatchers.*
-import org.hamcrest.MatcherAssert.*
+import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertNull
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.any
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

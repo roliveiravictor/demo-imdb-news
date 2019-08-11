@@ -1,11 +1,12 @@
 package com.stonetree.shuttergallery.feature.shutter.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.shuttergallery.feature.shutter.res.factory.ShutterDataSourceFactory
-import org.hamcrest.CoreMatchers.*
-import org.hamcrest.MatcherAssert.*
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.any
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.mock
@@ -16,7 +17,6 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.shuttergallery.core.livedata.lambdaMock
 import com.stonetree.shuttergallery.core.livedata.observeLiveData
 import com.stonetree.shuttergallery.feature.shutter.model.Image
-import com.stonetree.shuttergallery.feature.shutter.res.source.ShutterDataSource
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
 import org.junit.Rule

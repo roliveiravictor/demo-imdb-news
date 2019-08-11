@@ -1,7 +1,9 @@
 package com.stonetree.corerepository.feature.idling
 
 import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling.getResource
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertFalse
+import junit.framework.TestCase.assertTrue
+import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
 

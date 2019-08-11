@@ -1,6 +1,6 @@
 package com.stonetree.shuttergallery.feature.shutter.model
 
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertEquals
 import org.junit.Test
 
 class ImageTest {

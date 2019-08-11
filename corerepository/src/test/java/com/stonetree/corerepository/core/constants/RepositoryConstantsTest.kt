@@ -9,7 +9,7 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH
 import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
 import com.stonetree.corerepository.core.constants.RepositoryConstants.TIMEOUT
 import com.stonetree.corerepository.core.constants.RepositoryConstants.USERNAME
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertEquals
 import org.junit.Test
 
 class RepositoryConstantsTest {

@@ -4,7 +4,7 @@ import android.content.Context
 import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling
 import com.stonetree.corerepository.feature.callback.CoreRepositoryCallback
 import retrofit2.Call
-import java.util.*
+import java.util.Properties
 
 fun<T> Call<T>.enqueue(callback: CoreRepositoryCallback<T>.() -> Unit) {
     CoreRepositoryIdling.getResource().increment()

@@ -1,7 +1,7 @@
 package com.stonetree.corerepository.core.extensions
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry.*
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.stonetree.corerepository.core.constants.RepositoryConstants.BASE_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.TEST_PROPS
 import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling.getResource

@@ -1,6 +1,8 @@
 package com.stonetree.corerepository.core.model
 
-import com.stonetree.corerepository.core.model.Status.*
+import com.stonetree.corerepository.core.model.Status.SUCCESS
+import com.stonetree.corerepository.core.model.Status.RUNNING
+import com.stonetree.corerepository.core.model.Status.FAILED
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import org.junit.Test

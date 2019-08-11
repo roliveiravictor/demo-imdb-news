@@ -1,7 +1,11 @@
 package com.stonetree.shuttergallery.core.livedata
 
-import androidx.lifecycle.*
-import androidx.lifecycle.Lifecycle.Event.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Lifecycle.Event.ON_RESUME
 import com.stonetree.shuttergallery.core.reflection.accessField
 import org.mockito.Mockito.*
 

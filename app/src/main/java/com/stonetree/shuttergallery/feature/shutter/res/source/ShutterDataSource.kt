@@ -13,7 +13,6 @@ import com.stonetree.shuttergallery.feature.shutter.model.Image
 import com.stonetree.shuttergallery.feature.shutter.model.ShutterModel
 import com.stonetree.shuttergallery.feature.shutter.res.repository.ShutterRepository
 import retrofit2.Call
-import retrofit2.Response
 
 class ShutterDataSource: PageKeyedDataSource<Long, Image>() {
 
