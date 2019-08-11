@@ -46,28 +46,24 @@ allprojects {
     }
 
     staticCodeAnalysis {
-        findbugs = true
+        ignoreErrors = false
+
         checkstyle = true
         pmd = true
         cpd = true
         androidLint = true
-        ignoreErrors = false
+        findbugs = false
 
-        sourceSetConfig {
-            test {
-                findbugsExclude = "${project.rootDir}/.findbugs.xml"
-                checkstyleRules = "${project.rootDir}/.checkstyle.xml"
-                androidLintConfig = "${project.rootDir}/.lint.xml"
-                pmdRules = [ "${project.rootDir}/.pmd.xml",
-                             "${project.rootDir}/.pmd-android.xml" ]
-            }
-        }
+        checkstyleRules = "${project.rootDir}/.checkstyle.xml"
+        pmdRules = [ "${project.rootDir}/.pmd.xml",
+                     "${project.rootDir}/.pmd-android.xml" ]
+
     }
 
     detekt {
         toolVersion = "$detekt_version"
 
-        input = input = files("${project.rootDir}/app/src/main/java",
+        input = files("${project.rootDir}/app/src/main/java",
                 "${project.rootDir}/app/src/test/java",
                 "${project.rootDir}/corerepository/src/main/java",
                 "${project.rootDir}/corerepository/src/test/java"
@@ -79,6 +75,11 @@ allprojects {
         buildUponDefaultConfig = true
 
         reports {
+            xml  {
+                enabled = false
+                destination = file("$project.rootDir/reports/detekt/detekt_report.xml")
+            }
+
             html {
                 enabled = true
                 destination = file("$project.rootDir/reports/detekt/detekt_report.html")
@@ -87,8 +88,11 @@ allprojects {
     }
 }
 
-task monits(dependsOn: [':app:check', ':corerepository:check', ':detekt']) << {
-    println "-------- running monits"
+task monits {
+    dependsOn ':app:cpd'
+    dependsOn ':app:pmd'
+    dependsOn ':detekt'
+    dependsOn ':app:checkstyle'
 }
 
 task clean(type: Delete) {
