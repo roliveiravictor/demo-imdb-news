@@ -10,13 +10,13 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.imdbnews.feature.latest.model.Image
 import com.stonetree.imdbnews.feature.latest.res.factory.LatestDataSourceFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import androidx.lifecycle.Transformations.switchMap
 import com.stonetree.corerepository.core.constants.RepositoryConstants.MAX_THREADS
 import java.util.concurrent.Executors
 import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.imdbnews.feature.latest.model.Movie
 
 class LatestViewModel : ViewModel() {
 
@@ -32,7 +32,7 @@ class LatestViewModel : ViewModel() {
         .setEnablePlaceholders(false)
         .build()
 
-    val latest: LiveData<PagedList<Image>> =
+    val latest: LiveData<PagedList<Movie>> =
         LivePagedListBuilder(factory, config)
         .setFetchExecutor(Executors.newFixedThreadPool(MAX_THREADS))
         .build()

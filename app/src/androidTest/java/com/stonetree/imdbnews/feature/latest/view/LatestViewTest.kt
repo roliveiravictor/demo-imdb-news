@@ -116,7 +116,7 @@ class LatestViewTest {
     fun test_latestInitialLoading_shouldReturnTagZero() {
         onView(
             allOf(
-            withId(R.id.image),
+            withId(R.id.poster),
             withTagValue(`is`(IMAGE_URL)))
         ).check(matches(isDisplayed()))
     }

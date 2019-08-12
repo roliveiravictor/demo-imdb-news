@@ -5,17 +5,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.paging.PagedListAdapter
 import com.stonetree.imdbnews.R
-import com.stonetree.imdbnews.feature.latest.model.Image
+import com.stonetree.imdbnews.feature.latest.model.Movie
 
-class LatestAdapter : PagedListAdapter<Image, LatestViewHolder>(
+class LatestAdapter : PagedListAdapter<Movie, LatestViewHolder>(
     LatestDiffCallback()
 ) {
 
     override fun onBindViewHolder(holder: LatestViewHolder, position: Int) {
-        getItem(position)?.let { image ->
+        getItem(position)?.let { movie ->
             with(holder) {
                 itemView.tag = position
-                onBind(image.assets.thumb.url)
+                movie.poster?.let { poster ->
+                    onBind(poster)
+                }
             }
         }
     }

@@ -8,8 +8,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.corerepository.feature.repository.CoreRepository
-import com.stonetree.imdbnews.feature.latest.model.Image
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
+import com.stonetree.imdbnews.feature.latest.model.Movie
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import org.hamcrest.CoreMatchers.`is`
@@ -28,9 +28,9 @@ class LatestDataSourceTest {
 
     private lateinit var source: LatestDataSource
 
-    private class InitialCallback : LoadInitialCallback<Long, Image>() {
+    private class InitialCallback : LoadInitialCallback<Long, Movie>() {
         override fun onResult(
-            data: MutableList<Image>,
+            data: MutableList<Movie>,
             position: Int,
             totalCount: Int,
             previousPageKey: Long?,
@@ -40,7 +40,7 @@ class LatestDataSourceTest {
         }
 
         override fun onResult(
-            data: MutableList<Image>,
+            data: MutableList<Movie>,
             previousPageKey: Long?,
             nextPageKey: Long?
         ) {
@@ -48,8 +48,8 @@ class LatestDataSourceTest {
         }
     }
 
-    private class LoadCallback : PageKeyedDataSource.LoadCallback<Long, Image>() {
-        override fun onResult(data: MutableList<Image>, adjacentPageKey: Long?) {
+    private class LoadCallback : PageKeyedDataSource.LoadCallback<Long, Movie>() {
+        override fun onResult(data: MutableList<Movie>, adjacentPageKey: Long?) {
 
         }
     }
@@ -75,7 +75,7 @@ class LatestDataSourceTest {
         val currentKey = LoadParams(1L, PAGE_SIZE)
 
         val model = LatestModel()
-        model.totalCount = 1
+        model.totalPages = 1
 
         assertNull(source.getNextKey(model, currentKey))
     }

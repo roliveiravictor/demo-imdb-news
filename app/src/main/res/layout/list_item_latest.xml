@@ -14,11 +14,11 @@
         android:layout_height="wrap_content">
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/image"
+            android:id="@+id/poster"
             android:layout_width="@dimen/two_hun_dp"
-            android:layout_height="@dimen/two_hun_dp"
+            android:layout_height="@dimen/three_hun_dp"
             android:padding="@dimen/five_dp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -9,12 +9,12 @@ import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.corerepository.core.model.NetworkState.Companion.LOADED
 import com.stonetree.corerepository.core.model.NetworkState.Companion.LOADING
-import com.stonetree.imdbnews.feature.latest.model.Image
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
+import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import retrofit2.Call
 
-class LatestDataSource: PageKeyedDataSource<Long, Image>() {
+class LatestDataSource: PageKeyedDataSource<Long, Movie>() {
 
     private val network = MutableLiveData<NetworkState>()
 
@@ -26,14 +26,14 @@ class LatestDataSource: PageKeyedDataSource<Long, Image>() {
 
     override fun loadInitial(
         params: LoadInitialParams<Long>,
-        callback: LoadInitialCallback<Long, Image>
+        callback: LoadInitialCallback<Long, Movie>
     ) {
         network.postValue(LOADING)
         val request: Call<LatestModel> = repository.api.get(1)
         request.enqueue {
             onResponse = { response ->
-                response.body()?.data?.let { images ->
-                    callback.onResult(images, null, 2L)
+                response.body()?.results?.let { movies ->
+                    callback.onResult(movies, null, 2L)
                     network.postValue(LOADED)
                 }
             }
@@ -44,12 +44,14 @@ class LatestDataSource: PageKeyedDataSource<Long, Image>() {
         }
     }
 
-    override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Image>) {
+    override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) {
         val request: Call<LatestModel> = repository.api.get(params.key)
         request.enqueue {
             onResponse = { response ->
                 response.body()?.apply {
-                    callback.onResult(data, getNextKey(this, params))
+                    results?.let { movies ->
+                        callback.onResult(movies, getNextKey(this, params))
+                    }
                 }
             }
 
@@ -59,7 +61,7 @@ class LatestDataSource: PageKeyedDataSource<Long, Image>() {
         }
     }
 
-    override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Image>) {
+    override fun loadBefore(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) {
         Log.w(javaClass.name, params.key.toString())
     }
 
@@ -68,7 +70,7 @@ class LatestDataSource: PageKeyedDataSource<Long, Image>() {
         model: LatestModel,
         params: LoadParams<Long>
     ): Long? {
-        return if(model.totalCount == params.key)
+        return if(model.totalPages == params.key)
                 null
             else
                 params.key + 1

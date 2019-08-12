@@ -2,4 +2,5 @@
 <resources>
     <dimen name="five_dp">5dp</dimen>
     <dimen name="two_hun_dp">200dp</dimen>
+    <dimen name="three_hun_dp">300dp</dimen>
 </resources>

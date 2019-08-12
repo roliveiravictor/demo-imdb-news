@@ -4,16 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 class LatestModel {
 
-    var page: Long = -1
+    var page: Long? = null
 
-    @SerializedName("per_page")
-    var perPage: Int = -1
+    @SerializedName("total_pages")
+    var totalPages: Long? = null
 
-    @SerializedName("total_count")
-    var totalCount: Long = -1
-
-    @SerializedName("search_id")
-    var searchId: String = ""
-
-    lateinit var data: List<Image>
+    var results: List<Movie>? = null
 }

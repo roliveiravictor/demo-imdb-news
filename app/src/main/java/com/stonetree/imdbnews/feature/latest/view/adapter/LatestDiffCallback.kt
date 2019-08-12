@@ -1,21 +1,21 @@
 package com.stonetree.imdbnews.feature.latest.view.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.stonetree.imdbnews.feature.latest.model.Image
+import com.stonetree.imdbnews.feature.latest.model.Movie
 
-class LatestDiffCallback : DiffUtil.ItemCallback<Image>() {
+class LatestDiffCallback : DiffUtil.ItemCallback<Movie>() {
 
     override fun areItemsTheSame(
-        oldItem: Image,
-        newItem: Image
+        oldItem: Movie,
+        newItem: Movie
     ): Boolean {
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(
-        oldItem: Image,
-        newItem: Image
+        oldItem: Movie,
+        newItem: Movie
     ): Boolean {
-        return oldItem.assets.thumb.url == newItem.assets.thumb.url
+        return oldItem.poster == newItem.poster
     }
 }

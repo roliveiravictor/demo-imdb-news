@@ -9,6 +9,9 @@ import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.corerepository.core.model.NetworkState.Companion.LOADING
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import com.facebook.imagepipeline.request.ImageRequest
+import com.stonetree.corerepository.core.constants.RepositoryConstants.POSTER_URL
+import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
+import com.stonetree.corerepository.core.extensions.read
 
 @BindingAdapter("isGone")
 fun bindIsGone(view: View, network: NetworkState?) {
@@ -19,8 +22,10 @@ fun bindIsGone(view: View, network: NetworkState?) {
 }
 
 @BindingAdapter("loadImage")
-fun bindLoadImage(view: SimpleDraweeView, imageUrl: String) {
-    val request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(imageUrl))
+fun bindLoadImage(view: SimpleDraweeView, posterPath: String) {
+    val url = REPOSITORY_PROPS.read(view.context, POSTER_URL) + posterPath
+
+    val request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(url))
         .setLowestPermittedRequestLevel(ImageRequest.RequestLevel.DISK_CACHE)
         .setProgressiveRenderingEnabled(true)
         .build()
@@ -28,10 +33,10 @@ fun bindLoadImage(view: SimpleDraweeView, imageUrl: String) {
     val controller = Fresco.newDraweeControllerBuilder()
         .setImageRequest(request)
         .setOldController(view.controller)
-        .setUri(imageUrl)
+        .setUri(url)
         .build()
 
-    view.tag = imageUrl
+    view.tag = url
 
     view.controller = controller
 }

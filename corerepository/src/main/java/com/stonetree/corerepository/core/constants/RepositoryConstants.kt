@@ -3,6 +3,8 @@ package com.stonetree.corerepository.core.constants
 object RepositoryConstants {
 
     const val BASE_URL: String = "base_url"
+    const val POSTER_URL: String = "poster_url"
+
     const val API_KEY: String = "api_key"
 
     const val REPOSITORY_PROPS: String = "repository.properties"
