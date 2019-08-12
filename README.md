@@ -33,7 +33,7 @@
 
 # Description
 
--   Shutter Gallery APP
+-   IMDB News APP
 
 # IDE
 
@@ -45,7 +45,7 @@
 
 # Objective
 
-  - Learn about `IdlingResource` & `PageKeyedDataSource` 
+  - List latest movies from IMDB API 
 
 # Overview
 
