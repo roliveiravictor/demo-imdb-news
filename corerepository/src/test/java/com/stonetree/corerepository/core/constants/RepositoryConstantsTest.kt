@@ -3,7 +3,7 @@ package com.stonetree.corerepository.core.constants
 import com.stonetree.corerepository.core.constants.RepositoryConstants.BASE_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PASSWORD
+import com.stonetree.corerepository.core.constants.RepositoryConstants.API_KEY
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PER_PAGE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
@@ -18,7 +18,7 @@ class RepositoryConstantsTest {
     fun test_imagesPath_shouldReturnSame() {
         assertEquals("baseUrl", BASE_URL)
         assertEquals("username", USERNAME)
-        assertEquals("password", PASSWORD)
+        assertEquals("password", API_KEY)
         assertEquals("repository.properties", REPOSITORY_PROPS)
         assertEquals("page", PAGE)
         assertEquals("per_page", PER_PAGE)

@@ -29,7 +29,7 @@ class LatestDataSource: PageKeyedDataSource<Long, Image>() {
         callback: LoadInitialCallback<Long, Image>
     ) {
         network.postValue(LOADING)
-        val request: Call<LatestModel> = repository.api.get(1, params.requestedLoadSize)
+        val request: Call<LatestModel> = repository.api.get(1)
         request.enqueue {
             onResponse = { response ->
                 response.body()?.data?.let { images ->
@@ -45,7 +45,7 @@ class LatestDataSource: PageKeyedDataSource<Long, Image>() {
     }
 
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Image>) {
-        val request: Call<LatestModel> = repository.api.get(params.key, params.requestedLoadSize)
+        val request: Call<LatestModel> = repository.api.get(params.key)
         request.enqueue {
             onResponse = { response ->
                 response.body()?.apply {
