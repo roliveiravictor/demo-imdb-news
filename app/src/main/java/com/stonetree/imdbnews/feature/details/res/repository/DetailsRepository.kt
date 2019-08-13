@@ -41,7 +41,7 @@ class DetailsRepository {
 
     fun get(args: DetailsViewArgs) {
         network.postValue(NetworkState.LOADING)
-        val request: Call<DetailsModel> = api.get(args.id)
+        val request: Call<DetailsModel> = api.get(args.movieId)
         request.enqueue {
             onResponse = { response ->
                 response.body()?.let { details ->

@@ -19,7 +19,9 @@ class CoreRepository {
     lateinit var retrofit: Retrofit
 
     private var baseUrl: String = ""
-    private var apiKey: String = ""
+
+    var apiKey: String = ""
+    private set
 
     @VisibleForTesting(otherwise = PRIVATE)
     val httpClient = OkHttpClient.Builder()
@@ -27,17 +29,13 @@ class CoreRepository {
         .readTimeout(TIMEOUT, SECONDS)
         .writeTimeout(TIMEOUT, SECONDS)
         .addInterceptor(CoreInterceptor.getLogging())
-        .addInterceptor { chain ->
-            CoreInterceptor.getAuthentication(chain, apiKey)
-        }
         .build()
 
     companion object {
 
         private var instance: CoreRepository? = null
         fun getInstance() =
-            instance
-                ?: CoreRepository().also { repository ->
+            instance ?: CoreRepository().also { repository ->
                     instance = repository
                 }
 

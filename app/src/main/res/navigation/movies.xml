@@ -22,7 +22,8 @@
         android:label="view_details"
         tools:layout="@layout/view_details">
         <argument
-            android:name="id"
-            app:argType="long" />
+            android:name="movie_id"
+            app:argType="long"
+            android:defaultValue="-1L" />
     </fragment>
 </navigation>
