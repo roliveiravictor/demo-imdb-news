@@ -22,7 +22,7 @@ fun bindIsGone(view: View, network: NetworkState?) {
 }
 
 @BindingAdapter("loadImage")
-fun bindLoadImage(view: SimpleDraweeView, posterPath: String) {
+fun bindLoadImage(view: SimpleDraweeView, posterPath: String? = "") {
     val url = REPOSITORY_PROPS.read(view.context, POSTER_URL) + posterPath
 
     val request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(url))
