@@ -17,12 +17,15 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.MAX_THREA
 import java.util.concurrent.Executors
 import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.imdbnews.feature.latest.model.Movie
+import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 
 class LatestViewModel : ViewModel() {
 
+    private val repository = LatestRepository.getInstance()
+
     @VisibleForTesting(otherwise = PRIVATE)
     val factory: LatestDataSourceFactory =
-        LatestDataSourceFactory()
+        LatestDataSourceFactory(repository)
 
     @VisibleForTesting(otherwise = PRIVATE)
     val config: PagedList.Config = PagedList.Config.Builder()

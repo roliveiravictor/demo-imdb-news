@@ -10,6 +10,5 @@ import retrofit2.http.Query
 interface LatestApi {
 
     @GET(LATEST_PATH)
-    fun get(
-        @Query(PAGE) page: Long): Call<LatestModel>
+    fun get(@Query(PAGE) page: Long): Call<LatestModel>
 }

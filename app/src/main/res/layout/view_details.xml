@@ -7,6 +7,10 @@
 
     <data>
         <variable
+            name="url"
+            type="String"/>
+
+        <variable
             name="network"
             type="com.stonetree.corerepository.core.model.NetworkState" />
 

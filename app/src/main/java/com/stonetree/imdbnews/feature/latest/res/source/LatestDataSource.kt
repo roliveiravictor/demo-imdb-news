@@ -14,11 +14,9 @@ import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import retrofit2.Call
 
-class LatestDataSource: PageKeyedDataSource<Long, Movie>() {
+class LatestDataSource(private val repository: LatestRepository) : PageKeyedDataSource<Long, Movie>() {
 
     private val network = MutableLiveData<NetworkState>()
-
-    private val repository: LatestRepository = LatestRepository.getInstance()
 
     fun getNetwork(): MutableLiveData<NetworkState> {
         return network

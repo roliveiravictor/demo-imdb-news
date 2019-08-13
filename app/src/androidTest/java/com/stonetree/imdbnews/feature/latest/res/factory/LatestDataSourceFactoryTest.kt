@@ -24,7 +24,7 @@ class LatestDataSourceFactoryTest {
 
     @Before
     fun setup() {
-        factory = LatestDataSourceFactory()
+        factory = LatestDataSourceFactory(repository)
     }
 
     @Test

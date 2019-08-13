@@ -56,7 +56,7 @@ class LatestDataSourceTest {
 
     @Before
     fun setup() {
-        source = LatestDataSource()
+        source = LatestDataSource(repository)
     }
 
     @Test
