@@ -4,6 +4,10 @@
 
     <data>
         <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
             name="url"
             type="String"/>
     </data>
@@ -11,7 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/latest_row"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{listener}">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/poster"

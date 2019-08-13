@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/latest_view">
+
+    <fragment
+        android:id="@+id/latest_view"
+        android:name="com.stonetree.imdbnews.feature.latest.view.LatestView"
+        android:label="view_latest"
+        tools:layout="@layout/view_latest" >
+        <action
+            android:id="@+id/action_latestView_to_DetailsView"
+            app:destination="@id/details_view"
+            app:enterAnim="@anim/swipe_left_to_right"
+            app:exitAnim="@anim/swipe_right_to_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_view"
+        android:name="com.stonetree.imdbnews.feature.details.view.DetailsView"
+        android:label="view_details"
+        tools:layout="@layout/view_details">
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+</navigation>
