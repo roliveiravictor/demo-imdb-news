@@ -3,4 +3,5 @@
     <dimen name="five_dp">5dp</dimen>
     <dimen name="two_hun_dp">200dp</dimen>
     <dimen name="three_hun_dp">300dp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
 </resources>

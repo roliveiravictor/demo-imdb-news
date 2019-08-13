@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">IMDB News</string>
+    <string name="title">Title</string>
+    <string name="description">Description Loren Ypsun</string>
 </resources>
