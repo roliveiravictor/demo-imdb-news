@@ -12,19 +12,28 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.imdbnews.core.livedata.lambdaMock
 import com.stonetree.imdbnews.core.livedata.observeLiveData
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
 import org.junit.Rule
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class LatestViewModelTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
+
+    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+    private val repository = CoreRepository.start(context)
 
     private lateinit var vm: LatestViewModel
 

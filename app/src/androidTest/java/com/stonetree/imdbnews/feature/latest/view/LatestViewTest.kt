@@ -2,6 +2,7 @@ package com.stonetree.imdbnews.feature.latest.view
 
 import android.content.pm.ActivityInfo
 import android.widget.GridLayout.VERTICAL
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.PerformException
@@ -29,9 +30,12 @@ import androidx.test.espresso.matcher.ViewMatchers.withTagValue
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeUp
+import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
+import com.stonetree.imdbnews.core.constants.Constants
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
-import com.stonetree.imdbnews.core.constants.Constants.IMAGE_URL
+import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
+import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import com.stonetree.imdbnews.core.constants.Constants.PACKAGE
 import org.hamcrest.CoreMatchers.`is`
 
@@ -40,11 +44,20 @@ class LatestViewTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(LatestView::class.java)
+    val rule = ActivityTestRule(MainView::class.java)
 
     @Before
     fun setup() {
         IdlingRegistry.getInstance().register(CoreRepositoryIdling.getResource())
+        jumpToLatestViewFragment()
+    }
+
+    private fun jumpToLatestViewFragment() {
+        rule.activity.apply {
+            runOnUiThread {
+                findNavController(R.id.imdb_nav_fragment).navigate(R.id.latest_view)
+            }
+        }
     }
 
     @After
@@ -59,19 +72,8 @@ class LatestViewTest {
     }
 
     @Test
-    fun test_lazyVm_shouldReturnNotNull() {
-        assertNotNull(rule.activity.vm)
-    }
-
-    @Test
     fun test_bindXml_shouldReturnNothingNull() {
         assertNotNull(rule.activity.latest.adapter)
-    }
-
-    @Test
-    fun test_bindObservers_shouldReturnNothingNull() {
-        assertTrue(rule.activity.vm.latest.hasObservers())
-        assertTrue(rule.activity.vm.network.hasObservers())
     }
 
     @Test
@@ -117,7 +119,7 @@ class LatestViewTest {
         onView(
             allOf(
             withId(R.id.poster),
-            withTagValue(`is`(IMAGE_URL)))
+            withTagValue(`is`(IMAGE_BASE_URL + IMAGE_PATH)))
         ).check(matches(isDisplayed()))
     }
 

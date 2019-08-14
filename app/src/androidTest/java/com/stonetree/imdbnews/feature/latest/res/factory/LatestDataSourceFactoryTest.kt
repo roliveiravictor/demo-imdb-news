@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.feature.latest.res.factory
 import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import junit.framework.TestCase.assertNull
 import junit.framework.TestCase.assertNotNull
 import org.hamcrest.CoreMatchers.`is`
@@ -20,7 +20,7 @@ class LatestDataSourceFactoryTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = CoreRepository.start(context)
+    private val repository = LatestRepository.getInstance()
 
     @Before
     fun setup() {

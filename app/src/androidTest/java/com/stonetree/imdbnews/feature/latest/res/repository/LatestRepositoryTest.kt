@@ -2,7 +2,6 @@ package com.stonetree.imdbnews.feature.latest.res.repository
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
@@ -46,7 +45,7 @@ class LatestRepositoryTest {
     @Test
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
-        val request: Call<LatestModel> = repository.api.get(1, PAGE_SIZE)
+        val request: Call<LatestModel> = repository.api.get(1)
         request.enqueue {
             onResponse = { response ->
                 assertGetRequests(response)
@@ -65,25 +64,12 @@ class LatestRepositoryTest {
         if(response.isSuccessful) {
             response.body()?.apply {
                 assertNotEquals(-1L, page)
-                assertNotEquals(-1, perPage)
-                assertNotEquals(-1L, totalCount)
-                assertNotEquals("", searchId)
-                assertNotNull(data)
+                assertNotEquals(-1, totalPages)
+                assertNotNull(results)
 
-                data.forEach { image ->
-                    assertNotEquals(-1, image.id)
-                    assertNotEquals(-1f, image.aspect)
-                    assertNotNull(image.assets)
-
-                    image.assets.apply {
-                        assertNotNull(thumb)
-
-                        thumb.apply {
-                            assertNotEquals(-1, height)
-                            assertNotEquals(-1, width)
-                            assertNotEquals("", url)
-                        }
-                    }
+                results?.forEach { movie ->
+                    assertNotEquals(-1, movie.id)
+                    assertNotEquals("", movie.poster)
                 }
             }
         } else {

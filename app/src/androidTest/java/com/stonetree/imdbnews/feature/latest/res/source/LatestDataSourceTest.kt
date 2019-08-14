@@ -6,10 +6,9 @@ import androidx.paging.PageKeyedDataSource.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.corerepository.core.model.NetworkState
-import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
+import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import org.hamcrest.CoreMatchers.`is`
@@ -24,7 +23,7 @@ class LatestDataSourceTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = CoreRepository.start(context)
+    private val repository = LatestRepository.getInstance()
 
     private lateinit var source: LatestDataSource
 
@@ -78,13 +77,6 @@ class LatestDataSourceTest {
         model.totalPages = 1
 
         assertNull(source.getNextKey(model, currentKey))
-    }
-
-    @Test
-    fun test_loadInitialNetworkState_shouldReturnLoading() {
-        val params = LoadInitialParams<Long>(PAGE_SIZE, false)
-        source.loadInitial(params, InitialCallback())
-        assertEquals(NetworkState.LOADING, source.getNetwork().value)
     }
 
     @Test

@@ -7,8 +7,9 @@ import androidx.test.rule.ActivityTestRule
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
 import com.stonetree.corerepository.core.model.NetworkState
-import com.stonetree.imdbnews.core.constants.Constants.IMAGE_URL
-import com.stonetree.imdbnews.feature.latest.view.LatestView
+import com.stonetree.imdbnews.MainView
+import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
+import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import junit.framework.TestCase.assertEquals
 import kotlinx.android.synthetic.main.view_latest.loading
 import org.junit.Rule
@@ -20,7 +21,7 @@ class BindersTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(LatestView::class.java)
+    val rule = ActivityTestRule(MainView::class.java)
 
     @Test
     fun test_bindIsGone_shouldReturnVisible() {
@@ -49,8 +50,8 @@ class BindersTest {
             .apply {
                 Fresco.initialize(this)
                 val view = SimpleDraweeView(this)
-                bindLoadImage(view, IMAGE_URL)
-                assertEquals(view.tag, IMAGE_URL)
+                bindLoadImage(view, IMAGE_PATH)
+                assertEquals(view.tag, IMAGE_BASE_URL + IMAGE_PATH)
             }
     }
 }
