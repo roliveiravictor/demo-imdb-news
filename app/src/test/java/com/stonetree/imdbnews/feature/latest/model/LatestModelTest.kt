@@ -1,7 +1,6 @@
 package com.stonetree.imdbnews.feature.latest.model
 
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertNotNull
+import junit.framework.TestCase.*
 import org.junit.Test
 
 class LatestModelTest {
@@ -9,16 +8,15 @@ class LatestModelTest {
     @Test
     fun test_latestModel_shouldReturnDefaultValues() {
         val model = LatestModel()
-        assertEquals(-1L, model.page)
-        assertEquals(-1, model.perPage)
-        assertEquals(-1L, model.totalCount)
-        assertEquals("", model.searchId)
+        assertNull(model.page)
+        assertNull(model.totalPages)
+        assertNull(model.results)
     }
 
     @Test
     fun test_latestModel_shouldReturnData() {
         val model = LatestModel()
-        model.data = arrayListOf()
-        assertNotNull(model.data)
+        model.results = arrayListOf()
+        assertNotNull(model.results)
     }
 }
