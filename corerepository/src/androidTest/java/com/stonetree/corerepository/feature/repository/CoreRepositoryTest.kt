@@ -2,8 +2,7 @@ package com.stonetree.corerepository.feature.repository
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertFalse
+import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -36,5 +35,10 @@ class CoreRepositoryTest {
     @Test
     fun test_baseUrl_shouldReturnNotEmpty() {
         assertFalse(repository.retrofit.baseUrl().toString().isEmpty())
+    }
+
+    @Test
+    fun test_apiKey_shouldReturnNotEmpty() {
+        assertFalse(repository.apiKey.isEmpty())
     }
 }
