@@ -28,7 +28,7 @@ class CoreRepositoryTest {
             assertEquals(5000, connectTimeoutMillis)
             assertEquals(0, callTimeoutMillis)
             assertEquals(0, networkInterceptors.size)
-            assertEquals(2, interceptors.size)
+            assertEquals(1, interceptors.size)
             assertEquals(2, protocols.size)
         }
     }
