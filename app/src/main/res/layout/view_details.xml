@@ -33,7 +33,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/ten_dp">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/poster"
@@ -42,7 +43,6 @@
                 android:layout_margin="@dimen/ten_dp"
                 android:padding="@dimen/five_dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -68,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten_dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:justificationMode="inter_word"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title"
