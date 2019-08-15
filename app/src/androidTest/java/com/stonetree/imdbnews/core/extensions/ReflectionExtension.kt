@@ -1,4 +1,4 @@
-package com.stonetree.imdbnews.core.reflection
+package com.stonetree.imdbnews.core.extensions
 
 fun<T: Any> T.accessField(fieldName: String): Any? {
     return this?.javaClass?.getDeclaredField(fieldName).let { field ->

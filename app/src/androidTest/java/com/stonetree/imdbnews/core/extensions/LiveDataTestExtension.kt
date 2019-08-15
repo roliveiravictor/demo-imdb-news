@@ -1,4 +1,4 @@
-package com.stonetree.imdbnews.core.livedata
+package com.stonetree.imdbnews.core.extensions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Lifecycle.Event.ON_RESUME
-import com.stonetree.imdbnews.core.reflection.accessField
 import org.mockito.Mockito.*
 
 /**

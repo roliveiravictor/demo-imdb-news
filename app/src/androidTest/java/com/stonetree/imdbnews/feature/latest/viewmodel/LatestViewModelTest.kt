@@ -17,8 +17,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.corerepository.feature.repository.CoreRepository
-import com.stonetree.imdbnews.core.livedata.lambdaMock
-import com.stonetree.imdbnews.core.livedata.observeLiveData
+import com.stonetree.imdbnews.core.extensions.lambdaMock
+import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
@@ -64,7 +64,8 @@ class LatestViewModelTest {
 
     @Test
     fun test_pagedList_shouldReturnChangeLivedData() {
-        val observer = lambdaMock<(PagedList<Movie>) -> Unit>()
+        val observer =
+            lambdaMock<(PagedList<Movie>) -> Unit>()
         val mutableData = vm.observeLiveData("latest", observer)
 
         val paged = mock(PagedList::class.java)

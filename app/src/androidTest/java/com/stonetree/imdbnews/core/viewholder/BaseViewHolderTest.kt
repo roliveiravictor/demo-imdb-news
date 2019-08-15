@@ -1,6 +1,7 @@
 package com.stonetree.imdbnews.core.viewholder
 
 import androidx.databinding.DataBindingUtil
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
@@ -9,7 +10,9 @@ import com.stonetree.imdbnews.databinding.ViewLatestBinding
 import junit.framework.TestCase.assertEquals
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class BaseViewHolderTest {
 
     @Rule
