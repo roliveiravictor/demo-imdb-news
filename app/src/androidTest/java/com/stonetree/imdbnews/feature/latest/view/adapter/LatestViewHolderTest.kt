@@ -1,17 +1,20 @@
 package com.stonetree.imdbnews.feature.latest.view.adapter
 
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.corerepository.core.constants.RepositoryConstants.BASE_URL
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.databinding.ListItemLatestBinding
 import com.stonetree.imdbnews.feature.latest.model.Movie
-import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class LatestViewHolderTest {
 
     @Rule
@@ -30,11 +33,23 @@ class LatestViewHolderTest {
     }
 
     @Test
-    fun test_vh_shouldReturnDefaultValues() {
+    fun test_viewHolderWithNullId_shouldReturnUrlWithoutListener() {
         val movie = Movie()
         movie.poster = BASE_URL
 
         vh.onBind(movie)
         assertEquals(BASE_URL, bind.url)
+        assertNull(bind.listener)
+    }
+
+    @Test
+    fun test_viewHolderWithId_shouldReturnUrlWithListener() {
+        val movie = Movie()
+        movie.poster = BASE_URL
+        movie.id = 1L
+
+        vh.onBind(movie)
+        assertEquals(BASE_URL, bind.url)
+        assertNotNull(bind.listener)
     }
 }
