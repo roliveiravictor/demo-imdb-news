@@ -39,6 +39,9 @@ class BindersTest {
             runOnUiThread {
                 bindIsGone(this.loading, NetworkState.LOADED)
                 assertEquals(this.loading.visibility, View.GONE)
+
+                bindIsGone(this.loading, NetworkState.error("mError"))
+                assertEquals(this.loading.visibility, View.GONE)
             }
         }
     }
