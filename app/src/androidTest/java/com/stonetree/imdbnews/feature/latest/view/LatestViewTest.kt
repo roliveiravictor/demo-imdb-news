@@ -2,6 +2,7 @@ package com.stonetree.imdbnews.feature.latest.view
 
 import android.content.pm.ActivityInfo
 import android.widget.GridLayout.VERTICAL
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.test.espresso.IdlingRegistry
@@ -30,14 +31,20 @@ import androidx.test.espresso.matcher.ViewMatchers.withTagValue
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeUp
+import androidx.test.espresso.intent.Intents
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
-import com.stonetree.imdbnews.core.constants.Constants
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import com.stonetree.imdbnews.core.constants.Constants.PACKAGE
+import com.stonetree.imdbnews.core.extensions.launchFragmentScenario
 import org.hamcrest.CoreMatchers.`is`
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasClassName
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
+import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.imdbnews.feature.details.view.DetailsView
 
 @RunWith(AndroidJUnit4::class)
 class LatestViewTest {
@@ -46,16 +53,20 @@ class LatestViewTest {
     @JvmField
     val rule = ActivityTestRule(MainView::class.java)
 
+    private var navigation: NavController? = null
+
+    private var fragment: LatestView? = null
+
     @Before
     fun setup() {
         IdlingRegistry.getInstance().register(CoreRepositoryIdling.getResource())
-        jumpToLatestViewFragment()
+        navigation = rule.activity.findNavController(R.id.imdb_nav_fragment)
     }
 
     private fun jumpToLatestViewFragment() {
-        rule.activity.apply {
-            runOnUiThread {
-                findNavController(R.id.imdb_nav_fragment).navigate(R.id.latest_view)
+        navigation?.apply {
+            launchFragmentScenario(null, LatestView(), this).onFragment { fragment ->
+                this@LatestViewTest.fragment = fragment
             }
         }
     }
@@ -63,6 +74,21 @@ class LatestViewTest {
     @After
     fun unregisterIdlingResource() {
         IdlingRegistry.getInstance().unregister(CoreRepositoryIdling.getResource())
+    }
+
+    @Test
+    fun test_lazyVm_shouldReturnNotNull() {
+        jumpToLatestViewFragment()
+        assertNotNull(fragment?.vm)
+    }
+
+    @Test
+    fun test_bindObservers_shouldReturnNothingNull() {
+        jumpToLatestViewFragment()
+        fragment?.vm?.apply {
+            assertTrue(latest.hasObservers())
+            assertTrue(network.hasObservers())
+        }
     }
 
     @Test
@@ -132,6 +158,31 @@ class LatestViewTest {
                 assertTrue(spanCount == 2)
                 assertTrue(orientation == VERTICAL)
             }
+        }
+    }
+
+    //TODO - Fix ; Does not work with navigation controller
+    @Test
+    fun test_clickMovie_shouldReturnDetailsView() {
+        Intents.init()
+
+        onView(
+            allOf(
+                withId(R.id.poster),
+                withTagValue(`is`(IMAGE_BASE_URL + IMAGE_PATH)))
+        ).perform(click())
+
+        intended(hasComponent(hasClassName(DetailsView::class.java.name)))
+    }
+
+    @Test
+    fun test_pagination_shouldReturnPagedItems() {
+        for (i in 0..3) {
+            onView(withId(R.id.latest))
+                .perform(swipeUp())
+        }
+        fragment?.vm?.latest?.value?.size?.apply {
+            assertTrue(this > PAGE_SIZE)
         }
     }
 }
