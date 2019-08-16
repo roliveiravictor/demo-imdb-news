@@ -1,0 +1,67 @@
+package com.stonetree.imdbnews.feature.details.viewmodel
+
+import androidx.lifecycle.LiveData
+import com.stonetree.corerepository.core.model.NetworkState
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.any
+import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Before
+import org.junit.Test
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.imdbnews.core.extensions.lambdaMock
+import com.stonetree.imdbnews.core.extensions.observeLiveData
+import com.stonetree.imdbnews.feature.details.model.DetailsModel
+import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
+import org.junit.Rule
+import org.junit.runner.RunWith
+import org.mockito.Mockito.*
+
+@RunWith(AndroidJUnit4::class)
+class LatestViewModelTest {
+
+    @get:Rule
+    val rule = InstantTaskExecutorRule()
+
+    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+    private val repository = CoreRepository.start(context)
+
+    private lateinit var vm: DetailsViewModel
+
+    private val args = mock(DetailsViewArgs::class.java)
+
+    @Before
+    fun setup(){
+        vm = DetailsViewModel(args)
+    }
+
+    @Test
+    fun test_detailsViewModel_shouldReturnDefaultValues() {
+        vm.apply {
+            assertThat(network,`is`(any(LiveData::class.java)))
+            assertThat(details,`is`(any(LiveData::class.java)))
+        }
+    }
+
+    @Test
+    fun test_networkState_shouldReturnChangeLivedData() {
+        val observer = lambdaMock<(NetworkState) -> Unit>()
+        val mutableData = vm.observeLiveData("network", observer)
+
+        mutableData.postValue(NetworkState.LOADING)
+        verify(observer, times(2)).invoke(NetworkState.LOADING)
+    }
+
+    @Test
+    fun test_details_shouldReturnChangeLivedData() {
+        val observer = lambdaMock<(DetailsModel) -> Unit>()
+        val mutableData = vm.observeLiveData("details", observer)
+
+        val details = DetailsModel()
+        mutableData.postValue(details)
+        verify(observer).invoke(details)
+    }
+}
