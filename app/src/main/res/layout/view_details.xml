@@ -23,74 +23,79 @@
             type="com.stonetree.imdbnews.feature.details.view.DetailsView"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isIdle="@{network}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:padding="@dimen/ten_dp">
+            android:layout_height="wrap_content">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/poster"
-                android:layout_width="@dimen/two_hun_dp"
-                android:layout_height="@dimen/three_hun_dp"
-                android:layout_margin="@dimen/ten_dp"
-                android:padding="@dimen/five_dp"
-                android:scaleType="centerCrop"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isIdle="@{network}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:loadImage="@{url}"
-                tools:src="@mipmap/ic_launcher" />
+                android:padding="@dimen/ten_dp">
 
-            <TextView
-                android:id="@+id/title"
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/poster"
+                    android:layout_width="@dimen/two_hun_dp"
+                    android:layout_height="@dimen/three_hun_dp"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:padding="@dimen/five_dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:loadImage="@{url}"
+                    tools:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/poster"
+                    android:gravity="center"
+                    tools:text="@string/title" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:justificationMode="inter_word"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    android:gravity="center"
+                    tools:text="@string/description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/ten_dp"
-                android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:isLoading="@{network}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/poster"
-                android:gravity="center"
-                tools:text="@string/title" />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/ten_dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:justificationMode="inter_word"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                android:gravity="center"
-                tools:text="@string/description" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="lottie_loading.json"
+                app:lottie_loop="true" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:isLoading="@{network}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="lottie_loading.json"
-            app:lottie_loop="true" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </layout>
