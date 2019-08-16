@@ -31,7 +31,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withTagValue
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeUp
-import androidx.test.espresso.intent.Intents
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
@@ -40,11 +39,7 @@ import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import com.stonetree.imdbnews.core.constants.Constants.PACKAGE
 import com.stonetree.imdbnews.core.extensions.launchFragmentScenario
 import org.hamcrest.CoreMatchers.`is`
-import androidx.test.espresso.intent.Intents.intended
-import androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasClassName
-import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.imdbnews.feature.details.view.DetailsView
 
 @RunWith(AndroidJUnit4::class)
 class LatestViewTest {
@@ -161,18 +156,16 @@ class LatestViewTest {
         }
     }
 
-    //TODO - Fix ; Does not work with navigation controller
     @Test
     fun test_clickMovie_shouldReturnDetailsView() {
-        Intents.init()
-
         onView(
             allOf(
                 withId(R.id.poster),
                 withTagValue(`is`(IMAGE_BASE_URL + IMAGE_PATH)))
         ).perform(click())
-
-        intended(hasComponent(hasClassName(DetailsView::class.java.name)))
+        navigation?.currentDestination?.apply {
+            assertEquals(R.id.details_view, id)
+        }
     }
 
     @Test
