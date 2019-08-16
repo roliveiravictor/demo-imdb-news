@@ -12,11 +12,21 @@ import com.facebook.imagepipeline.request.ImageRequest
 import com.stonetree.corerepository.core.constants.RepositoryConstants.POSTER_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
 import com.stonetree.corerepository.core.extensions.read
+import com.stonetree.corerepository.core.model.Status.*
 
-@BindingAdapter("isGone")
-fun bindIsGone(view: View, network: NetworkState?) {
+@BindingAdapter("isLoading")
+fun bindIsLoading(view: View, network: NetworkState?) {
     when(network){
         LOADING -> view.visibility = View.VISIBLE
+        else -> view.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("isIdle")
+fun bindIsIdle(view: View, network: NetworkState?) {
+    when(network?.status){
+        SUCCESS -> view.visibility = View.VISIBLE
+        FAILED -> view.visibility = View.VISIBLE
         else -> view.visibility = View.GONE
     }
 }

@@ -27,21 +27,58 @@ class BindersTest {
     fun test_bindIsGone_shouldReturnVisible() {
         rule.activity.apply {
             runOnUiThread {
-                bindIsGone(this.loading, NetworkState.LOADING)
+                bindIsLoading(this.loading, NetworkState.LOADING)
                 assertEquals(this.loading.visibility, View.VISIBLE)
             }
         }
     }
 
     @Test
-    fun test_bindIsGone_shouldReturnGone() {
+    fun test_bindIsGoneLoaded_shouldReturnGone() {
         rule.activity.apply {
             runOnUiThread {
-                bindIsGone(this.loading, NetworkState.LOADED)
+                bindIsLoading(this.loading, NetworkState.LOADED)
                 assertEquals(this.loading.visibility, View.GONE)
+            }
+        }
+    }
 
-                bindIsGone(this.loading, NetworkState.error("mError"))
+    @Test
+    fun test_bindIsGoneError_shouldReturnGone() {
+        rule.activity.apply {
+            runOnUiThread {
+                bindIsLoading(this.loading, NetworkState.error("mError"))
                 assertEquals(this.loading.visibility, View.GONE)
+            }
+        }
+    }
+
+    @Test
+    fun test_bindIsIdleLoading_shouldReturnGone() {
+        rule.activity.apply {
+            runOnUiThread {
+                bindIsIdle(this.loading, NetworkState.LOADING)
+                assertEquals(this.loading.visibility, View.GONE)
+            }
+        }
+    }
+
+    @Test
+    fun test_bindIsIdleError_shouldReturnVisible() {
+        rule.activity.apply {
+            runOnUiThread {
+                bindIsIdle(this.loading, NetworkState.error(""))
+                assertEquals(this.loading.visibility, View.VISIBLE)
+            }
+        }
+    }
+
+    @Test
+    fun test_bindIsIdleLoaded_shouldReturnVisible() {
+        rule.activity.apply {
+            runOnUiThread {
+                bindIsIdle(this.loading, NetworkState.LOADED)
+                assertEquals(this.loading.visibility, View.VISIBLE)
             }
         }
     }
