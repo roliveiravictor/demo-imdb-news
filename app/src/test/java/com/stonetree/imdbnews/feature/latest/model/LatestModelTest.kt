@@ -7,16 +7,18 @@ class LatestModelTest {
 
     @Test
     fun test_latestModel_shouldReturnDefaultValues() {
-        val model = LatestModel()
-        assertNull(model.page)
-        assertNull(model.totalPages)
-        assertNull(model.results)
+        LatestModel().apply {
+            assertNull(page)
+            assertNull(totalPages)
+            assertNull(results)
+        }
     }
 
     @Test
     fun test_latestModel_shouldReturnData() {
-        val model = LatestModel()
-        model.results = arrayListOf()
-        assertNotNull(model.results)
+        LatestModel().apply {
+            results = arrayListOf()
+            assertNotNull(results)
+        }
     }
 }

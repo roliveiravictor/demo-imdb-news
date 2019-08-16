@@ -7,8 +7,9 @@ class MovieTest {
 
     @Test
     fun test_latestModel_shouldReturnDefaultValues() {
-        val movie = Movie()
-        assertNull(movie.id)
-        assertNull(movie.poster)
+        Movie().apply {
+            assertNull(id)
+            assertNull(poster)
+        }
     }
 }
