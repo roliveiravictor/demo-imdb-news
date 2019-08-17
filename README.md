@@ -68,7 +68,6 @@
   - constraint_version 1.1.3
   - mockito_core_version 2.28.2
   - andx_core_testing_version 2.0.1
-  - monits_version 2.6.10
   - detekt_version = '1.0.0'
 
 # Run
