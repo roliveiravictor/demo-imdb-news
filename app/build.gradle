@@ -80,3 +80,5 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_core_version"
 }
+
+apply from: rootProject.file('sca-config/static-analysis.gradle')

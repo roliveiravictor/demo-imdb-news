@@ -16,63 +16,47 @@ buildscript {
         mockito_core_version = '2.28.2'
         andx_core_testing_version = '2.0.1'
         detekt_version = '1.0.0'
-        gradle_version = '3.3.2'
+        gradle_version = '3.5.0-beta05'
         navigation_fragment_ktx_version = '2.1.0-alpha06'
         navigation_ui_version = '2.0.0'
         safeargs_version = '1.0.0-alpha11'
         fragment_testing_version = '1.2.0-alpha02'
+        sca_version = '1.0'
+        ktlint_version = '8.0.0'
     }
 
     repositories {
         google()
         jcenter()
+        gradlePluginPortal()
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:${gradle_version}"
+        classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_ui_version"
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$safeargs_version"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
+        classpath "com.novoda:gradle-static-analysis-plugin:$sca_version"
     }
 }
 
-plugins {
-    id 'io.gitlab.arturbosch.detekt' version '1.0.0'
-}
+ext.ReporterType = org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
+apply from: rootProject.file('sca-config/tasks.gradle')
 
 allprojects {
+
+    buildscript {
+        repositories {
+            jcenter()
+        }
+    }
 
     repositories {
         google()
         jcenter()
-    }
-
-    detekt {
-        toolVersion = "$detekt_version"
-
-        input = files("${project.rootDir}/app/src/main/java",
-                "${project.rootDir}/app/src/test/java",
-                "${project.rootDir}/corerepository/src/main/java",
-                "${project.rootDir}/corerepository/src/test/java"
-        )
-
-        config = files("${project.rootDir}/.detekt.yml")
-        filters = ".*/resources/.*,.*/build/.*"
-
-        buildUponDefaultConfig = true
-
-        reports {
-            xml  {
-                enabled = false
-                destination = file("$project.rootDir/reports/detekt/detekt_report.xml")
-            }
-
-            html {
-                enabled = true
-                destination = file("$project.rootDir/reports/detekt/detekt_report.html")
-            }
-        }
     }
 }
 

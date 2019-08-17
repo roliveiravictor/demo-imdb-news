@@ -1,3 +1,4 @@
+rootProject.name='IMDB News'
+
 include ':app'
 include ':corerepository'
-rootProject.name='IMDB News'
