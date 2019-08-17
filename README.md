@@ -68,12 +68,14 @@
   - constraint_version 1.1.3
   - mockito_core_version 2.28.2
   - andx_core_testing_version 2.0.1
-  - detekt_version = '1.0.0'
+  - detekt_version = 1.0.0
+  - ktlint_version = 8.0.0
+  - sca_version = 1.0
 
 # Run
 
   -  Clone this repository and open build.gradle with Android Studio
-  -  `./gradlew monits` to run static code analysers
+  -  `./gradlew check` to run static code analysers
 
 # Requirements
 
