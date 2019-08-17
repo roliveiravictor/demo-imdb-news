@@ -27,13 +27,13 @@ class DetailsView : Fragment() {
                               viewGroup: ViewGroup?,
                               savedInstanceState: Bundle?): View?
     {
-        val container = ViewDetailsBinding.inflate(inflater, viewGroup, false)
+        val data = ViewDetailsBinding.inflate(inflater, viewGroup, false)
 
-        bindXml(container)
-        bindObservers(container)
-        bindObservers(container)
+        bindXml(data)
+        bindObservers(data)
+        bindObservers(data)
 
-        return container.root
+        return data.root
     }
 
     private fun bindXml(data: ViewDetailsBinding) {

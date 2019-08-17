@@ -1,12 +1,14 @@
 package com.stonetree.imdbnews.feature.latest.res.directions
 
-import androidx.navigation.NavController
+import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
-import com.stonetree.imdbnews.core.constants.DirectionsBundleKey.MOVIE_ID
+import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_KEY
+import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
+import com.stonetree.imdbnews.core.extensions.execute
 import com.stonetree.imdbnews.core.extensions.launchFragmentScenario
 import com.stonetree.imdbnews.feature.details.view.DetailsView
 import junit.framework.TestCase.assertEquals
@@ -22,22 +24,29 @@ class LatestDirectionsTest {
     @JvmField
     val rule = ActivityTestRule(MainView::class.java)
 
-    private var navigation: NavController? = null
+    private var fragment: DetailsView? = null
 
     @Before
     fun setup() {
-        navigation = rule.activity.findNavController(R.id.imdb_nav_fragment)
+        jumpToDetailsViewFragment()
+    }
+
+    private fun jumpToDetailsViewFragment() {
+        val bundle = Bundle()
+        bundle.putLong(MOVIE_ID_KEY, MOVIE_ID_VALUE)
+
+        rule.activity
+            .findNavController(R.id.imdb_nav_fragment)
+            .launchFragmentScenario(bundle, DetailsView())
+            .execute { fragment ->
+                this@LatestDirectionsTest.fragment = fragment
+            }
     }
 
     @Test
     fun test_actionLatestToDetails_shouldReturnBundle() {
-        val direction = LatestDirections.actionLatestToDetails(-1)
-
-        navigation?.apply {
-            val fragment = launchFragmentScenario(direction.arguments, DetailsView(), this)
-            fragment.onFragment { fragment ->
-                assertEquals(-1L, fragment.arguments?.get(MOVIE_ID))
-            }
+        fragment?.arguments?.apply {
+            assertEquals(420818L, get(MOVIE_ID_KEY))
         }
     }
 }

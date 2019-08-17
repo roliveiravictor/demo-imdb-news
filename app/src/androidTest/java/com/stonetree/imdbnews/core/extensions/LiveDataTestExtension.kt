@@ -29,7 +29,7 @@ fun<T> ViewModel.observeLiveData(
     return mutable
 }
 
-private fun createLifeCycle(): LifecycleRegistry {
+fun createLifeCycle(): LifecycleRegistry {
     val lifecycle = LifecycleRegistry(mock(LifecycleOwner::class.java))
     lifecycle.handleLifecycleEvent(ON_RESUME)
     return  lifecycle

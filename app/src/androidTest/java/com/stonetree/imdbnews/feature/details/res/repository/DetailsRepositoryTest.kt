@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.feature.repository.CoreRepository
-import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID
+import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import junit.framework.TestCase.*
 import org.junit.Assert
@@ -31,7 +31,7 @@ class DetailsRepositoryTest {
     @Test
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
-        val request: Call<DetailsModel> = repository.api.get(MOVIE_ID)
+        val request: Call<DetailsModel> = repository.api.get(MOVIE_ID_VALUE)
         request.enqueue {
             onResponse = { response ->
                 assertGetRequests(response)

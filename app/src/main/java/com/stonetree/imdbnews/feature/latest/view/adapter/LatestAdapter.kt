@@ -14,7 +14,7 @@ class LatestAdapter : PagedListAdapter<Movie, LatestViewHolder>(
     override fun onBindViewHolder(holder: LatestViewHolder, position: Int) {
         getItem(position)?.let { movie ->
             with(holder) {
-                itemView.tag = position
+                itemView.tag = movie.id
                 onBind(movie)
             }
         }

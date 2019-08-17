@@ -11,8 +11,9 @@ class LatestViewHolder(private val bind: ListItemLatestBinding)
     : BaseViewHolder<Movie>(bind)
 {
     override fun onBind(data: Movie) {
-        data.poster?.let {poster ->
+        data.poster?.let { poster ->
             bind.url = poster
+            bind.root.tag = poster
             bind.listener = createOnClickListener(data.id)
         }
     }

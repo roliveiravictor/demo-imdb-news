@@ -34,14 +34,14 @@ class LatestView : Fragment() {
                               viewGroup: ViewGroup?,
                               savedInstanceState: Bundle?): View?
     {
-        val container = ViewLatestBinding.inflate(inflater, viewGroup, false)
+        val data = ViewLatestBinding.inflate(inflater, viewGroup, false)
         val adapter = LatestAdapter()
 
-        bindXml(container, adapter)
-        bindObservers(container, adapter)
-        bindObservers(container, adapter)
+        bindXml(data, adapter)
+        bindObservers(data, adapter)
+        bindObservers(data, adapter)
 
-        return container.root
+        return data.root
     }
 
     private fun bindXml(
