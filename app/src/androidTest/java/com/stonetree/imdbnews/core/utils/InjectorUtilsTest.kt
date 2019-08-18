@@ -4,8 +4,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.stonetree.imdbnews.feature.details.res.factory.DetailsViewModelFactory
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
 import com.stonetree.imdbnews.feature.latest.res.factory.LatestViewModelFactory
-import org.hamcrest.CoreMatchers.*
-import org.hamcrest.MatcherAssert.*
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.any
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock

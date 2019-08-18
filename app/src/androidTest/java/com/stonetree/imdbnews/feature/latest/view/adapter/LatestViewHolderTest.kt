@@ -8,7 +8,9 @@ import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.databinding.ListItemLatestBinding
 import com.stonetree.imdbnews.feature.latest.model.Movie
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertNull
+import junit.framework.TestCase.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

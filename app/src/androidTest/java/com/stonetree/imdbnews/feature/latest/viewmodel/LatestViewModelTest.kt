@@ -38,20 +38,19 @@ class LatestViewModelTest {
     private lateinit var vm: LatestViewModel
 
     @Before
-    fun setup(){
+    fun setup() {
         vm = LatestViewModel()
     }
 
     @Test
     fun test_latestViewModel_shouldReturnDefaultValues() {
         vm.apply {
-            assertThat(factory,`is`(any(LatestDataSourceFactory::class.java)))
-            assertThat(config,`is`(any(PagedList.Config::class.java)))
-            assertThat(latest,`is`(any(LiveData::class.java)))
-            assertThat(network,`is`(any(LiveData::class.java)))
+            assertThat(factory, `is`(any(LatestDataSourceFactory::class.java)))
+            assertThat(config, `is`(any(PagedList.Config::class.java)))
+            assertThat(latest, `is`(any(LiveData::class.java)))
+            assertThat(network, `is`(any(LiveData::class.java)))
         }
     }
-
 
     @Test
     fun test_networkState_shouldReturnChangeLivedData() {

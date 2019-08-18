@@ -25,7 +25,12 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeUp
 import androidx.test.espresso.intent.Intents
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
+import androidx.test.espresso.matcher.ViewMatchers.withTagValue
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.Visibility.GONE
+import androidx.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
@@ -35,7 +40,8 @@ import com.stonetree.imdbnews.core.constants.Constants.PACKAGE
 import com.stonetree.imdbnews.core.extensions.launchFragmentScenario
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.imdbnews.core.extensions.execute
-import org.hamcrest.CoreMatchers.*
+import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.`is`
 
 @RunWith(AndroidJUnit4::class)
 class LatestViewTest {
@@ -95,13 +101,13 @@ class LatestViewTest {
     @Test
     fun test_loadingVisibility_shouldReturnVisible() {
         onView(withId(R.id.loading))
-            .check(matches(withEffectiveVisibility(Visibility.GONE)))
+            .check(matches(withEffectiveVisibility(GONE)))
     }
 
     @Test
     fun test_latestVisibility_shouldReturnVisible() {
         onView(withId(R.id.latest))
-            .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+            .check(matches(withEffectiveVisibility(VISIBLE)))
     }
 
     @Test

@@ -1,14 +1,9 @@
 package com.stonetree.imdbnews.feature.latest.res.factory
 
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.findNavController
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling
 import com.stonetree.imdbnews.MainView
-import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import junit.framework.TestCase.assertNull
 import junit.framework.TestCase.assertNotNull
@@ -39,7 +34,7 @@ class LatestDataSourceFactoryTest {
 
     @Test
     fun test_latestDataSourceFactory_shouldReturnDefaultValues() {
-        assertThat(factory.data,`is`(any(MutableLiveData::class.java)))
+        assertThat(factory.data, `is`(any(MutableLiveData::class.java)))
         assertNull(factory.source)
     }
 

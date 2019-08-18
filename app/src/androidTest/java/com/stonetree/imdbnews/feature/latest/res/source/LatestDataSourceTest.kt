@@ -1,8 +1,9 @@
 package com.stonetree.imdbnews.feature.latest.res.source
 
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.PageKeyedDataSource.LoadInitialCallback
+import androidx.paging.PageKeyedDataSource.LoadParams
 import androidx.paging.PageKeyedDataSource
-import androidx.paging.PageKeyedDataSource.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
@@ -29,10 +30,8 @@ class LatestDataSourceTest {
 
     private class InitialCallback : LoadInitialCallback<Long, Movie>() {
         override fun onResult(
-            data: MutableList<Movie>,
-            position: Int,
-            totalCount: Int,
-            previousPageKey: Long?,
+            data: MutableList<Movie>, position: Int,
+            totalCount: Int, previousPageKey: Long?,
             nextPageKey: Long?
         ) {
 
@@ -40,8 +39,8 @@ class LatestDataSourceTest {
 
         override fun onResult(
             data: MutableList<Movie>,
-            previousPageKey: Long?,
-            nextPageKey: Long?
+                              previousPageKey: Long?,
+                              nextPageKey: Long?
         ) {
 
         }
@@ -60,7 +59,7 @@ class LatestDataSourceTest {
 
     @Test
     fun test_latestDataSource_shouldReturnDefaultValues() {
-        assertThat(source.getNetwork(),`is`(any(MutableLiveData::class.java)))
+        assertThat(source.getNetwork(), `is`(any(MutableLiveData::class.java)))
     }
 
     @Test

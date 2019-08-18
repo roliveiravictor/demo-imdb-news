@@ -6,7 +6,7 @@ import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertNotNull
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -47,7 +47,7 @@ class DetailsRepositoryTest {
     }
 
     private fun assertGetRequests(response: Response<DetailsModel>) {
-        if(response.isSuccessful) {
+        if (response.isSuccessful) {
             response.body()?.apply {
                 assertNotNull(title)
                 assertNotNull(description)

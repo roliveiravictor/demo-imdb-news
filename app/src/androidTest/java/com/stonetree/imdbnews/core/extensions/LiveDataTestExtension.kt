@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Lifecycle.Event.ON_RESUME
-import org.mockito.Mockito.*
+import org.mockito.Mockito.mock
 
 /**
  *
@@ -14,13 +14,11 @@ import org.mockito.Mockito.*
  *
  */
 
-inline fun<reified T> lambdaMock(): T = mock(T::class.java)
+inline fun <reified T> lambdaMock(): T = mock(T::class.java)
 
-fun<T> ViewModel.observeLiveData(
-    name: String,
-    observer: (T) -> Unit
-): MutableLiveData<T?>
-{
+fun <T>
+        ViewModel.observeLiveData(name: String, observer: (T) -> Unit): MutableLiveData<T?> {
+
     val field = accessField(name) as LiveData<T>
     val mutable = MutableLiveData(field.value)
     mutable.observe({ createLifeCycle() }) { data ->
@@ -32,5 +30,5 @@ fun<T> ViewModel.observeLiveData(
 fun createLifeCycle(): LifecycleRegistry {
     val lifecycle = LifecycleRegistry(mock(LifecycleOwner::class.java))
     lifecycle.handleLifecycleEvent(ON_RESUME)
-    return  lifecycle
+    return lifecycle
 }

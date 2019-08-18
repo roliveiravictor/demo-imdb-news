@@ -11,5 +11,4 @@ object Constants {
     const val PACKAGE = "com.stonetree.imdbnews"
 
     const val APP_TITLE = "IMDB News"
-
 }

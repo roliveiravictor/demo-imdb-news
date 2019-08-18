@@ -27,7 +27,6 @@ class LatestRepositoryTest {
         assertNotNull(repository.api)
     }
 
-
     /**
      *  https://stackoverflow.com/questions/33120493/espresso-idling-resource-doesnt-work
      *
@@ -61,7 +60,7 @@ class LatestRepositoryTest {
     }
 
     private fun assertGetRequests(response: Response<LatestModel>) {
-        if(response.isSuccessful) {
+        if (response.isSuccessful) {
             response.body()?.apply {
                 assertNotEquals(-1L, page)
                 assertNotEquals(-1, totalPages)

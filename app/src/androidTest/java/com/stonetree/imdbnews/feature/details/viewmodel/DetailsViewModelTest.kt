@@ -17,7 +17,9 @@ import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
 import org.junit.Rule
 import org.junit.runner.RunWith
-import org.mockito.Mockito.*
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.times
 
 @RunWith(AndroidJUnit4::class)
 class DetailsViewModelTest {
@@ -34,15 +36,15 @@ class DetailsViewModelTest {
     private val args = mock(DetailsViewArgs::class.java)
 
     @Before
-    fun setup(){
+    fun setup() {
         vm = DetailsViewModel(args)
     }
 
     @Test
     fun test_detailsViewModel_shouldReturnDefaultValues() {
         vm.apply {
-            assertThat(network,`is`(any(LiveData::class.java)))
-            assertThat(details,`is`(any(LiveData::class.java)))
+            assertThat(network, `is`(any(LiveData::class.java)))
+            assertThat(details, `is`(any(LiveData::class.java)))
         }
     }
 
