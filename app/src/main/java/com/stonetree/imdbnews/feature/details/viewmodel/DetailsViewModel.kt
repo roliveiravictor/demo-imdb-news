@@ -11,7 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(private val args: DetailsViewArgs): ViewModel() {
+class DetailsViewModel(private val args: DetailsViewArgs) : ViewModel() {
 
     private val repository = DetailsRepository.getInstance()
 

@@ -17,7 +17,7 @@ import com.stonetree.corerepository.core.model.Status.FAILED
 
 @BindingAdapter("isLoading")
 fun bindIsLoading(view: View, network: NetworkState?) {
-    when(network){
+    when (network) {
         LOADING -> view.visibility = View.VISIBLE
         else -> view.visibility = View.GONE
     }
@@ -25,7 +25,7 @@ fun bindIsLoading(view: View, network: NetworkState?) {
 
 @BindingAdapter("isIdle")
 fun bindIsIdle(view: View, network: NetworkState?) {
-    when(network?.status){
+    when (network?.status) {
         SUCCESS -> view.visibility = View.VISIBLE
         FAILED -> view.visibility = View.VISIBLE
         else -> view.visibility = View.GONE

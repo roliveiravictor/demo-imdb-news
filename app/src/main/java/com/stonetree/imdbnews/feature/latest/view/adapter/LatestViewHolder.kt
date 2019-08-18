@@ -7,9 +7,7 @@ import com.stonetree.imdbnews.databinding.ListItemLatestBinding
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.directions.LatestDirections
 
-class LatestViewHolder(private val bind: ListItemLatestBinding)
-    : BaseViewHolder<Movie>(bind)
-{
+class LatestViewHolder(private val bind: ListItemLatestBinding) : BaseViewHolder<Movie>(bind) {
     override fun onBind(data: Movie) {
         data.poster?.let { poster ->
             bind.url = poster

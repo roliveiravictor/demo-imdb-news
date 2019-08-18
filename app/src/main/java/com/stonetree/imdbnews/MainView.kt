@@ -2,7 +2,6 @@ package com.stonetree.imdbnews
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 
 class MainView : AppCompatActivity() {

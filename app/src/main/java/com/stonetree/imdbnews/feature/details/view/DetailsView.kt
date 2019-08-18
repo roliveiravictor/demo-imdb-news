@@ -23,10 +23,9 @@ class DetailsView : Fragment() {
         InjectorUtils.provideDetailsViewModelFactory(args)
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              viewGroup: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+    override fun onCreateView
+                (inflater: LayoutInflater, viewGroup: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val data = ViewDetailsBinding.inflate(inflater, viewGroup, false)
 
         bindXml(data)

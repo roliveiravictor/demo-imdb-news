@@ -30,10 +30,9 @@ class LatestView : Fragment() {
         CoreRepository.start(context)
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              viewGroup: ViewGroup?,
-                              savedInstanceState: Bundle?): View?
-    {
+    override fun onCreateView
+                (inflater: LayoutInflater, viewGroup: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val data = ViewLatestBinding.inflate(inflater, viewGroup, false)
         val adapter = LatestAdapter()
 
@@ -52,10 +51,7 @@ class LatestView : Fragment() {
         data.latest.adapter = adapter
     }
 
-    private fun bindObservers(
-        data: ViewLatestBinding,
-        adapter: LatestAdapter
-    ){
+    private fun bindObservers(data: ViewLatestBinding, adapter: LatestAdapter) {
         vm.latest.observe(viewLifecycleOwner) { latest ->
             adapter.submitList(latest)
         }
