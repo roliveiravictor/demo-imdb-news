@@ -15,25 +15,25 @@ class CoreRepositoryIdlingTest {
     }
 
     @Test
-    fun test_increment_shouldReturnIdle(){
+    fun test_increment_shouldReturnIdle() {
         getResource().increment()
         assertFalse(getResource().isIdleNow)
     }
 
     @Test
-    fun test_decrement_shouldReturnNotIdle(){
+    fun test_decrement_shouldReturnNotIdle() {
         getResource().increment()
         getResource().decrement()
         assertTrue(getResource().isIdleNow)
     }
 
     @Test
-    fun test_name_shouldReturnGlobal(){
-        assertEquals("GLOBAL",getResource().name)
+    fun test_name_shouldReturnGlobal() {
+        assertEquals("GLOBAL", getResource().name)
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun test_decrementWithoutIncrement_shouldReturnThrowException(){
+    fun test_decrementWithoutIncrement_shouldReturnThrowException() {
         getResource().decrement()
     }
 }

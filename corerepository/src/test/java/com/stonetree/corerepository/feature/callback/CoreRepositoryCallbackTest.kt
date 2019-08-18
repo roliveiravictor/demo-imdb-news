@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class CoreRepositoryCallbackTest {
 
-    private lateinit var callback : CoreRepositoryCallback<String>
+    private lateinit var callback: CoreRepositoryCallback<String>
 
     @Before
     fun setup() {
@@ -19,7 +19,7 @@ class CoreRepositoryCallbackTest {
     }
 
     @Test
-    fun test_callback_shouldReturnDefaultValues(){
+    fun test_callback_shouldReturnDefaultValues() {
         callback.apply {
             assertNull(onResponse)
             assertNull(onFailure)
@@ -27,7 +27,7 @@ class CoreRepositoryCallbackTest {
     }
 
     @Test
-    fun test_onResponse_shouldDecrementIdling(){
+    fun test_onResponse_shouldDecrementIdling() {
         CoreRepositoryIdling.getResource().increment()
 
         val call = mock(Call::class.java) as Call<String>
@@ -39,7 +39,7 @@ class CoreRepositoryCallbackTest {
     }
 
     @Test
-    fun test_onFailure_shouldDecrementIdling(){
+    fun test_onFailure_shouldDecrementIdling() {
         CoreRepositoryIdling.getResource().increment()
 
         val call = mock(Call::class.java) as Call<String>

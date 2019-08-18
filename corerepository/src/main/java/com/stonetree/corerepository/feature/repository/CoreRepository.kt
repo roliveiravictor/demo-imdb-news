@@ -21,7 +21,7 @@ class CoreRepository {
     private var baseUrl: String = ""
 
     var apiKey: String = ""
-    private set
+        private set
 
     @VisibleForTesting(otherwise = PRIVATE)
     val httpClient = OkHttpClient.Builder()
@@ -36,8 +36,8 @@ class CoreRepository {
         private var instance: CoreRepository? = null
         fun getInstance() =
             instance ?: CoreRepository().also { repository ->
-                    instance = repository
-                }
+                instance = repository
+            }
 
         fun start(context: Context) {
             getInstance().apply {
@@ -59,4 +59,3 @@ class CoreRepository {
         }
     }
 }
-

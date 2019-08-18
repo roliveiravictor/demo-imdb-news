@@ -21,7 +21,7 @@ class RepositoryExtensionsTest {
 
     private class CallTest : Call<String> {
         override fun enqueue(callback: Callback<String>) {
-
+            // Do Nothing
         }
 
         override fun isExecuted(): Boolean {
@@ -50,9 +50,9 @@ class RepositoryExtensionsTest {
     }
 
     @Test
-    fun test_enqueue_shouldIncrementIdling(){
+    fun test_enqueue_shouldIncrementIdling() {
         CallTest().enqueue {
-
+            // Do Nothing
         }
         assertFalse(getResource().isIdleNow)
     }
