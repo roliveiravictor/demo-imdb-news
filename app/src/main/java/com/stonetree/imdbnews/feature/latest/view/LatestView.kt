@@ -30,9 +30,11 @@ class LatestView : Fragment() {
         CoreRepository.start(context)
     }
 
-    override fun onCreateView
-                (inflater: LayoutInflater, viewGroup: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        viewGroup: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val data = ViewLatestBinding.inflate(inflater, viewGroup, false)
         val adapter = LatestAdapter()
 

@@ -11,12 +11,7 @@ staticAnalysis {
      *
      */
 
-    penalty none
-
-    penalty {
-        maxErrors = 0
-        maxWarnings = 0
-    }
+    penalty failFast
 
     checkstyle {
         toolVersion '8.8'

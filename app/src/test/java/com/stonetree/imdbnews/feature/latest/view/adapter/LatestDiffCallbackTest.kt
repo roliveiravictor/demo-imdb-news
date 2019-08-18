@@ -25,7 +25,7 @@ class LatestDiffCallbackTest {
         assertTrue(callback.areItemsTheSame(movie, movie))
     }
 
-    private fun createMovie() : Movie {
+    private fun createMovie(): Movie {
         return Movie()
     }
 }

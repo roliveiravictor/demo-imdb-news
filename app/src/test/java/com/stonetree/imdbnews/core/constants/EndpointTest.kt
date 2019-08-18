@@ -9,7 +9,7 @@ class EndpointTest {
 
     @Test
     fun test_imagesPath_shouldReturnSame() {
-        assertEquals( "movie/now_playing",LATEST_PATH)
-        assertEquals( "movie/{movie_id}", DETAILS_PATH)
+        assertEquals("movie/now_playing", LATEST_PATH)
+        assertEquals("movie/{movie_id}", DETAILS_PATH)
     }
 }

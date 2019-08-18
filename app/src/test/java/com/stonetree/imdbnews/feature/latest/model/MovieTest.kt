@@ -1,6 +1,6 @@
 package com.stonetree.imdbnews.feature.latest.model
 
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertNull
 import org.junit.Test
 
 class MovieTest {

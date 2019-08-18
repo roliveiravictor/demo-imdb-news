@@ -1,6 +1,6 @@
 package com.stonetree.imdbnews.feature.details.model
 
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertNull
 import org.junit.Test
 
 class DetailsModelTest {

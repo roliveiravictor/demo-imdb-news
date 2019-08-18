@@ -1,7 +1,6 @@
 package com.stonetree.imdbnews.feature.latest.res.source
 
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PageKeyedDataSource.LoadInitialCallback
 import androidx.paging.PageKeyedDataSource.LoadParams
 import androidx.paging.PageKeyedDataSource
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -28,28 +27,11 @@ class LatestDataSourceTest {
 
     private lateinit var source: LatestDataSource
 
-    private class InitialCallback : LoadInitialCallback<Long, Movie>() {
-        override fun onResult(
-            data: MutableList<Movie>, position: Int,
-            totalCount: Int, previousPageKey: Long?,
-            nextPageKey: Long?
-        ) {
-
-        }
-
+    private class LoadCallback : PageKeyedDataSource.LoadCallback<Long, Movie>() {
         override fun onResult(
             data: MutableList<Movie>,
-                              previousPageKey: Long?,
-                              nextPageKey: Long?
-        ) {
-
-        }
-    }
-
-    private class LoadCallback : PageKeyedDataSource.LoadCallback<Long, Movie>() {
-        override fun onResult(data: MutableList<Movie>, adjacentPageKey: Long?) {
-
-        }
+            adjacentPageKey: Long?
+        ) {}
     }
 
     @Before
