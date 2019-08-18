@@ -12,7 +12,8 @@ import com.facebook.imagepipeline.request.ImageRequest
 import com.stonetree.corerepository.core.constants.RepositoryConstants.POSTER_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
 import com.stonetree.corerepository.core.extensions.read
-import com.stonetree.corerepository.core.model.Status.*
+import com.stonetree.corerepository.core.model.Status.SUCCESS
+import com.stonetree.corerepository.core.model.Status.FAILED
 
 @BindingAdapter("isLoading")
 fun bindIsLoading(view: View, network: NetworkState?) {
