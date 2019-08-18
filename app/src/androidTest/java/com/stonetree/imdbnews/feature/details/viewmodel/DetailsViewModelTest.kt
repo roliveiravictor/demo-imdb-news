@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito.*
 
 @RunWith(AndroidJUnit4::class)
-class LatestViewModelTest {
+class DetailsViewModelTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
