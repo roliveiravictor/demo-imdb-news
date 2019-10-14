@@ -65,8 +65,11 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$converter_gson_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     testImplementation "junit:junit:$junit_version"
+
+    testImplementation "org.koin:koin-test:$koin_test_version"
 
     debugImplementation("androidx.fragment:fragment-testing:$fragment_testing_version") {
         exclude group: "androidx.test", module: "core"
