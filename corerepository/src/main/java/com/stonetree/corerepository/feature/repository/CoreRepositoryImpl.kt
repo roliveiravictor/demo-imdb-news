@@ -7,13 +7,15 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.API_KEY
 import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
 import com.stonetree.corerepository.core.constants.RepositoryConstants.TIMEOUT
 import com.stonetree.corerepository.feature.interceptor.CoreInterceptor
+import com.stonetree.corerepository.feature.interceptor.CoreInterceptorImpl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Constructor
 import java.util.concurrent.TimeUnit.SECONDS
 import kotlin.reflect.KClass
 
-class CoreRepositoryImpl : CoreRepository {
+class CoreRepositoryImpl(interceptor: CoreInterceptor) : CoreRepository {
 
     private lateinit var retrofit: Retrofit
 
@@ -25,7 +27,7 @@ class CoreRepositoryImpl : CoreRepository {
         .connectTimeout(TIMEOUT, SECONDS)
         .readTimeout(TIMEOUT, SECONDS)
         .writeTimeout(TIMEOUT, SECONDS)
-        .addInterceptor(CoreInterceptor.getLogging())
+        .addInterceptor(interceptor.log())
         .build()
 
     override fun key(): String = key
