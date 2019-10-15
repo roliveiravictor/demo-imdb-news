@@ -1,13 +1,18 @@
 package com.stonetree.imdbnews
 
 import android.app.Application
+import com.facebook.drawee.backends.pipeline.Fresco
+import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.imdbnews.core.injector.Injector
+import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 
 class MainApplication : Application() {
+
+    private val repository: CoreRepository by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -19,5 +24,8 @@ class MainApplication : Application() {
                 loadKoinModules(startModules())
             }
         }
+
+        Fresco.initialize(this@MainApplication)
+        repository.start(this@MainApplication)
     }
 }

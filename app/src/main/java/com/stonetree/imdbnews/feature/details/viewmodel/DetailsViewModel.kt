@@ -11,9 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(private val args: DetailsViewArgs) : ViewModel() {
-
-    private val repository = DetailsRepository.getInstance()
+class DetailsViewModel(val repository: DetailsRepository, private val args: DetailsViewArgs) : ViewModel() {
 
     val network: LiveData<NetworkState> = repository.getNetwork()
 

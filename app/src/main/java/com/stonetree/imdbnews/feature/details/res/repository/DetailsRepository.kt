@@ -5,19 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import com.stonetree.imdbnews.feature.details.res.api.DetailsApi
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
 import retrofit2.Call
 import java.lang.reflect.Modifier.PRIVATE
 
-class DetailsRepository {
+class DetailsRepository(private val repository: CoreRepository) {
 
-    @VisibleForTesting(otherwise = PRIVATE)
-    val api: DetailsApi = CoreRepository
-        .getInstance()
-        .retrofit
-        .create(DetailsApi::class.java)
+    val api: DetailsApi = repository.create(DetailsApi::class)
 
     private val network = MutableLiveData<NetworkState>()
 
@@ -31,20 +28,9 @@ class DetailsRepository {
         return details
     }
 
-    companion object {
-        @Volatile
-        private var instance: DetailsRepository? = null
-
-        fun getInstance() = instance ?: synchronized(this) {
-                DetailsRepository().also { repository ->
-                        instance = repository
-                }
-            }
-    }
-
     fun get(args: DetailsViewArgs) {
         network.postValue(NetworkState.LOADING)
-        val request: Call<DetailsModel> = api.get(args.movieId)
+        val request: Call<DetailsModel> = api.get(args.movieId, repository.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.let { details ->

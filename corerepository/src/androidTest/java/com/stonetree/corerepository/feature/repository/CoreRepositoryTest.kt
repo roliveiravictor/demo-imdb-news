@@ -13,11 +13,11 @@ class CoreRepositoryTest {
 
     private val context = getInstrumentation().targetContext
 
-    private val repository = CoreRepository.getInstance()
+    private val repository = CoreRepositoryImpl.getInstance()
 
     @Before
     fun setup() {
-        CoreRepository.start(context)
+        CoreRepositoryImpl.start(context)
     }
 
     @Test

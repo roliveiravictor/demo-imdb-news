@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.feature.latest.res.repository
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.extensions.enqueue
-import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import junit.framework.TestCase.assertNotNull
 import org.junit.Assert.assertNotEquals
@@ -18,7 +18,7 @@ class LatestRepositoryTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val core = CoreRepository.start(context)
+    private val core = CoreRepositoryImpl.start(context)
 
     private val repository = LatestRepository.getInstance()
 

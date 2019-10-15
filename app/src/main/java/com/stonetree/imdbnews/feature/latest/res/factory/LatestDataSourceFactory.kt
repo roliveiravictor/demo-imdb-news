@@ -7,19 +7,17 @@ import androidx.paging.DataSource
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import com.stonetree.imdbnews.feature.latest.res.source.LatestDataSource
+import org.koin.core.parameter.parametersOf
 
 class LatestDataSourceFactory(
-    private val repository: LatestRepository
+    val repository: LatestRepository,
+    val source: LatestDataSource
 ) : DataSource.Factory<Long, Movie>() {
 
     val data = MutableLiveData<LatestDataSource>()
 
-    @VisibleForTesting(otherwise = PRIVATE)
-    var source: LatestDataSource? = null
-
     override fun create(): DataSource<Long, Movie> {
-        source = LatestDataSource(repository)
         data.postValue(source)
-        return source as LatestDataSource
+        return source
     }
 }

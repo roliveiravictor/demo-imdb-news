@@ -16,7 +16,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
 import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.latest.model.Movie
@@ -33,7 +33,7 @@ class LatestViewModelTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = CoreRepository.start(context)
+    private val repository = CoreRepositoryImpl.start(context)
 
     private lateinit var vm: LatestViewModel
 
@@ -45,7 +45,7 @@ class LatestViewModelTest {
     @Test
     fun test_latestViewModel_shouldReturnDefaultValues() {
         vm.apply {
-            assertThat(factory, `is`(any(LatestDataSourceFactory::class.java)))
+            assertThat(source, `is`(any(LatestDataSourceFactory::class.java)))
             assertThat(config, `is`(any(PagedList.Config::class.java)))
             assertThat(latest, `is`(any(LiveData::class.java)))
             assertThat(network, `is`(any(LiveData::class.java)))

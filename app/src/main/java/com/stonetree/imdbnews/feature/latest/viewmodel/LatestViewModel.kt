@@ -1,7 +1,5 @@
 package com.stonetree.imdbnews.feature.latest.viewmodel
 
-import androidx.annotation.VisibleForTesting
-import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -19,15 +17,11 @@ import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 
-class LatestViewModel : ViewModel() {
+class LatestViewModel(
+    val repository: LatestRepository,
+    val source: LatestDataSourceFactory
+) : ViewModel() {
 
-    private val repository = LatestRepository.getInstance()
-
-    @VisibleForTesting(otherwise = PRIVATE)
-    val factory: LatestDataSourceFactory =
-        LatestDataSourceFactory(repository)
-
-    @VisibleForTesting(otherwise = PRIVATE)
     val config: PagedList.Config = PagedList.Config.Builder()
         .setInitialLoadSizeHint(PAGE_SIZE)
         .setPageSize(PAGE_SIZE)
@@ -36,11 +30,11 @@ class LatestViewModel : ViewModel() {
         .build()
 
     val latest: LiveData<PagedList<Movie>> =
-        LivePagedListBuilder(factory, config)
+        LivePagedListBuilder(source, config)
         .setFetchExecutor(Executors.newFixedThreadPool(MAX_THREADS))
         .build()
 
-    val network: LiveData<NetworkState> = switchMap(factory.data) {
+    val network: LiveData<NetworkState> = switchMap(source.data) {
         data -> data.getNetwork()
     }
 

@@ -10,7 +10,7 @@ import org.junit.Test
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
@@ -29,7 +29,7 @@ class DetailsViewModelTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = CoreRepository.start(context)
+    private val repository = CoreRepositoryImpl.start(context)
 
     private lateinit var vm: DetailsViewModel
 

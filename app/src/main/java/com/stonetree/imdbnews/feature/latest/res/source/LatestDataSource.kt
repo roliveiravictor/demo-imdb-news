@@ -23,11 +23,13 @@ class LatestDataSource
         return network
     }
 
-    override fun loadInitial
-                (params: LoadInitialParams<Long>, callback: LoadInitialCallback<Long, Movie>) {
+    override fun loadInitial(
+        params: LoadInitialParams<Long>,
+        callback: LoadInitialCallback<Long, Movie>
+    ) {
 
         network.postValue(LOADING)
-        val request: Call<LatestModel> = repository.api.get(1)
+        val request: Call<LatestModel> = repository.api.get(1, repository.repository.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.results?.let { movies ->
@@ -37,13 +39,13 @@ class LatestDataSource
             }
 
             onFailure = { error ->
-                network.postValue(NetworkState.error(error?.let { it.message }))
+                network.postValue(NetworkState.error(error?.message))
             }
         }
     }
 
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Long, Movie>) {
-        val request: Call<LatestModel> = repository.api.get(params.key)
+        val request: Call<LatestModel> = repository.api.get(params.key, repository.repository.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.apply {
@@ -54,7 +56,7 @@ class LatestDataSource
             }
 
             onFailure = { error ->
-                network.postValue(NetworkState.error(error?.let { it.message }))
+                network.postValue(NetworkState.error(error?.message))
             }
         }
     }
@@ -66,8 +68,8 @@ class LatestDataSource
     @VisibleForTesting(otherwise = PRIVATE)
     fun getNextKey(model: LatestModel, params: LoadParams<Long>): Long? {
         return if (model.totalPages == params.key)
-                null
-            else
-                params.key + 1
+            null
+        else
+            params.key + 1
     }
 }
