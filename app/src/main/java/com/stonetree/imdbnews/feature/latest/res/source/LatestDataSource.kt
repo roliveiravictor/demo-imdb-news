@@ -30,8 +30,8 @@ class LatestDataSource(
         params: LoadParams<Long>,
         callback: LoadCallback<Long, Movie>
     ) {
-        repository.lazy(params) { model ->
-            callback.onResult(this, getNextKey(model, params))
+        repository.lazy(params) { movies ->
+            callback.onResult(movies, getNextKey(this, params))
         }
     }
 

@@ -30,13 +30,13 @@ class LatestRepository(val core: CoreRepository) {
         }
     }
 
-    fun lazy(params: LoadParams<Long>, callback: List<Movie>.(LatestModel) -> Unit) {
+    fun lazy(params: LoadParams<Long>, callback: LatestModel.(List<Movie>) -> Unit) {
         val request: Call<LatestModel> = api.get(params.key, core.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.apply {
                     results?.let { movies ->
-                        callback.invoke(movies, this)
+                        callback.invoke(this, movies)
                     }
                 }
             }
