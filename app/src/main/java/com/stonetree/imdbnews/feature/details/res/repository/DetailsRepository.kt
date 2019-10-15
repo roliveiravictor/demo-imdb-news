@@ -16,15 +16,12 @@ class DetailsRepository(private val repository: CoreRepository) {
 
     val api: DetailsApi = repository.create(DetailsApi::class)
 
-    private val network = MutableLiveData<NetworkState>()
+    var network = MutableLiveData<NetworkState>()
+    private set
 
     private val details = MutableLiveData<DetailsModel>()
 
-    fun getNetwork(): MutableLiveData<NetworkState> {
-        return network
-    }
-
-    fun getDetails(): MutableLiveData<DetailsModel> {
+    fun details(): MutableLiveData<DetailsModel> {
         return details
     }
 

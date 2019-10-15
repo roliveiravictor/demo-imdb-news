@@ -13,9 +13,9 @@ import kotlinx.coroutines.launch
 
 class DetailsViewModel(val repository: DetailsRepository, private val args: DetailsViewArgs) : ViewModel() {
 
-    val network: LiveData<NetworkState> = repository.getNetwork()
+    val network: LiveData<NetworkState> = repository.network
 
-    val details: LiveData<DetailsModel> = repository.getDetails()
+    val details: LiveData<DetailsModel> = repository.details()
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {

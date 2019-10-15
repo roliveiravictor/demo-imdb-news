@@ -9,9 +9,9 @@ import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import retrofit2.Call
 
-class LatestRepository(val core: CoreRepository) {
+class LatestRepository(val repository: CoreRepository) {
 
-    private val api: LatestApi = core.create(LatestApi::class)
+    private val api: LatestApi = repository.create(LatestApi::class)
 
     private val network = MutableLiveData<NetworkState>()
 
@@ -22,7 +22,7 @@ class LatestRepository(val core: CoreRepository) {
     fun load(callback: List<Movie>.() -> Unit) {
         network.postValue(NetworkState.LOADING)
 
-        val request: Call<LatestModel> = api.get(1, core.key())
+        val request: Call<LatestModel> = api.get(1, repository.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.results?.let { movies ->
@@ -38,7 +38,7 @@ class LatestRepository(val core: CoreRepository) {
     }
 
     fun lazy(params: LoadParams<Long>, callback: LatestModel.(List<Movie>) -> Unit) {
-        val request: Call<LatestModel> = api.get(params.key, core.key())
+        val request: Call<LatestModel> = api.get(params.key, repository.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.apply {
