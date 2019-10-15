@@ -35,7 +35,7 @@ class LatestViewModel(
         .build()
 
     val network: LiveData<NetworkState> = switchMap(source.data) {
-        data -> data.getNetwork()
+        data -> data.network
     }
 
     @ExperimentalCoroutinesApi

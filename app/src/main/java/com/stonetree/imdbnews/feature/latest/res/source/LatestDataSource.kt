@@ -14,14 +14,12 @@ import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import retrofit2.Call
 
-class LatestDataSource
-    (private val repository: LatestRepository) : PageKeyedDataSource<Long, Movie>() {
+class LatestDataSource(
+    private val repository: LatestRepository
+) : PageKeyedDataSource<Long, Movie>() {
 
-    private val network = MutableLiveData<NetworkState>()
-
-    fun getNetwork(): MutableLiveData<NetworkState> {
-        return network
-    }
+    var network = MutableLiveData<NetworkState>()
+    private set
 
     override fun loadInitial(
         params: LoadInitialParams<Long>,
@@ -65,8 +63,7 @@ class LatestDataSource
         Log.w(javaClass.name, params.key.toString())
     }
 
-    @VisibleForTesting(otherwise = PRIVATE)
-    fun getNextKey(model: LatestModel, params: LoadParams<Long>): Long? {
+    private fun getNextKey(model: LatestModel, params: LoadParams<Long>): Long? {
         return if (model.totalPages == params.key)
             null
         else

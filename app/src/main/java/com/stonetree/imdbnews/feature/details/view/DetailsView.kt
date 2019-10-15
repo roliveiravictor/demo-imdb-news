@@ -26,16 +26,6 @@ class DetailsView : Fragment() {
 
     val vm: DetailsViewModel by viewModel { parametersOf(args) }
 
-    private val module = module {
-        factory { DetailsRepository(get()) }
-        viewModel { (args: DetailsViewArgs) -> DetailsViewModel(get(), args) }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        loadKoinModules(module)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         viewGroup: ViewGroup?,
