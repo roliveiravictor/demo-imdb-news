@@ -1,11 +1,9 @@
 package com.stonetree.imdbnews.feature.latest.res.repository
 
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PageKeyedDataSource
 import androidx.paging.PageKeyedDataSource.*
 import com.stonetree.corerepository.core.extensions.enqueue
 import com.stonetree.corerepository.core.model.NetworkState
-import com.stonetree.corerepository.feature.callback.CoreRepositoryCallback
 import com.stonetree.corerepository.feature.repository.CoreRepository
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
@@ -15,17 +13,26 @@ class LatestRepository(val core: CoreRepository) {
 
     private val api: LatestApi = core.create(LatestApi::class)
 
+    private val network = MutableLiveData<NetworkState>()
+
+    fun getNetwork(): MutableLiveData<NetworkState> {
+        return network
+    }
+
     fun load(callback: List<Movie>.() -> Unit) {
+        network.postValue(NetworkState.LOADING)
+
         val request: Call<LatestModel> = api.get(1, core.key())
         request.enqueue {
             onResponse = { response ->
                 response.body()?.results?.let { movies ->
                     callback.invoke(movies)
+                    network.postValue(NetworkState.LOADED)
                 }
             }
 
             onFailure = { error ->
-                //                network.postValue(NetworkState.error(error?.message))
+                network.postValue(NetworkState.error(error?.message))
             }
         }
     }
@@ -42,7 +49,7 @@ class LatestRepository(val core: CoreRepository) {
             }
 
             onFailure = { error ->
-                //                network.postValue(NetworkState.error(error?.message))
+                network.postValue(NetworkState.error(error?.message))
             }
         }
     }

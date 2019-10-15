@@ -12,17 +12,12 @@ class LatestDataSource(
     private val repository: LatestRepository
 ) : PageKeyedDataSource<Long, Movie>() {
 
-    var network = MutableLiveData<NetworkState>()
-        private set
-
     override fun loadInitial(
         params: LoadInitialParams<Long>,
         callback: LoadInitialCallback<Long, Movie>
     ) {
-        network.postValue(NetworkState.LOADING)
         repository.load {
             callback.onResult(this, null, 2L)
-            network.postValue(NetworkState.LOADED)
         }
     }
 

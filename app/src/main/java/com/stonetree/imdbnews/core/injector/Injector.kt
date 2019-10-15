@@ -25,14 +25,16 @@ class Injector {
 
     private val latest = module {
         factory { LatestAdapter() }
-        factory { LatestRepository(get()) }
         factory { LatestDataSource(get()) }
         factory { LatestDataSourceFactory(get(), get()) }
+
+        single { LatestRepository(get()) }
+
         viewModel { LatestViewModel(get(), get()) }
     }
 
     private val repository = module {
-        factory <CoreInterceptor> { CoreInterceptorImpl() }
+        factory<CoreInterceptor> { CoreInterceptorImpl() }
         single<CoreRepository> { CoreRepositoryImpl(get()) }
     }
 

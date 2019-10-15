@@ -31,12 +31,10 @@ class LatestViewModel(
 
     val latest: LiveData<PagedList<Movie>> =
         LivePagedListBuilder(source, config)
-        .setFetchExecutor(Executors.newFixedThreadPool(MAX_THREADS))
-        .build()
+            .setFetchExecutor(Executors.newFixedThreadPool(MAX_THREADS))
+            .build()
 
-    val network: LiveData<NetworkState> = switchMap(source.data) {
-        data -> data.network
-    }
+    val network: LiveData<NetworkState> = repository.getNetwork()
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {
