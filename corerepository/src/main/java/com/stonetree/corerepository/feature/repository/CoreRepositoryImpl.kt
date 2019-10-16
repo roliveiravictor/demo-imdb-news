@@ -6,16 +6,19 @@ import com.stonetree.corerepository.core.constants.RepositoryConstants.BASE_URL
 import com.stonetree.corerepository.core.constants.RepositoryConstants.API_KEY
 import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
 import com.stonetree.corerepository.core.constants.RepositoryConstants.TIMEOUT
+import com.stonetree.corerepository.feature.httpclient.CoreHttpClient
 import com.stonetree.corerepository.feature.interceptor.CoreInterceptor
 import com.stonetree.corerepository.feature.interceptor.CoreInterceptorImpl
 import okhttp3.OkHttpClient
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Constructor
 import java.util.concurrent.TimeUnit.SECONDS
 import kotlin.reflect.KClass
 
-class CoreRepositoryImpl(interceptor: CoreInterceptor) : CoreRepository {
+class CoreRepositoryImpl : KoinComponent, CoreRepository {
 
     private lateinit var retrofit: Retrofit
 
@@ -23,16 +26,11 @@ class CoreRepositoryImpl(interceptor: CoreInterceptor) : CoreRepository {
 
     private var key: String = ""
 
-    private val httpClient = OkHttpClient.Builder()
-        .connectTimeout(TIMEOUT, SECONDS)
-        .readTimeout(TIMEOUT, SECONDS)
-        .writeTimeout(TIMEOUT, SECONDS)
-        .addInterceptor(interceptor.log())
-        .build()
+    private val httpClient: CoreHttpClient by inject()
 
     override fun key(): String = key
 
-    override fun<T: Any> create(clazz: KClass<T>): T {
+    override fun <T : Any> create(clazz: KClass<T>): T {
         return this.retrofit.create(clazz.java)
     }
 
@@ -46,7 +44,7 @@ class CoreRepositoryImpl(interceptor: CoreInterceptor) : CoreRepository {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(httpClient)
+            .client(httpClient.create())
             .build()
     }
 }

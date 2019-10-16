@@ -47,11 +47,17 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$converter_gson_version"
+
     api "androidx.test.espresso:espresso-idling-resource:$espresso_core_version"
+
+    api "org.koin:koin-androidx-viewmodel:$koin_version"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:$mockito_core_version"
     testImplementation "org.mockito:mockito-inline:$mockito_core_version"
+
+    testApi "org.koin:koin-test:$koin_test_version"
+    testApi "org.robolectric:robolectric:$robolectric_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

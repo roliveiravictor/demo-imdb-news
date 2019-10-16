@@ -7,7 +7,7 @@ import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import org.junit.Test
 
-class CoreNetworkModelTest {
+class CoreNetworkStateTest {
 
     @Test
     fun test_loaded_ShouldReturnRunning() {

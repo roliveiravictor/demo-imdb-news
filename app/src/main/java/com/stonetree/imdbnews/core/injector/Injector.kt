@@ -1,5 +1,7 @@
 package com.stonetree.imdbnews.core.injector
 
+import com.stonetree.corerepository.feature.httpclient.CoreHttpClient
+import com.stonetree.corerepository.feature.httpclient.CoreHttpClientImpl
 import com.stonetree.corerepository.feature.interceptor.CoreInterceptor
 import com.stonetree.corerepository.feature.interceptor.CoreInterceptorImpl
 import com.stonetree.corerepository.feature.repository.CoreRepository
@@ -35,7 +37,8 @@ class Injector {
 
     private val repository = module {
         factory<CoreInterceptor> { CoreInterceptorImpl() }
-        single<CoreRepository> { CoreRepositoryImpl(get()) }
+        factory<CoreHttpClient> { CoreHttpClientImpl(get()) }
+        single<CoreRepository> { CoreRepositoryImpl() }
     }
 
     fun startModules(): List<Module> {
