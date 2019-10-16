@@ -1,11 +1,11 @@
 package com.stonetree.imdbnews.core.injector
 
-import com.stonetree.corerepository.feature.httpclient.CoreHttpClient
-import com.stonetree.corerepository.feature.httpclient.CoreHttpClientImpl
-import com.stonetree.corerepository.feature.interceptor.CoreInterceptor
-import com.stonetree.corerepository.feature.interceptor.CoreInterceptorImpl
-import com.stonetree.corerepository.feature.repository.CoreRepository
-import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
+import com.stonetree.restclient.feature.httpclient.CoreHttpClient
+import com.stonetree.restclient.feature.httpclient.CoreHttpClientImpl
+import com.stonetree.restclient.feature.interceptor.RestClientInterceptor
+import com.stonetree.restclient.feature.interceptor.RestClientInterceptorImpl
+import com.stonetree.restclient.feature.repository.RestClient
+import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.feature.details.res.repository.DetailsRepository
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
 import com.stonetree.imdbnews.feature.details.viewmodel.DetailsViewModel
@@ -36,9 +36,9 @@ class Injector {
     }
 
     private val repository = module {
-        factory<CoreInterceptor> { CoreInterceptorImpl() }
+        factory<RestClientInterceptor> { RestClientInterceptorImpl() }
         factory<CoreHttpClient> { CoreHttpClientImpl(get()) }
-        single<CoreRepository> { CoreRepositoryImpl() }
+        single<RestClient> { RestClientImpl() }
     }
 
     fun startModules(): List<Module> {

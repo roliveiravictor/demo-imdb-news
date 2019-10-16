@@ -1,9 +1,7 @@
 package com.stonetree.imdbnews.feature.latest.res.source
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.stonetree.corerepository.core.model.NetworkState
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository

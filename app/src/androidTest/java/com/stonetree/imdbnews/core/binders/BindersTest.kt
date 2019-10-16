@@ -6,7 +6,7 @@ import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.rule.ActivityTestRule
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
-import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.restclient.core.model.NetworkState
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH

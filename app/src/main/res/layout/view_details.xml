@@ -12,7 +12,7 @@
 
         <variable
             name="network"
-            type="com.stonetree.corerepository.core.model.NetworkState" />
+            type="com.stonetree.restclient.core.model.NetworkState" />
 
         <variable
             name="vm"

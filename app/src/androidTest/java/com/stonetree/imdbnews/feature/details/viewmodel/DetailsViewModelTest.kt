@@ -1,7 +1,7 @@
 package com.stonetree.imdbnews.feature.details.viewmodel
 
 import androidx.lifecycle.LiveData
-import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.restclient.core.model.NetworkState
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.any
 import org.hamcrest.MatcherAssert.assertThat
@@ -10,7 +10,7 @@ import org.junit.Test
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
+import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
@@ -29,7 +29,7 @@ class DetailsViewModelTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = CoreRepositoryImpl.start(context)
+    private val repository = RestClientImpl.start(context)
 
     private lateinit var vm: DetailsViewModel
 

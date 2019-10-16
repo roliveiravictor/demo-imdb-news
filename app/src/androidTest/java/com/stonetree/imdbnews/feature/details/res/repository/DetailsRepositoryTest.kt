@@ -2,8 +2,8 @@ package com.stonetree.imdbnews.feature.details.res.repository
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.core.extensions.enqueue
-import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
+import com.stonetree.restclient.core.extensions.enqueue
+import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import junit.framework.TestCase.assertNotNull
@@ -19,7 +19,7 @@ class DetailsRepositoryTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val core = CoreRepositoryImpl.start(context)
+    private val core = RestClientImpl.start(context)
 
     private val repository = DetailsRepository.getInstance()
 

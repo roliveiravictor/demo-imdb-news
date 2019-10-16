@@ -10,7 +10,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling
+import com.stonetree.restclient.feature.idling.RestClientIdling
 import kotlinx.android.synthetic.main.view_latest.latest
 import org.junit.After
 import org.junit.Assert.assertNotNull
@@ -38,7 +38,7 @@ import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import com.stonetree.imdbnews.core.constants.Constants.PACKAGE
 import com.stonetree.imdbnews.core.extensions.launchFragmentScenario
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.imdbnews.core.extensions.execute
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.`is`
@@ -55,7 +55,7 @@ class LatestViewTest {
     @Before
     fun setup() {
         Intents.init()
-        IdlingRegistry.getInstance().register(CoreRepositoryIdling.getResource())
+        IdlingRegistry.getInstance().register(RestClientIdling.getResource())
         jumpToLatestViewFragment()
     }
 
@@ -70,7 +70,7 @@ class LatestViewTest {
 
     @After
     fun clean() {
-        IdlingRegistry.getInstance().unregister(CoreRepositoryIdling.getResource())
+        IdlingRegistry.getInstance().unregister(RestClientIdling.getResource())
         Intents.release()
     }
 

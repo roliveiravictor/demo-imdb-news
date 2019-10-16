@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.feature.details.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.restclient.core.model.NetworkState
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import com.stonetree.imdbnews.feature.details.res.repository.DetailsRepository
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs

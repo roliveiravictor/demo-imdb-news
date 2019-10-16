@@ -5,7 +5,7 @@ import androidx.paging.PageKeyedDataSource.LoadParams
 import androidx.paging.PageKeyedDataSource
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository

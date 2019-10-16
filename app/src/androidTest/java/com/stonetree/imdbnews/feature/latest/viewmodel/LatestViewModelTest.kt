@@ -2,7 +2,7 @@ package com.stonetree.imdbnews.feature.latest.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.restclient.core.model.NetworkState
 import com.stonetree.imdbnews.feature.latest.res.factory.LatestDataSourceFactory
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.any
@@ -14,9 +14,9 @@ import org.mockito.Mockito.verify
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
-import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
+import com.stonetree.restclient.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
+import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.latest.model.Movie
@@ -33,7 +33,7 @@ class LatestViewModelTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = CoreRepositoryImpl.start(context)
+    private val repository = RestClientImpl.start(context)
 
     private lateinit var vm: LatestViewModel
 

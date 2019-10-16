@@ -1,18 +1,15 @@
 package com.stonetree.imdbnews.feature.details.res.repository
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
-import com.stonetree.corerepository.core.extensions.enqueue
-import com.stonetree.corerepository.core.model.NetworkState
-import com.stonetree.corerepository.feature.repository.CoreRepository
-import com.stonetree.corerepository.feature.repository.CoreRepositoryImpl
+import com.stonetree.restclient.core.extensions.enqueue
+import com.stonetree.restclient.core.model.NetworkState
+import com.stonetree.restclient.feature.repository.RestClient
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import com.stonetree.imdbnews.feature.details.res.api.DetailsApi
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
 import retrofit2.Call
-import java.lang.reflect.Modifier.PRIVATE
 
-class DetailsRepository(private val repository: CoreRepository) {
+class DetailsRepository(private val repository: RestClient) {
 
     val api: DetailsApi = repository.create(DetailsApi::class)
 

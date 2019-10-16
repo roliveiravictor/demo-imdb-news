@@ -2,7 +2,7 @@ package com.stonetree.imdbnews
 
 import android.app.Application
 import com.facebook.drawee.backends.pipeline.Fresco
-import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.restclient.feature.repository.RestClient
 import com.stonetree.imdbnews.core.injector.Injector
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -12,7 +12,7 @@ import org.koin.core.context.startKoin
 
 class MainApplication : Application() {
 
-    private val repository: CoreRepository by inject()
+    private val repository: RestClient by inject()
 
     override fun onCreate() {
         super.onCreate()

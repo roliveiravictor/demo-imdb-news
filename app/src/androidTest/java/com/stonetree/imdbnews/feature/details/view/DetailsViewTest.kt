@@ -14,7 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.Visibility.GONE
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.corerepository.feature.idling.CoreRepositoryIdling
+import com.stonetree.restclient.feature.idling.RestClientIdling
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
@@ -44,7 +44,7 @@ class DetailsViewTest {
 
     @Before
     fun setup() {
-        IdlingRegistry.getInstance().register(CoreRepositoryIdling.getResource())
+        IdlingRegistry.getInstance().register(RestClientIdling.getResource())
         jumpToDetailsViewFragment()
     }
 
@@ -62,7 +62,7 @@ class DetailsViewTest {
 
     @After
     fun unregisterIdlingResource() {
-        IdlingRegistry.getInstance().unregister(CoreRepositoryIdling.getResource())
+        IdlingRegistry.getInstance().unregister(RestClientIdling.getResource())
     }
 
     @Test

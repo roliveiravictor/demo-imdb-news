@@ -6,14 +6,13 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.cancel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
-import com.stonetree.corerepository.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.restclient.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
+import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.imdbnews.feature.latest.res.factory.LatestDataSourceFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import androidx.lifecycle.Transformations.switchMap
-import com.stonetree.corerepository.core.constants.RepositoryConstants.MAX_THREADS
+import com.stonetree.restclient.core.constants.RepositoryConstants.MAX_THREADS
 import java.util.concurrent.Executors
-import com.stonetree.corerepository.core.model.NetworkState
+import com.stonetree.restclient.core.model.NetworkState
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 

@@ -5,15 +5,15 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
-import com.stonetree.corerepository.core.model.NetworkState
-import com.stonetree.corerepository.core.model.NetworkState.Companion.LOADING
+import com.stonetree.restclient.core.model.NetworkState
+import com.stonetree.restclient.core.model.NetworkState.Companion.LOADING
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import com.facebook.imagepipeline.request.ImageRequest
-import com.stonetree.corerepository.core.constants.RepositoryConstants.POSTER_URL
-import com.stonetree.corerepository.core.constants.RepositoryConstants.REPOSITORY_PROPS
-import com.stonetree.corerepository.core.extensions.read
-import com.stonetree.corerepository.core.model.Status.SUCCESS
-import com.stonetree.corerepository.core.model.Status.FAILED
+import com.stonetree.restclient.core.constants.RepositoryConstants.POSTER_URL
+import com.stonetree.restclient.core.constants.RepositoryConstants.REPOSITORY_PROPS
+import com.stonetree.restclient.core.extensions.read
+import com.stonetree.restclient.core.model.Status.SUCCESS
+import com.stonetree.restclient.core.model.Status.FAILED
 
 @BindingAdapter("isLoading")
 fun bindIsLoading(view: View, network: NetworkState?) {

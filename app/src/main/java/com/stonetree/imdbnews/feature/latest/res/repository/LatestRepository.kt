@@ -2,14 +2,14 @@ package com.stonetree.imdbnews.feature.latest.res.repository
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource.*
-import com.stonetree.corerepository.core.extensions.enqueue
-import com.stonetree.corerepository.core.model.NetworkState
-import com.stonetree.corerepository.feature.repository.CoreRepository
+import com.stonetree.restclient.core.extensions.enqueue
+import com.stonetree.restclient.core.model.NetworkState
+import com.stonetree.restclient.feature.repository.RestClient
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import retrofit2.Call
 
-class LatestRepository(val repository: CoreRepository) {
+class LatestRepository(val repository: RestClient) {
 
     private val api: LatestApi = repository.create(LatestApi::class)
 
