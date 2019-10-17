@@ -14,7 +14,9 @@ import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
+import com.stonetree.imdbnews.feature.details.res.repository.DetailsRepository
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
+import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
@@ -29,7 +31,9 @@ class DetailsViewModelTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = RestClientImpl.start(context)
+    private val client = RestClientImpl()
+
+    private val repository = DetailsRepository(client)
 
     private lateinit var vm: DetailsViewModel
 
@@ -37,7 +41,8 @@ class DetailsViewModelTest {
 
     @Before
     fun setup() {
-        vm = DetailsViewModel(args)
+        client.start(context)
+        vm = DetailsViewModel(repository, args)
     }
 
     @Test

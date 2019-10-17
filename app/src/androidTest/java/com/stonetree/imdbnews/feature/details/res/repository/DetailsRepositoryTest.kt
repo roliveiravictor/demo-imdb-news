@@ -8,6 +8,7 @@ import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import junit.framework.TestCase.assertNotNull
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import retrofit2.Call
@@ -19,9 +20,14 @@ class DetailsRepositoryTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val core = RestClientImpl.start(context)
+    private val client = RestClientImpl()
 
-    private val repository = DetailsRepository.getInstance()
+    private val repository = DetailsRepository(client)
+
+    @Before
+    fun setup() {
+        client.start(context)
+    }
 
     @Test
     fun test_api_shouldReturnObject() {
@@ -31,7 +37,7 @@ class DetailsRepositoryTest {
     @Test
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
-        val request: Call<DetailsModel> = repository.api.get(MOVIE_ID_VALUE)
+        val request: Call<DetailsModel> = repository.api.get(MOVIE_ID_VALUE, client.key())
         request.enqueue {
             onResponse = { response ->
                 assertGetRequests(response)

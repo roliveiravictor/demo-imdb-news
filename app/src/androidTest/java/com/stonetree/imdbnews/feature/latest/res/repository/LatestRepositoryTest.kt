@@ -7,6 +7,7 @@ import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import junit.framework.TestCase.assertNotNull
 import org.junit.Assert.assertNotEquals
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import retrofit2.Call
@@ -18,13 +19,13 @@ class LatestRepositoryTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val core = RestClientImpl.start(context)
+    private val client = RestClientImpl()
 
-    private val repository = LatestRepository.getInstance()
+    private val repository = LatestRepository(client)
 
-    @Test
-    fun test_api_shouldReturnObject() {
-        assertNotNull(repository.api)
+    @Before
+    fun setup() {
+        client.start(context)
     }
 
     /**
@@ -44,7 +45,7 @@ class LatestRepositoryTest {
     @Test
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
-        val request: Call<LatestModel> = repository.api.get(1)
+        val request: Call<LatestModel> = client.create(LatestApi::class).get(1, client.key())
         request.enqueue {
             onResponse = { response ->
                 assertGetRequests(response)

@@ -20,6 +20,8 @@ import com.stonetree.restclient.feature.repository.RestClientImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.latest.model.Movie
+import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
+import com.stonetree.imdbnews.feature.latest.res.source.LatestDataSource
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
 import org.junit.Rule
@@ -33,13 +35,20 @@ class LatestViewModelTest {
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    private val repository = RestClientImpl.start(context)
+    private val client = RestClientImpl()
+
+    private val repository = LatestRepository(client)
+
+    private val source = LatestDataSource(repository)
+
+    private val factory = LatestDataSourceFactory(repository, source)
 
     private lateinit var vm: LatestViewModel
 
     @Before
     fun setup() {
-        vm = LatestViewModel()
+        client.start(context)
+        vm = LatestViewModel(repository, factory)
     }
 
     @Test

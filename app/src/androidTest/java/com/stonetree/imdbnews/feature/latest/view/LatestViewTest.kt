@@ -75,19 +75,6 @@ class LatestViewTest {
     }
 
     @Test
-    fun test_lazyVm_shouldReturnNotNull() {
-        assertNotNull(fragment?.vm)
-    }
-
-    @Test
-    fun test_bindObservers_shouldReturnNothingNull() {
-        fragment?.vm?.apply {
-            assertTrue(latest.hasObservers())
-            assertTrue(network.hasObservers())
-        }
-    }
-
-    @Test
     fun test_useAppContext_shouldReturnPackageName() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals(PACKAGE, context.packageName)
@@ -134,8 +121,9 @@ class LatestViewTest {
     fun test_latestInitialLoading_shouldReturnTagZero() {
         onView(
             allOf(
-            withId(R.id.poster),
-            withTagValue(`is`(IMAGE_BASE_URL + IMAGE_PATH)))
+                withId(R.id.poster),
+                withTagValue(`is`(IMAGE_BASE_URL + IMAGE_PATH))
+            )
         ).check(matches(isDisplayed()))
     }
 
@@ -148,16 +136,6 @@ class LatestViewTest {
                 assertTrue(spanCount == 2)
                 assertTrue(orientation == VERTICAL)
             }
-        }
-    }
-
-    @Test
-    fun test_pagination_shouldReturnPagedItems() {
-        onView(withId(R.id.latest))
-            .perform(swipeUp())
-
-        fragment?.vm?.latest?.value?.size?.apply {
-            assertTrue(this > PAGE_SIZE)
         }
     }
 }
