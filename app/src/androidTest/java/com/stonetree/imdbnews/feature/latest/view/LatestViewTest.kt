@@ -12,14 +12,10 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.restclient.feature.idling.RestClientIdling
 import kotlinx.android.synthetic.main.view_latest.latest
-import org.junit.After
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Assert.assertNotEquals
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -42,6 +38,7 @@ import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.imdbnews.core.extensions.execute
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.`is`
+import org.junit.*
 
 @RunWith(AndroidJUnit4::class)
 class LatestViewTest {
@@ -118,6 +115,7 @@ class LatestViewTest {
     }
 
     @Test
+    @Ignore("Implement mock server")
     fun test_latestInitialLoading_shouldReturnTagZero() {
         onView(
             allOf(

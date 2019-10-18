@@ -2,6 +2,7 @@ package com.stonetree.imdbnews.feature.latest.res.factory
 
 import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.imdbnews.MainView
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
@@ -21,13 +22,15 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class LatestDataSourceFactoryTest {
 
+    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+
     private lateinit var factory: LatestDataSourceFactory
 
     private lateinit var repository: LatestRepository
 
     private val client = RestClientImpl()
 
-    private val source = LatestDataSource(repository)
+    private lateinit var source: LatestDataSource
 
     @Rule
     @JvmField
@@ -35,14 +38,16 @@ class LatestDataSourceFactoryTest {
 
     @Before
     fun setup() {
+        client.start(context)
         repository = LatestRepository(client)
+        source = LatestDataSource(repository)
         factory = LatestDataSourceFactory(repository, source)
     }
 
     @Test
     fun test_latestDataSourceFactory_shouldReturnDefaultValues() {
         assertThat(factory.data, `is`(any(MutableLiveData::class.java)))
-        assertNull(factory.source)
+        assertNotNull(factory.source)
     }
 
     @Test

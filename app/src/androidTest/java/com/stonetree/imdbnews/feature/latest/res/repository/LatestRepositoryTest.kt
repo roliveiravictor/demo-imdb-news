@@ -21,8 +21,6 @@ class LatestRepositoryTest {
 
     private val client = RestClientImpl()
 
-    private val repository = LatestRepository(client)
-
     @Before
     fun setup() {
         client.start(context)

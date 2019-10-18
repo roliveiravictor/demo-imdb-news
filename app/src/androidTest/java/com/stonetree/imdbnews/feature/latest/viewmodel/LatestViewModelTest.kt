@@ -37,17 +37,20 @@ class LatestViewModelTest {
 
     private val client = RestClientImpl()
 
-    private val repository = LatestRepository(client)
+    private lateinit var repository: LatestRepository
 
-    private val source = LatestDataSource(repository)
+    private lateinit var source: LatestDataSource
 
-    private val factory = LatestDataSourceFactory(repository, source)
+    private lateinit var factory: LatestDataSourceFactory
 
     private lateinit var vm: LatestViewModel
 
     @Before
     fun setup() {
         client.start(context)
+        repository = LatestRepository(client)
+        source = LatestDataSource(repository)
+        factory = LatestDataSourceFactory(repository, source)
         vm = LatestViewModel(repository, factory)
     }
 

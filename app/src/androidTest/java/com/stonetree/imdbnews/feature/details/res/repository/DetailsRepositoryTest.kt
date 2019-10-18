@@ -22,11 +22,12 @@ class DetailsRepositoryTest {
 
     private val client = RestClientImpl()
 
-    private val repository = DetailsRepository(client)
+    private lateinit var repository: DetailsRepository
 
     @Before
     fun setup() {
         client.start(context)
+        repository = DetailsRepository(client)
     }
 
     @Test
