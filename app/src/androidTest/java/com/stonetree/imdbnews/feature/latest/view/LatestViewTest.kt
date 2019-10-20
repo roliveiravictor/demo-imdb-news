@@ -34,7 +34,6 @@ import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import com.stonetree.imdbnews.core.constants.Constants.PACKAGE
 import com.stonetree.imdbnews.core.extensions.launchFragmentScenario
-import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
 import com.stonetree.imdbnews.core.extensions.execute
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.`is`

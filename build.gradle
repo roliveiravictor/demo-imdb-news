@@ -25,7 +25,9 @@ buildscript {
         ktlint_version = '8.0.0'
         koin_test_version = '2.0.1'
         koin_version = '2.0.1'
-        robolectric_version = '4.3'
+        robolectric_version = '4.3.1'
+        mock_server_version = '4.2.2'
+        test_core_version = '1.2.0'
     }
 
     repositories {

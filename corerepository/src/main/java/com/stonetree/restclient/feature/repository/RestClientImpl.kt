@@ -12,11 +12,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.reflect.KClass
 
-class RestClientImpl : KoinComponent, RestClient {
+class RestClientImpl(private var baseUrl: String = "") : KoinComponent, RestClient {
 
     private lateinit var retrofit: Retrofit
-
-    private var baseUrl: String = ""
 
     private var key: String = ""
 
@@ -29,9 +27,17 @@ class RestClientImpl : KoinComponent, RestClient {
     }
 
     override fun start(context: Context) {
-        baseUrl = REPOSITORY_PROPS.read(context, BASE_URL)
-        key = REPOSITORY_PROPS.read(context, API_KEY)
+        loadBaseUrl(context)
+        loadAppKey(context)
         retrofit = configureRetrofit()
+    }
+
+    private fun loadBaseUrl(context: Context) {
+        if(baseUrl.isEmpty()) baseUrl = REPOSITORY_PROPS.read(context, BASE_URL)
+    }
+
+    private fun loadAppKey(context: Context) {
+        key = REPOSITORY_PROPS.read(context, API_KEY)
     }
 
     private fun configureRetrofit(): Retrofit {

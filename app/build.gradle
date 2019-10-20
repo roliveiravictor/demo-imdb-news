@@ -73,6 +73,10 @@ dependencies {
 
     testImplementation "org.koin:koin-test:$koin_test_version"
 
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_server_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "androidx.test:core:$test_core_version"
+
     debugImplementation("androidx.fragment:fragment-testing:$fragment_testing_version") {
         exclude group: "androidx.test", module: "core"
     }
@@ -82,7 +86,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$andx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_core_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_core_version"
 }
 
