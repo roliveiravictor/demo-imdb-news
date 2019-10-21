@@ -3,27 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="listener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="url"
-            type="String"/>
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/latest_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{listener}">
+        android:onClick="@{listener}"
+        android:padding="@dimen/two_dp">
 
-        <com.facebook.drawee.view.SimpleDraweeView
+        <ImageView
             android:id="@+id/poster"
             android:layout_width="@dimen/two_hun_dp"
             android:layout_height="@dimen/three_hun_dp"
-            android:padding="@dimen/five_dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

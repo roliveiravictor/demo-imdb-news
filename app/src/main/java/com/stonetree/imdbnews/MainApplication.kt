@@ -1,7 +1,6 @@
 package com.stonetree.imdbnews
 
 import android.app.Application
-import com.facebook.drawee.backends.pipeline.Fresco
 import com.stonetree.restclient.feature.repository.RestClient
 import com.stonetree.imdbnews.core.injector.Injector
 import org.koin.android.ext.android.inject
@@ -25,7 +24,6 @@ class MainApplication : Application() {
             }
         }
 
-        Fresco.initialize(this@MainApplication)
         repository.start(this@MainApplication)
     }
 }

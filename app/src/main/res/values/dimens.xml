@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="two_dp">2dp</dimen>
     <dimen name="five_dp">5dp</dimen>
     <dimen name="two_hun_dp">200dp</dimen>
     <dimen name="three_hun_dp">300dp</dimen>
