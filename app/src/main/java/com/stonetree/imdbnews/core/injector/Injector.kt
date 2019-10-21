@@ -14,6 +14,8 @@ import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import com.stonetree.imdbnews.feature.latest.res.source.LatestDataSource
 import com.stonetree.imdbnews.feature.latest.view.adapter.LatestAdapter
 import com.stonetree.imdbnews.feature.latest.viewmodel.LatestViewModel
+import com.stonetree.restclient.feature.network.broadcast.NetworkChangeReceiverImpl
+import com.stonetree.restclient.feature.network.broadcast.NetworkReceiver
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -35,13 +37,14 @@ class Injector {
         viewModel { LatestViewModel(get(), get()) }
     }
 
-    private val repository = module {
+    private val rest = module {
         factory<RestClientInterceptor> { RestClientInterceptorImpl() }
         factory<CoreHttpClient> { CoreHttpClientImpl(get()) }
         single<RestClient> { RestClientImpl() }
+        single<NetworkReceiver> { NetworkChangeReceiverImpl() }
     }
 
     fun startModules(): List<Module> {
-        return arrayListOf(repository, latest, details)
+        return arrayListOf(rest, latest, details)
     }
 }
