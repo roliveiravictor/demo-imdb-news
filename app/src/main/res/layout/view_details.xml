@@ -30,8 +30,9 @@
         android:layout_height="wrap_content">
 
         <include
+            android:id="@+id/view_core"
             layout="@layout/view_core"
-            app:core_loading="@{0}" />
+            app:isLoading="@{network.isLoading}" />
 
         <ScrollView
             android:layout_width="match_parent"

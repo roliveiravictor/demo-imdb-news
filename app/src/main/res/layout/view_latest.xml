@@ -25,8 +25,9 @@
         android:layout_height="wrap_content">
 
         <include
+            android:id="@+id/view_core"
             layout="@layout/view_core"
-            app:core_loading="@{0}" />
+            app:isLoading="@{network.isLoading}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/latest"

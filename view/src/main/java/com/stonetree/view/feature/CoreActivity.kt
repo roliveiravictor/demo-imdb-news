@@ -1,4 +1,4 @@
-package com.stonetree.view
+package com.stonetree.view.feature
 
 import androidx.appcompat.app.AppCompatActivity
 

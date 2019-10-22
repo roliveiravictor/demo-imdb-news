@@ -28,12 +28,11 @@ fun bindIsIdle(view: View, network: NetworkState?) {
 fun bindLoadImage(view: ImageView, posterPath: String? = "") {
     val url = REPOSITORY_PROPS.read(view.context, POSTER_URL) + posterPath
 
+    view.tag = url
+
     Glide.with(view)
         .load(url)
         .centerCrop()
         .placeholder(R.drawable.loading_animation)
         .into(view)
-
-    view.tag = url
-
 }

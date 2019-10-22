@@ -84,7 +84,7 @@ class LatestViewTest {
 
     @Test
     fun test_loadingVisibility_shouldReturnVisible() {
-        onView(withId(R.id.loading))
+        onView(withId(R.id.core_loading_view))
             .check(matches(withEffectiveVisibility(GONE)))
     }
 
@@ -110,7 +110,7 @@ class LatestViewTest {
 
     @Test(expected = PerformException::class)
     fun test_loadingClick_shouldThrowException() {
-        onView(withId(R.id.loading))
+        onView(withId(R.id.core_loading_view))
             .perform(click())
     }
 

@@ -9,7 +9,6 @@ import androidx.lifecycle.observe
 import com.stonetree.imdbnews.databinding.ViewLatestBinding
 import com.stonetree.imdbnews.feature.latest.view.adapter.LatestAdapter
 import com.stonetree.imdbnews.feature.latest.viewmodel.LatestViewModel
-import com.stonetree.view.CoreActivity
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

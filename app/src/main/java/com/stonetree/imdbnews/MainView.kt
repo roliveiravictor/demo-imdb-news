@@ -1,10 +1,8 @@
 package com.stonetree.imdbnews
 
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.stonetree.view.CoreActivity
+import com.stonetree.view.feature.CoreActivity
 
 class MainView : CoreActivity() {
 

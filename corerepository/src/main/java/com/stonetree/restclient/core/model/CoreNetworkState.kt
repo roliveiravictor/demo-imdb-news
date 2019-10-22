@@ -11,7 +11,7 @@ enum class Status {
 @Suppress("DataClassPrivateConstructor")
 data class NetworkState private constructor(
     val status: Status,
-    val value: Int,
+    val isLoading: Int,
     val msg: String? = null
 ) {
     companion object {
