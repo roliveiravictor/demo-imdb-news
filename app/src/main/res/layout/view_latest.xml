@@ -6,49 +6,41 @@
     tools:context="com.stonetree.imdbnews.feature.latest.view.LatestView">
 
     <data>
+
         <variable
             name="network"
             type="com.stonetree.restclient.core.model.NetworkState" />
 
         <variable
             name="vm"
-            type="com.stonetree.imdbnews.feature.latest.viewmodel.LatestViewModel"/>
+            type="com.stonetree.imdbnews.feature.latest.viewmodel.LatestViewModel" />
 
         <variable
             name="view"
-            type="com.stonetree.imdbnews.feature.latest.view.LatestView"/>
+            type="com.stonetree.imdbnews.feature.latest.view.LatestView" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <include
+            layout="@layout/view_core"
+            app:core_loading="@{0}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/latest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
             android:padding="@dimen/five_dp"
             app:isIdle="@{network}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="2"
             tools:listitem="@layout/list_item_latest" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:isLoading="@{network}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="lottie_loading.json"
-            app:lottie_loop="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

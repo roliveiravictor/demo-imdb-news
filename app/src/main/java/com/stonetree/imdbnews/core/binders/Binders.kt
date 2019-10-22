@@ -15,14 +15,6 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.stonetree.imdbnews.R
 
-@BindingAdapter("isLoading")
-fun bindIsLoading(view: View, network: NetworkState?) {
-    when (network) {
-        LOADING -> view.visibility = View.VISIBLE
-        else -> view.visibility = View.GONE
-    }
-}
-
 @BindingAdapter("isIdle")
 fun bindIsIdle(view: View, network: NetworkState?) {
     when (network?.status) {

@@ -2,3 +2,4 @@ rootProject.name='IMDB News'
 
 include ':app'
 include ':corerepository'
+include ':view'
