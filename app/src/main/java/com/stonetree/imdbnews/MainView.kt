@@ -1,10 +1,10 @@
 package com.stonetree.imdbnews
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import com.stonetree.view.feature.CoreActivity
 
-class MainView : AppCompatActivity() {
+class MainView : CoreActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
