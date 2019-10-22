@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.feature.latest.res.repository
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.restclient.core.extensions.enqueue
-import com.stonetree.restclient.feature.repository.RestClientImpl
+import com.stonetree.restclient.feature.RestClientImpl
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import junit.framework.TestCase.assertNotNull
 import org.junit.Assert.assertNotEquals
@@ -43,7 +43,7 @@ class LatestRepositoryTest {
     @Test
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
-        val request: Call<LatestModel> = client.create(LatestApi::class).get(1, client.key())
+        val request: Call<LatestModel> = client.generate(LatestApi::class).get(1, client.key())
         request.enqueue {
             onResponse = { response ->
                 assertGetRequests(response)

@@ -1,5 +1,6 @@
 package com.stonetree.restclient.feature.callback
 
+import com.stonetree.restclient.feature.RestClientCallback
 import com.stonetree.restclient.feature.idling.RestClientIdling
 import junit.framework.TestCase.assertNull
 import junit.framework.TestCase.assertTrue

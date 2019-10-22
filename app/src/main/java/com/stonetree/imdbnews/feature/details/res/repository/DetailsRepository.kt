@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.feature.details.res.repository
 import androidx.lifecycle.MutableLiveData
 import com.stonetree.restclient.core.extensions.enqueue
 import com.stonetree.restclient.core.model.NetworkState
-import com.stonetree.restclient.feature.repository.RestClient
+import com.stonetree.restclient.feature.RestClient
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import com.stonetree.imdbnews.feature.details.res.api.DetailsApi
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
@@ -11,7 +11,7 @@ import retrofit2.Call
 
 class DetailsRepository(private val repository: RestClient) {
 
-    val api: DetailsApi = repository.create(DetailsApi::class)
+    val api: DetailsApi = repository.generate(DetailsApi::class)
 
     var network = MutableLiveData<NetworkState>()
     private set

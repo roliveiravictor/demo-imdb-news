@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource.*
 import com.stonetree.restclient.core.extensions.enqueue
 import com.stonetree.restclient.core.model.NetworkState
-import com.stonetree.restclient.feature.repository.RestClient
+import com.stonetree.restclient.feature.RestClient
 import com.stonetree.imdbnews.feature.latest.model.LatestModel
 import com.stonetree.imdbnews.feature.latest.model.Movie
 import retrofit2.Call
 
 class LatestRepository(val repository: RestClient) {
 
-    private val api: LatestApi = repository.create(LatestApi::class)
+    private val api: LatestApi = repository.generate(LatestApi::class)
 
     private val network = MutableLiveData<NetworkState>()
 

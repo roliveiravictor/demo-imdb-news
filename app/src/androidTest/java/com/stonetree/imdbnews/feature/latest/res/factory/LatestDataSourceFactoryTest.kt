@@ -7,7 +7,7 @@ import androidx.test.rule.ActivityTestRule
 import com.stonetree.imdbnews.NavigatorActivity
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import com.stonetree.imdbnews.feature.latest.res.source.LatestDataSource
-import com.stonetree.restclient.feature.repository.RestClientImpl
+import com.stonetree.restclient.feature.RestClientImpl
 import junit.framework.TestCase.assertNotNull
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.any

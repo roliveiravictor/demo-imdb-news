@@ -1,7 +1,7 @@
 package com.stonetree.imdbnews
 
 import android.app.Application
-import com.stonetree.restclient.feature.repository.RestClient
+import com.stonetree.restclient.feature.RestClient
 import com.stonetree.imdbnews.core.injector.Injector
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext

@@ -1,4 +1,4 @@
-package com.stonetree.restclient.feature.network.broadcast
+package com.stonetree.restclient.feature.network
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -8,5 +8,7 @@ interface NetworkReceiver {
 
     fun get(): BroadcastReceiver
 
-    fun onConnectivityChange(context: Context)
+    fun onConnectionOffline()
+
+    fun onConnectionOnline()
 }

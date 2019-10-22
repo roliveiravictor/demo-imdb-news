@@ -4,8 +4,8 @@ import com.stonetree.restclient.feature.httpclient.CoreHttpClient
 import com.stonetree.restclient.feature.httpclient.CoreHttpClientImpl
 import com.stonetree.restclient.feature.interceptor.RestClientInterceptor
 import com.stonetree.restclient.feature.interceptor.RestClientInterceptorImpl
-import com.stonetree.restclient.feature.repository.RestClient
-import com.stonetree.restclient.feature.repository.RestClientImpl
+import com.stonetree.restclient.feature.RestClient
+import com.stonetree.restclient.feature.RestClientImpl
 import com.stonetree.imdbnews.feature.details.res.repository.DetailsRepository
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
 import com.stonetree.imdbnews.feature.details.viewmodel.DetailsViewModel
@@ -14,8 +14,8 @@ import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import com.stonetree.imdbnews.feature.latest.res.source.LatestDataSource
 import com.stonetree.imdbnews.feature.latest.view.adapter.LatestAdapter
 import com.stonetree.imdbnews.feature.latest.viewmodel.LatestViewModel
-import com.stonetree.restclient.feature.network.broadcast.NetworkChangeReceiverImpl
-import com.stonetree.restclient.feature.network.broadcast.NetworkReceiver
+import com.stonetree.restclient.feature.network.NetworkChangeReceiverImpl
+import com.stonetree.restclient.feature.network.NetworkReceiver
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module

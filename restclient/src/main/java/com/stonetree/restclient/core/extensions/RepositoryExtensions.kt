@@ -2,7 +2,7 @@ package com.stonetree.restclient.core.extensions
 
 import android.content.Context
 import com.stonetree.restclient.feature.idling.RestClientIdling
-import com.stonetree.restclient.feature.callback.RestClientCallback
+import com.stonetree.restclient.feature.RestClientCallback
 import retrofit2.Call
 import java.util.Properties
 

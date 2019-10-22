@@ -10,13 +10,12 @@ import org.junit.Test
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.restclient.feature.repository.RestClientImpl
+import com.stonetree.restclient.feature.RestClientImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
 import com.stonetree.imdbnews.feature.details.res.repository.DetailsRepository
 import com.stonetree.imdbnews.feature.details.view.DetailsViewArgs
-import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock

@@ -1,4 +1,4 @@
-package com.stonetree.restclient.feature.repository
+package com.stonetree.restclient.feature
 
 import android.content.Context
 import com.stonetree.restclient.core.extensions.read
@@ -24,7 +24,7 @@ class RestClientImpl : KoinComponent, RestClient {
 
     override fun key(): String = key
 
-    override fun <T : Any> create(clazz: KClass<T>): T {
+    override fun <T : Any> generate(clazz: KClass<T>): T {
         return this.retrofit.create(clazz.java)
     }
 

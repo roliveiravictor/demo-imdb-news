@@ -1,4 +1,4 @@
-package com.stonetree.restclient.feature.callback
+package com.stonetree.restclient.feature
 
 import com.stonetree.restclient.feature.idling.RestClientIdling
 import retrofit2.Call

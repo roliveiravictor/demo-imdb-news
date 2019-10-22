@@ -1,6 +1,6 @@
 package com.stonetree.imdbnews.core.activity
 
-import com.stonetree.restclient.feature.network.broadcast.NetworkReceiver
+import com.stonetree.restclient.feature.network.NetworkReceiver
 import com.stonetree.view.feature.core.CoreActivity
 import org.koin.android.ext.android.inject
 
