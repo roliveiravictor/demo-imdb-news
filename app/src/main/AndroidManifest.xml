@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.stonetree.imdbnews.MainActivity">
+        <activity android:name="com.stonetree.imdbnews.NavigatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.stonetree.imdbnews.core.activity.DummyActivity"/>
+        <activity android:name="com.stonetree.imdbnews.core.activity.MainActivity"/>
     </application>
 
 </manifest>

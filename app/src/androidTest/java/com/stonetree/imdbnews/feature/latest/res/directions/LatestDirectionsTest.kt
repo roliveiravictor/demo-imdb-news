@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.imdbnews.MainActivity
+import com.stonetree.imdbnews.NavigatorActivity
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_KEY
 import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
@@ -22,7 +22,7 @@ class LatestDirectionsTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainActivity::class.java)
+    val rule = ActivityTestRule(NavigatorActivity::class.java)
 
     private var fragment: DetailsView? = null
 

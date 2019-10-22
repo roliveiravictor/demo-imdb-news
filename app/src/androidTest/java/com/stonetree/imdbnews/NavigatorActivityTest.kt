@@ -15,11 +15,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class NavigatorActivityTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainActivity::class.java)
+    val rule = ActivityTestRule(NavigatorActivity::class.java)
 
     @Test
     fun test_findNavFragment_shouldReturnNotNull() {

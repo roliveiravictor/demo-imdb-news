@@ -4,7 +4,7 @@ import com.stonetree.restclient.feature.network.broadcast.NetworkReceiver
 import com.stonetree.view.feature.core.CoreActivity
 import org.koin.android.ext.android.inject
 
-open class DummyActivity : CoreActivity() {
+open class MainActivity : CoreActivity() {
 
     private val receiver: NetworkReceiver by inject()
 

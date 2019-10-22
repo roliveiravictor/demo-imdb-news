@@ -27,7 +27,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withTagValue
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.Visibility.GONE
 import androidx.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE
-import com.stonetree.imdbnews.MainActivity
+import com.stonetree.imdbnews.NavigatorActivity
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
@@ -44,7 +44,7 @@ class LatestViewTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainActivity::class.java)
+    val rule = ActivityTestRule(NavigatorActivity::class.java)
 
     private var fragment: LatestView? = null
 

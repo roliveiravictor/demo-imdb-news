@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.restclient.core.model.NetworkState
-import com.stonetree.imdbnews.MainActivity
+import com.stonetree.imdbnews.NavigatorActivity
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_BASE_URL
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import junit.framework.TestCase.assertEquals
@@ -19,7 +19,7 @@ class BindersTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainActivity::class.java)
+    val rule = ActivityTestRule(NavigatorActivity::class.java)
 
     @Test
     fun test_bindIsIdleLoading_shouldReturnGone() {
