@@ -11,7 +11,7 @@ import org.koin.core.context.startKoin
 
 class MainApplication : Application() {
 
-    private val repository: RestClient by inject()
+    private val restClient: RestClient by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -24,6 +24,6 @@ class MainApplication : Application() {
             }
         }
 
-        repository.start(this@MainApplication)
+        restClient.start(this@MainApplication)
     }
 }

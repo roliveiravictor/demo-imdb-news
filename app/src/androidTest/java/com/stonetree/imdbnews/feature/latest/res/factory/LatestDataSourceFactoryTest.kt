@@ -4,12 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.imdbnews.MainView
+import com.stonetree.imdbnews.MainActivity
 import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 import com.stonetree.imdbnews.feature.latest.res.source.LatestDataSource
-import com.stonetree.restclient.feature.repository.RestClient
 import com.stonetree.restclient.feature.repository.RestClientImpl
-import junit.framework.TestCase.assertNull
 import junit.framework.TestCase.assertNotNull
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.any
@@ -34,7 +32,7 @@ class LatestDataSourceFactoryTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainView::class.java)
+    val rule = ActivityTestRule(MainActivity::class.java)
 
     @Before
     fun setup() {

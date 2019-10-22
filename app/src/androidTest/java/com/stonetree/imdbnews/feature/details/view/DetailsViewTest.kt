@@ -15,7 +15,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.restclient.feature.idling.RestClientIdling
-import com.stonetree.imdbnews.MainView
+import com.stonetree.imdbnews.MainActivity
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.APP_TITLE
 import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_KEY
@@ -38,7 +38,7 @@ class DetailsViewTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainView::class.java)
+    val rule = ActivityTestRule(MainActivity::class.java)
 
     private var fragment: DetailsView? = null
 

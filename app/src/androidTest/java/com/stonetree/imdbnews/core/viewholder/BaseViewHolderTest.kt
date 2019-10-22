@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.core.viewholder
 import androidx.databinding.DataBindingUtil
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.imdbnews.MainView
+import com.stonetree.imdbnews.MainActivity
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Constants.IMAGE_PATH
 import com.stonetree.imdbnews.databinding.ViewLatestBinding
@@ -17,7 +17,7 @@ class BaseViewHolderTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainView::class.java)
+    val rule = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun test_baseViewHolderOnBind_shouldReturnSameUrl() {

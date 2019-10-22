@@ -2,7 +2,7 @@
     package="com.stonetree.view">
 
     <application>
-        <activity android:name=".feature.CoreActivity" />
+        <activity android:name=".feature.core.CoreActivity" />
     </application>
 
 </manifest>

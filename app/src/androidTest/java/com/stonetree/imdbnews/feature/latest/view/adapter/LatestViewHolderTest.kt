@@ -4,7 +4,7 @@ import androidx.databinding.DataBindingUtil.setContentView
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.stonetree.restclient.core.constants.RepositoryConstants.BASE_URL
-import com.stonetree.imdbnews.MainView
+import com.stonetree.imdbnews.MainActivity
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.databinding.ListItemLatestBinding
 import com.stonetree.imdbnews.feature.latest.model.Movie
@@ -21,7 +21,7 @@ class LatestViewHolderTest {
 
     @Rule
     @JvmField
-    val rule = ActivityTestRule(MainView::class.java)
+    val rule = ActivityTestRule(MainActivity::class.java)
 
     private lateinit var bind: ListItemLatestBinding
     private lateinit var vh: LatestViewHolder

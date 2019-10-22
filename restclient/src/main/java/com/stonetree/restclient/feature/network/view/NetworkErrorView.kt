@@ -10,24 +10,9 @@ import org.koin.android.ext.android.inject
 
 class NetworkErrorView : AppCompatActivity() {
 
-    private val receiver: NetworkReceiver by inject()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_network_error)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        registerReceiver(
-            receiver.get(),
-            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
-        )
-    }
-
-    override fun onPause() {
-        super.onPause()
-        unregisterReceiver(receiver.get())
     }
 
     override fun onBackPressed() {

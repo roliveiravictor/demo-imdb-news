@@ -13,14 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.stonetree.imdbnews.MainView">
+        <activity android:name="com.stonetree.imdbnews.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.stonetree.imdbnews.core.activity.DummyActivity"/>
     </application>
 
 </manifest>
