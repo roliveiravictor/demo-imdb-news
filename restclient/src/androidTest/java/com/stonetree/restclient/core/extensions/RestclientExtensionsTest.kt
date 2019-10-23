@@ -15,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 @RunWith(AndroidJUnit4::class)
-class RepositoryExtensionsTest {
+class RestclientExtensionsTest {
 
     private val context = getInstrumentation().targetContext
 

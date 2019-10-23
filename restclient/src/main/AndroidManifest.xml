@@ -10,7 +10,7 @@
         android:supportsRtl="true">
 
         <activity
-            android:name="com.stonetree.restclient.feature.error.NetworkErrorActivity"
+            android:name="com.stonetree.restclient.feature.view.NetworkErrorActivity"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="com.stonetree.restclient.feature.error.NetworkErrorActivity" />

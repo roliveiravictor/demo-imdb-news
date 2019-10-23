@@ -1,4 +1,4 @@
-package com.stonetree.restclient.feature.error
+package com.stonetree.restclient.feature.view
 
 import android.content.IntentFilter
 import android.net.ConnectivityManager

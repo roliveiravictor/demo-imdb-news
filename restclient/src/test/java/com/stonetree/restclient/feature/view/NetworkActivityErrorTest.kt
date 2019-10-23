@@ -1,13 +1,10 @@
-package com.stonetree.restclient.feature.error
+package com.stonetree.restclient.feature.view
 
 import android.content.Intent
-import android.provider.MediaStore
 import androidx.test.core.app.ActivityScenario
 import com.stonetree.restclient.feature.network.NetworkChangeReceiverImpl
 import com.stonetree.restclient.feature.network.NetworkReceiver
-import junit.framework.TestCase
 import junit.framework.TestCase.*
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
@@ -17,11 +14,8 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
-import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.Shadows
 import org.robolectric.Shadows.*
-import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 class NetworkActivityErrorTest : AutoCloseKoinTest() {
@@ -60,7 +54,6 @@ class NetworkActivityErrorTest : AutoCloseKoinTest() {
     @Ignore
         /** https://github.com/robolectric/robolectric/pull/4736 **/
     fun onConnectionOnline_shouldReturnNetworkErrorActivity() {
-        receiver.onConnectionOnline(activity, Intent(OFFLINE_ACTION))
         val shadowIntent = shadowOf(activity).nextStartedActivity
         val galleryIntent = Intent(OFFLINE_ACTION)
         assertTrue(galleryIntent.filterEquals(shadowIntent))

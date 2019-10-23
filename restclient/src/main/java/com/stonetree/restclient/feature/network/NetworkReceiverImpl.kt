@@ -9,7 +9,7 @@ import android.content.Context.*
 import android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.net.ConnectivityManager.*
-import com.stonetree.restclient.feature.error.NetworkErrorActivity
+import com.stonetree.restclient.feature.view.NetworkErrorActivity
 
 class NetworkChangeReceiverImpl : BroadcastReceiver(), NetworkReceiver {
 
