@@ -2,13 +2,20 @@ package com.stonetree.restclient.feature.network
 
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
 
 
 interface NetworkReceiver {
 
     fun get(): BroadcastReceiver
 
-    fun onConnectionOffline()
+    fun offlineMessageKey(): String
 
-    fun onConnectionOnline()
+    fun registerOfflineIntent(action: String, message: String)
+
+    fun registerOnlineIntent(action: String)
+
+    fun onConnectionOffline(context: Context)
+
+    fun onConnectionOnline(context: Context, intent: Intent)
 }

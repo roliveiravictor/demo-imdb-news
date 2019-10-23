@@ -8,6 +8,16 @@
         android:allowBackup="false"
         android:label="@string/app_name"
         android:supportsRtl="true">
+
+        <activity
+            android:name="com.stonetree.restclient.feature.error.NetworkErrorActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="com.stonetree.restclient.feature.error.NetworkErrorActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".feature.network.NetworkChangeReceiverImpl">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />

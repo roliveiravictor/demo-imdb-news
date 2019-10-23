@@ -9,7 +9,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
 
-
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 29
@@ -64,6 +63,7 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito_core_version"
     testImplementation "org.mockito:mockito-inline:$mockito_core_version"
 
+    testApi "androidx.test:core:$test_core_version"
     testApi "org.koin:koin-test:$koin_test_version"
     testApi "org.robolectric:robolectric:$robolectric_version"
 

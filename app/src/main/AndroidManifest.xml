@@ -13,15 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.stonetree.imdbnews.NavigatorActivity">
+        <activity
+            android:name="com.stonetree.imdbnews.NavigatorActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+                <action android:name="com.stonetree.imdbnews.NavigatorActivity" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.stonetree.imdbnews.core.activity.MainActivity"/>
+        <activity android:name="com.stonetree.imdbnews.core.activity.MainActivity" />
+
     </application>
 
 </manifest>
