@@ -25,7 +25,10 @@ open class MainActivity : CoreActivity() {
 
     override fun onResume() {
         super.onResume()
-        registerReceiver(receiver.get(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+        registerReceiver(
+            receiver.get(),
+            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        )
     }
 
     override fun onPause() {

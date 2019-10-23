@@ -6,22 +6,15 @@ import android.content.Intent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.*
-import android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT
-import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+import android.content.Intent.*
 import android.net.ConnectivityManager.*
 import com.stonetree.restclient.feature.view.NetworkErrorActivity
 
 class NetworkChangeReceiverImpl : BroadcastReceiver(), NetworkReceiver {
 
-    private val onlineIntent = Intent().apply {
-        this.flags = FLAG_ACTIVITY_BROUGHT_TO_FRONT
-        this.flags = FLAG_ACTIVITY_CLEAR_TOP
-    }
+    private val onlineIntent = Intent()
 
-    private val offlineIntent = Intent().apply {
-        this.flags = FLAG_ACTIVITY_BROUGHT_TO_FRONT
-        this.flags = FLAG_ACTIVITY_CLEAR_TOP
-    }
+    private val offlineIntent = Intent()
 
     override fun onReceive(context: Context, intent: Intent) {
         val manager = context

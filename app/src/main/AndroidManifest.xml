@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name="com.stonetree.imdbnews.NavigatorActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
