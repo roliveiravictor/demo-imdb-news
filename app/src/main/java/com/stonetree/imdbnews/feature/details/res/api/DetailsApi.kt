@@ -1,6 +1,6 @@
 package com.stonetree.imdbnews.feature.details.res.api
 
-import com.stonetree.restclient.core.constants.RepositoryConstants.API_KEY
+import com.stonetree.restclient.core.constants.RestclientConstants.API_KEY
 import com.stonetree.imdbnews.core.constants.DirectionsBundleKey.MOVIE_ID
 import com.stonetree.imdbnews.core.constants.Endpoint.DETAILS_PATH
 import com.stonetree.imdbnews.feature.details.model.DetailsModel

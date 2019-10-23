@@ -2,9 +2,9 @@ package com.stonetree.restclient.feature
 
 import android.content.Context
 import com.stonetree.restclient.core.extensions.read
-import com.stonetree.restclient.core.constants.RepositoryConstants.BASE_URL
-import com.stonetree.restclient.core.constants.RepositoryConstants.API_KEY
-import com.stonetree.restclient.core.constants.RepositoryConstants.REPOSITORY_PROPS
+import com.stonetree.restclient.core.constants.RestclientConstants.BASE_URL
+import com.stonetree.restclient.core.constants.RestclientConstants.API_KEY
+import com.stonetree.restclient.core.constants.RestclientConstants.REPOSITORY_PROPS
 import com.stonetree.restclient.feature.httpclient.CoreHttpClient
 import org.koin.core.KoinComponent
 import org.koin.core.inject

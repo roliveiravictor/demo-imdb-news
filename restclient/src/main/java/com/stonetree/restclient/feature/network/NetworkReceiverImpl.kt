@@ -1,5 +1,6 @@
 package com.stonetree.restclient.feature.network
 
+import android.app.Activity
 import android.net.ConnectivityManager
 import android.content.Intent
 import android.content.BroadcastReceiver
@@ -8,7 +9,6 @@ import android.content.Context.*
 import android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.net.ConnectivityManager.*
-import android.util.Log
 import com.stonetree.restclient.feature.error.NetworkErrorActivity
 
 class NetworkChangeReceiverImpl : BroadcastReceiver(), NetworkReceiver {
@@ -33,22 +33,13 @@ class NetworkChangeReceiverImpl : BroadcastReceiver(), NetworkReceiver {
 
         (wifi || mobile).let { isOnline ->
             if (isOnline)
-                onConnectionOnline(context, intent)
+                onConnectionOnline(context)
             else
                 onConnectionOffline(context)
         }
     }
 
-    override fun onConnectionOnline(context: Context, intent: Intent) {
-        (context as? NetworkErrorActivity)?.intent?.apply {
-            if (offlineIntent.action.equals(this.action))
-                context.startActivity(onlineIntent)
-        }
-    }
-
-    override fun onConnectionOffline(context: Context) {
-        context.startActivity(offlineIntent)
-    }
+    override fun get(): BroadcastReceiver = this
 
     override fun registerOfflineIntent(action: String, message: String) {
         offlineIntent.apply {
@@ -65,5 +56,26 @@ class NetworkChangeReceiverImpl : BroadcastReceiver(), NetworkReceiver {
 
     override fun offlineMessageKey(): String = "network_offline_error_message"
 
-    override fun get(): BroadcastReceiver = this
+    private fun onConnectionOnline(context: Context) {
+        (context as? Activity)?.let { activity ->
+            when (activity) {
+                is NetworkErrorActivity -> launchOnlineIntent(activity, context)
+            }
+        }
+    }
+
+    private fun onConnectionOffline(context: Context) {
+        context.startActivity(offlineIntent)
+    }
+
+    private fun launchOnlineIntent(
+        activity: Activity,
+        context: Context
+    ) {
+        offlineIntent.action?.apply {
+            if (this == activity.intent.action) {
+                context.startActivity(onlineIntent)
+            }
+        }
+    }
 }

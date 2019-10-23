@@ -1,10 +1,11 @@
 package com.stonetree.imdbnews.core.activity
 
-import android.content.Intent.ACTION_MAIN
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.os.PersistableBundle
+import com.stonetree.imdbnews.R
+import com.stonetree.imdbnews.core.constants.Actions.NAVIGATOR
+import com.stonetree.restclient.core.constants.RestclientConstants.ACTIONS.NETWORK_ERROR
 import com.stonetree.restclient.feature.network.NetworkReceiver
 import com.stonetree.view.feature.core.CoreActivity
 import org.koin.android.ext.android.inject
@@ -16,10 +17,10 @@ open class MainActivity : CoreActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         receiver.registerOfflineIntent(
-            "com.stonetree.restclient.feature.error.NetworkErrorActivity",
-            "You're currently offline. Reconnecting..."
+            NETWORK_ERROR,
+            getString(R.string.offline_message)
         )
-        receiver.registerOnlineIntent("com.stonetree.imdbnews.NavigatorActivity")
+        receiver.registerOnlineIntent(NAVIGATOR)
     }
 
     override fun onResume() {

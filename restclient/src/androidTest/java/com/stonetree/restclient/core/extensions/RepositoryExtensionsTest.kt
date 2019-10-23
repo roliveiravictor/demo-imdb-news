@@ -2,8 +2,8 @@ package com.stonetree.restclient.core.extensions
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import com.stonetree.restclient.core.constants.RepositoryConstants.BASE_URL
-import com.stonetree.restclient.core.constants.RepositoryConstants.TEST_PROPS
+import com.stonetree.restclient.core.constants.RestclientConstants.BASE_URL
+import com.stonetree.restclient.core.constants.RestclientConstants.TEST_PROPS
 import com.stonetree.restclient.feature.idling.RestClientIdling.getResource
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse

@@ -3,7 +3,7 @@ package com.stonetree.imdbnews.feature.latest.view.adapter
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.stonetree.restclient.core.constants.RepositoryConstants.BASE_URL
+import com.stonetree.restclient.core.constants.RestclientConstants.BASE_URL
 import com.stonetree.imdbnews.NavigatorActivity
 import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.databinding.ListItemLatestBinding

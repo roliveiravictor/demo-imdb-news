@@ -14,8 +14,8 @@ import org.mockito.Mockito.verify
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.stonetree.restclient.core.constants.RepositoryConstants.PRE_FETCH_DISTANCE
-import com.stonetree.restclient.core.constants.RepositoryConstants.PAGE_SIZE
+import com.stonetree.restclient.core.constants.RestclientConstants.PRE_FETCH_DISTANCE
+import com.stonetree.restclient.core.constants.RestclientConstants.PAGE_SIZE
 import com.stonetree.restclient.feature.RestClientImpl
 import com.stonetree.imdbnews.core.extensions.lambdaMock
 import com.stonetree.imdbnews.core.extensions.observeLiveData

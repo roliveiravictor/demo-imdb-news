@@ -1,6 +1,6 @@
 package com.stonetree.restclient.core.constants
 
-object RepositoryConstants {
+object RestclientConstants {
 
     const val BASE_URL: String = "base_url"
     const val POSTER_URL: String = "poster_url"
@@ -16,4 +16,9 @@ object RepositoryConstants {
     const val PAGE_SIZE: Int = 15
     const val PRE_FETCH_DISTANCE: Int = 10
     const val MAX_THREADS: Int = 3
+
+    object ACTIONS {
+
+        const val NETWORK_ERROR = "com.stonetree.restclient.feature.error.NetworkErrorActivity"
+    }
 }

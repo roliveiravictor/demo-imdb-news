@@ -2,4 +2,5 @@
     <string name="app_name">IMDB News</string>
     <string name="title">Title</string>
     <string name="description">Description Loren Ypsun</string>
+    <string name="offline_message">You\'re currently offline. Reconnecting...</string>
 </resources>

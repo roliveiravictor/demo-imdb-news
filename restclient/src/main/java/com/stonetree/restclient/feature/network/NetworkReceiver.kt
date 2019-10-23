@@ -14,8 +14,4 @@ interface NetworkReceiver {
     fun registerOfflineIntent(action: String, message: String)
 
     fun registerOnlineIntent(action: String)
-
-    fun onConnectionOffline(context: Context)
-
-    fun onConnectionOnline(context: Context, intent: Intent)
 }
