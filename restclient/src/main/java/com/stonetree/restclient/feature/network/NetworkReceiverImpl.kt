@@ -1,5 +1,6 @@
 package com.stonetree.restclient.feature.network
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.net.ConnectivityManager
 import android.content.Intent
@@ -16,19 +17,16 @@ class NetworkChangeReceiverImpl : BroadcastReceiver(), NetworkReceiver {
 
     private val offlineIntent = Intent()
 
+    /** Protection Level = Normal **/
+    @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
-        val manager = context
-            .getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-
-        val wifi = manager.getNetworkInfo(TYPE_WIFI)?.isConnected ?: false
-
-        val mobile = manager.getNetworkInfo(TYPE_MOBILE)?.isConnected ?: false
-
-        (wifi || mobile).let { isOnline ->
-            if (isOnline)
-                onConnectionOnline(context)
-            else
-                onConnectionOffline(context)
+        context.getSystemService(CONNECTIVITY_SERVICE)?.apply {
+            (this as? ConnectivityManager)?.run {
+                if (activeNetwork != null)
+                    onConnectionOnline(context)
+                else
+                    onConnectionOffline(context)
+            }
         }
     }
 
