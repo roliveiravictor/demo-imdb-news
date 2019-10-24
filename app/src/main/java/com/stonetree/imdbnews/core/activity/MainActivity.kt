@@ -7,7 +7,7 @@ import com.stonetree.imdbnews.R
 import com.stonetree.imdbnews.core.constants.Actions.NAVIGATOR
 import com.stonetree.restclient.core.constants.RestclientConstants.ACTIONS.NETWORK_ERROR
 import com.stonetree.restclient.feature.network.NetworkReceiver
-import com.stonetree.view.feature.core.CoreActivity
+import com.stonetree.view.feature.CoreActivity
 import org.koin.android.ext.android.inject
 
 open class MainActivity : CoreActivity() {

@@ -32,7 +32,7 @@
         <include
             android:id="@+id/view_core"
             layout="@layout/view_core"
-            app:isLoading="@{network.isLoading}" />
+            app:isLoading="@{network.status.isLoading}" />
 
         <ScrollView
             android:layout_width="match_parent"

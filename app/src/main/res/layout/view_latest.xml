@@ -27,7 +27,7 @@
         <include
             android:id="@+id/view_core"
             layout="@layout/view_core"
-            app:isLoading="@{network.isLoading}" />
+            app:isLoading="@{network.status.isLoading}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/latest"
