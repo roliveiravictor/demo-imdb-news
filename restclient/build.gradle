@@ -58,6 +58,7 @@ dependencies {
     api "androidx.test.espresso:espresso-idling-resource:$espresso_core_version"
 
     api "org.koin:koin-androidx-viewmodel:$koin_version"
+    api "com.airbnb.android:lottie:$lottie_version"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:$mockito_core_version"

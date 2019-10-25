@@ -42,7 +42,7 @@ dependencies {
     
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
 
-    implementation "com.airbnb.android:lottie:$lottie_version"
+    api "com.airbnb.android:lottie:$lottie_version"
 
     testImplementation 'junit:junit:4.12'
 
