@@ -32,7 +32,8 @@
         <include
             android:id="@+id/view_core"
             layout="@layout/view_core"
-            app:network="@{network.status.isLoading}" />
+            app:network="@{network.status.isLoading}"
+            app:retry="@{() -> view.onRequestRetry()}" />
 
         <ScrollView
             android:layout_width="match_parent"

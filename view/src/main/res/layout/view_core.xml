@@ -2,9 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.stonetree.view.feature.CoreActivity">
+    tools:context=".feature.activity.CoreActivity">
 
     <data>
+
+        <variable
+            name="retry"
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="network"
@@ -52,7 +56,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="bad_request.json"
-                app:lottie_loop="true" />
+                app:lottie_loop="true"
+                app:lottie_scale="1.5" />
 
             <TextView
                 android:id="@+id/core_failure_message"
@@ -65,9 +70,11 @@
                 tools:text="Your request failed." />
 
             <Button
+                android:id="@+id/core_retry_button"
                 android:layout_width="200dp"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="50dp"
+                android:onClick="@{retry}"
                 android:text="@string/retry"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

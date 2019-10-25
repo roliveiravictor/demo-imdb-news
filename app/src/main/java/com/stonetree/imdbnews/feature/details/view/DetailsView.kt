@@ -1,26 +1,19 @@
 package com.stonetree.imdbnews.feature.details.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.VisibleForTesting
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import com.stonetree.imdbnews.databinding.ViewDetailsBinding
-import com.stonetree.imdbnews.feature.details.res.repository.DetailsRepository
 import com.stonetree.imdbnews.feature.details.viewmodel.DetailsViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
+import com.stonetree.view.feature.fragment.CoreFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
 import org.koin.core.parameter.parametersOf
-import org.koin.dsl.module
-import java.lang.reflect.Modifier
 
-class DetailsView : Fragment() {
+class DetailsView : CoreFragment() {
 
     private val args: DetailsViewArgs by navArgs()
 
@@ -36,9 +29,12 @@ class DetailsView : Fragment() {
 
         bindXml(data)
         bindObservers(data)
-        bindObservers(data)
 
         return data.root
+    }
+
+    override fun onRequestRetry() {
+        Log.e(javaClass.name, "Details Retry")
     }
 
     private fun bindXml(data: ViewDetailsBinding) {
