@@ -30,7 +30,7 @@ class Injector {
     private val latest = module {
         factory { LatestAdapter() }
         factory { LatestDataSource(get()) }
-        factory { LatestDataSourceFactory(get(), get()) }
+        factory { LatestDataSourceFactory(get()) }
 
         single { LatestRepository(get()) }
 

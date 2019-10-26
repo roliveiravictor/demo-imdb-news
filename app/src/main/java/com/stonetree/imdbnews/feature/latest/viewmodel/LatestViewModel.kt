@@ -18,7 +18,7 @@ import com.stonetree.imdbnews.feature.latest.res.repository.LatestRepository
 
 class LatestViewModel(
     val repository: LatestRepository,
-    val source: LatestDataSourceFactory
+    val factory: LatestDataSourceFactory
 ) : ViewModel() {
 
     val config: PagedList.Config = PagedList.Config.Builder()
@@ -29,11 +29,13 @@ class LatestViewModel(
         .build()
 
     val latest: LiveData<PagedList<Movie>> =
-        LivePagedListBuilder(source, config)
+        LivePagedListBuilder(factory, config)
             .setFetchExecutor(Executors.newFixedThreadPool(MAX_THREADS))
             .build()
 
-    val network: LiveData<NetworkState> = repository.getNetwork()
+    val network: LiveData<NetworkState> = repository.network
+
+    fun retry() = factory.data.value?.invalidate()
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {

@@ -1,7 +1,6 @@
 package com.stonetree.imdbnews.feature.latest.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +32,7 @@ class LatestView : CoreFragment() {
     }
 
     override fun onRequestRetry() {
-        Log.e(javaClass.name, "Latest Retry")
+        vm.retry()
     }
 
     private fun bindXml(

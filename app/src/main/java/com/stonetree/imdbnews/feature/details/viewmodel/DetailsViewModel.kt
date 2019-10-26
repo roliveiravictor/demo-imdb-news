@@ -11,11 +11,16 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(val repository: DetailsRepository, private val args: DetailsViewArgs) : ViewModel() {
+class DetailsViewModel(
+    val repository: DetailsRepository,
+    private val args: DetailsViewArgs
+) : ViewModel() {
 
     val network: LiveData<NetworkState> = repository.network
 
-    val details: LiveData<DetailsModel> = repository.details()
+    val details: LiveData<DetailsModel> = repository.details
+
+    fun retry() = repository.retry()
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {

@@ -1,7 +1,6 @@
 package com.stonetree.imdbnews.feature.details.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,7 @@ class DetailsView : CoreFragment() {
     }
 
     override fun onRequestRetry() {
-        Log.e(javaClass.name, "Details Retry")
+        vm.retry()
     }
 
     private fun bindXml(data: ViewDetailsBinding) {
