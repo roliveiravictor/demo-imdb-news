@@ -1,5 +1,6 @@
 package com.stonetree.imdbnews.feature.latest.res.repository
 
+import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.restclient.core.extensions.enqueue
@@ -44,7 +45,7 @@ class LatestRepositoryTest {
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
         val request: Call<LatestModel> = client.generate(LatestApi::class).get(1, client.key())
-        request.enqueue {
+        request.enqueue(MutableLiveData()) {
             onResponse = { response ->
                 assertGetRequests(response)
                 countdown.countDown()

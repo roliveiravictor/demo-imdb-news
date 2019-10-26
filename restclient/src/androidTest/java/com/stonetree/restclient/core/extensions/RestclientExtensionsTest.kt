@@ -1,5 +1,6 @@
 package com.stonetree.restclient.core.extensions
 
+import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.stonetree.restclient.core.constants.RestclientConstants.BASE_URL
@@ -51,7 +52,7 @@ class RestclientExtensionsTest {
 
     @Test
     fun test_enqueue_shouldIncrementIdling() {
-        CallTest().enqueue {
+        CallTest().enqueue(MutableLiveData()) {
             // Do Nothing
         }
         assertFalse(getResource().isIdleNow)

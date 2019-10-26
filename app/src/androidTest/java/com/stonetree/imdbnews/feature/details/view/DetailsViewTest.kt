@@ -86,7 +86,7 @@ class DetailsViewTest {
 
     @Test
     fun test_loadingVisibility_shouldReturnGone() {
-        onView(withId(R.id.core_loading_view))
+        onView(withId(R.id.core_loading_anim_view))
             .check(matches(withEffectiveVisibility(GONE)))
     }
 

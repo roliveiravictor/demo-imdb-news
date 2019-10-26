@@ -1,16 +1,19 @@
 package com.stonetree.imdbnews.feature.details.res.repository
 
+import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.stonetree.restclient.core.extensions.enqueue
 import com.stonetree.restclient.feature.RestClientImpl
 import com.stonetree.imdbnews.core.constants.Constants.MOVIE_ID_VALUE
 import com.stonetree.imdbnews.feature.details.model.DetailsModel
+import com.stonetree.restclient.core.model.NetworkState
 import junit.framework.TestCase.assertNotNull
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito
 import retrofit2.Call
 import retrofit2.Response
 import java.util.concurrent.CountDownLatch
@@ -39,7 +42,7 @@ class DetailsRepositoryTest {
     fun test_getRequest_shouldReturnNotDefaultValues() {
         val countdown = CountDownLatch(1)
         val request: Call<DetailsModel> = repository.api.get(MOVIE_ID_VALUE, client.key())
-        request.enqueue {
+        request.enqueue(MutableLiveData()) {
             onResponse = { response ->
                 assertGetRequests(response)
                 countdown.countDown()

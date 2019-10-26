@@ -49,8 +49,7 @@ class LatestViewModelTest {
     fun setup() {
         client.start(context)
         repository = LatestRepository(client)
-        source = LatestDataSource(repository)
-        factory = LatestDataSourceFactory(repository, source)
+        factory = LatestDataSourceFactory(repository)
         vm = LatestViewModel(repository, factory)
     }
 
