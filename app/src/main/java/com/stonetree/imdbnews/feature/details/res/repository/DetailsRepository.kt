@@ -20,7 +20,7 @@ class DetailsRepository(private val client: RestClient) : MainRepository() {
         private set
 
     var details = MutableLiveData<DetailsModel>()
-    private set
+        private set
 
     private lateinit var request: Call<DetailsModel>
 
