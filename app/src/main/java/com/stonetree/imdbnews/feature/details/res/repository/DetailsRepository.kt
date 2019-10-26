@@ -26,7 +26,7 @@ class DetailsRepository(private val client: RestClient) : MainRepository() {
 
     override fun retry() {
         request.clone().enqueue(network) {
-
+            executeGet(this)
         }
     }
 
